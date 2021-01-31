@@ -10,7 +10,7 @@ if grep -qs '/mnt/NAS/florian ' /proc/mounts; then
         --exclude "tmp/" \
         --exclude "VirtualBox VMs/" \
         --exclude ".*" \
-        /home/florian/ /home/florian/NASbackup/
+        $HOME/ $HOME/NASbackup/
 else
     echo "It's not mounted."
 fi

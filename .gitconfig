@@ -2,7 +2,7 @@
 	name = Florian Buetler
 	email = flbuetle@ethz.ch
 [core]
-    excludesfile = /home/florian/.gitignore
+    excludesfile = $HOME/.gitignore
 [alias]
     co = checkout --recurse-submodules
     st = status

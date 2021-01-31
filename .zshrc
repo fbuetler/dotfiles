@@ -111,8 +111,8 @@ export PATH="$PATH:/opt"
 export TERM="xterm"
 export EDITOR="vim"
 
-alias sem='cd /home/florian/Documents/01_Ausbildung/ETH/Sem7'
-alias vis='cd /home/florian/go/src/gitlab.ethz.ch/vis/cat'
+alias sem='cd $HOME/Documents/01_Ausbildung/ETH/Sem7'
+alias vis='cd $HOME/go/src/gitlab.ethz.ch/vis/cat'
 alias restartwifi='systemctl restart NetworkManager'
 alias code='exec code .'
 
@@ -122,9 +122,9 @@ alias conmon="xrandr --output eDP-1 --auto --output HDMI-2 --auto --above eDP-1 
 alias disconmon="xrandr --output HDMI-2 --off; i3-msg -q restart"
 alias dupmon="xrandr --output HDMI-2 --same-as eDP-1 --auto"
 alias getsecret="jq '.data.value' -r | base64 --decode | cut -c 1-"
-alias mountdrive="sudo cryptsetup open /dev/sda drive; sudo mount /dev/mapper/drive /home/florian/media"
-alias umountdrive="sudo umount /home/florian/media; sudo cryptsetup close drive"
-alias backup="sudo rsync -aAXvP --delete --exclude=/dev/* --exclude=/proc/* --exclude=/sys/* --exclude=/tmp/* --exclude=/run/* --exclude=/mnt/* --exclude=/media/* --exclude=/home/florian/Downloads/* --exclude=/home/florian/git/* --exclude=/home/florian/go/* --exclude=/home/florian/tmp/* --exclude=/home/florian/media/* --exclude=/home/florian/.cache/* --exclude=/lost+found / /home/florian/media"
+alias mountdrive="sudo cryptsetup open /dev/sda drive; sudo mount /dev/mapper/drive $HOME/media"
+alias umountdrive="sudo umount $HOME/media; sudo cryptsetup close drive"
+alias backup="sudo rsync -aAXvP --delete --exclude=/dev/* --exclude=/proc/* --exclude=/sys/* --exclude=/tmp/* --exclude=/run/* --exclude=/mnt/* --exclude=/media/* --exclude=$HOME/Downloads/* --exclude=$HOME/git/* --exclude=$HOME/go/* --exclude=$HOME/tmp/* --exclude=$HOME/media/* --exclude=$HOME/.cache/* --exclude=/lost+found / $HOME/media"
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
@@ -178,7 +178,7 @@ SPACESHIP_PROMPT_ORDER=(
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /home/florian/mc mc
+complete -o nospace -C $HOME/mc mc
 
 complete -o nospace -C /usr/local/bin/mc mc
 

@@ -191,8 +191,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 bindsym $mod+Delete			exec --no-startup-id i3lock -n -e -c 000000
 bindsym $mod+Shift+Delete	exec --no-startup-id i3lock -e -c 000000 && sleep 1 && systemctl suspend
 
-bindsym --release Print		exec scrot -s '%Y:%m:%d-%H%M%S.png' -e 'mv $f /home/florian/Pictures/Screenshots'
-bindsym --release shift+Print	exec scrot '%Y:%m:%d-%H%M%S.png' -e 'mv $f /home/florian/Pictures/Screenshots'
+bindsym --release Print		exec scrot -s '%Y:%m:%d-%H%M%S.png' -e 'mv $f $HOME/Pictures/Screenshots'
+bindsym --release shift+Print	exec scrot '%Y:%m:%d-%H%M%S.png' -e 'mv $f $HOME/Pictures/Screenshots'
 
 # Volume Key Control 
 bindsym XF86AudioMute			exec amixer -D pulse set Master 1+ toggle  
