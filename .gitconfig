@@ -1,0 +1,28 @@
+[user]
+	name = Florian Buetler
+	email = flbuetle@ethz.ch
+[core]
+    excludesfile = /home/florian/.gitignore
+[alias]
+    co = checkout --recurse-submodules
+    st = status
+    br = branch
+    di = diff
+    st = status
+    ci = commit
+    visual = !gitk
+
+    # show difference between the HEAD and the index
+    staged = diff --cached
+
+    # show difference between working tree and the index
+    unstaged = diff
+
+    # show staged and unstaged changes (what would be committed with "git commit -a")
+    both = diff HEAD
+[url "ssh://git@gitlab.ethz.ch/"]
+	insteadOf = https://gitlab.ethz.ch/
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main

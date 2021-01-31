@@ -1,0 +1,78 @@
+{
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+  "editor.suggestSelection": "first",
+  "editor.largeFileOptimizations": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "window.zoomLevel": 0,
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.panel.defaultLocation": "bottom",
+  "diffEditor.ignoreTrimWhitespace": true,
+  "files.autoSave": "onFocusChange",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/bin/nvim",
+  "vim.textwidth": 80,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "go.useLanguageServer": true,
+  "go.formatTool": "goimports",
+  "go.autocompleteUnimportedPackages": true,
+  "go.useCodeSnippetsOnFunctionSuggest": false,
+  "[go]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "[html]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "[typescript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "python.terminal.activateEnvironment": false,
+  "python.languageServer": "Pylance",
+  "python.showStartPage": false,
+  "python.formatting.provider": "black",
+  "C_Cpp.updateChannel": "Insiders",
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "yaml.format.bracketSpacing": false,
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[php]": {
+    "editor.defaultFormatter": "kokororin.vscode-phpfmt"
+  },
+  "[dockerfile]": {
+    "editor.quickSuggestions": {
+      "strings": true
+    }
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "latex-workshop.view.pdf.viewer": "browser",
+  "[latex]": {
+    "editor.formatOnPaste": false,
+    "editor.suggestSelection": "recentlyUsedByPrefix",
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wrappingIndent": "same",
+    "editor.wordWrapColumn": 80
+  }
+}

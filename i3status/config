@@ -1,0 +1,132 @@
+# github.com/rafi i3status config
+
+# i3status configuration file
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+	output_format = i3bar
+	colors = true
+	color_good = "#BBBBBB"
+	color_bad = "#CC1616"
+	color_degraded = "#55858E"
+	interval = 5
+}
+
+order += "battery 0"
+order += "volume master"
+order += "load"
+order += "cpu_usage"
+#order += "cpu_temperature 0"
+#order += "cpu_temperature 1"
+#order += "cpu_temperature 2"
+#order += "cpu_temperature 3"
+#order += "disk /"
+order += "disk /home"
+#order += "disk /media/media"
+order += "ethernet eth0"
+#order += "ipv6"
+#order += "run_watch DHCP"
+#order += "run_watch VPN"
+order += "wireless _first_"
+order += "tztime local"
+
+
+volume master {
+#	format = " ♪: %volume  " 
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+	# termsyn font
+	format = "  %volume "
+	format_muted = "  muted "
+}
+
+load {
+#	format = " Δ: %1min "
+	# termsyn font
+	format = " CPU %1min"
+}
+
+cpu_usage {
+	format = "%usage "
+}
+
+cpu_temperature 0 {
+	format = " ± %degrees°C"
+	path = "/sys/devices/platform/coretemp.0/temp2_input"
+	max_threshold = 95
+}
+
+cpu_temperature 1 {
+	format = "%degrees°"
+	path = "/sys/devices/platform/coretemp.0/temp3_input"
+	max_threshold = 95
+}
+
+cpu_temperature 2 {
+	format = "%degrees°"
+	path = "/sys/devices/platform/coretemp.0/temp4_input"
+	max_threshold = 95
+}
+
+cpu_temperature 3 {
+	format = "%degrees° "
+	path = "/sys/devices/platform/coretemp.0/temp5_input"
+	max_threshold = 95
+}
+
+disk "/" {
+        format = " %avail/%total"
+}
+
+disk "/home" {
+    format = " %avail/%total"
+}
+
+disk "/media/media" {
+	format = " ¨ %avail:m "
+}
+
+
+wireless _first_ {
+        format_up = " (%quality at %essid) %ip"
+        format_down = " down"
+}
+
+ethernet eth0 {
+	# if you use %speed, i3status requires root privileges
+        format_up = " %ip"
+        format_down = ""
+}
+
+run_watch DHCP {
+	pidfile = "/var/run/dhclient*.pid"
+}
+
+run_watch VPN {
+	pidfile = "/var/run/vpnc/pid"
+}
+
+tztime local {
+#	format = " %h-%d %H:%M ☰ "
+	# termsyn font
+	format = "  %d-%h %H:%M "
+}
+
+battery 0 {
+	format = " %status  %percentage %remaining "
+        format_down = "  No battery "
+	status_chr = ""
+	status_bat = ""
+	hide_seconds = "true"
+	integer_battery_capacity = "true"
+	last_full_capacity = "true"
+	low_threshold = "20"
+	threshold_type = "time"
+	path = "/sys/class/power_supply/BAT%d/uevent"
+}
