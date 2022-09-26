@@ -5,10 +5,8 @@
   "editor.largeFileOptimizations": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "window.zoomLevel": 0,
   "workbench.startupEditor": "newUntitledFile",
   "workbench.panel.defaultLocation": "bottom",
-  "diffEditor.ignoreTrimWhitespace": true,
   "files.autoSave": "onFocusChange",
   "files.exclude": {
     "**/.classpath": true,
@@ -42,7 +40,6 @@
   "python.languageServer": "Pylance",
   "python.showStartPage": false,
   "python.formatting.provider": "black",
-  "C_Cpp.updateChannel": "Insiders",
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -60,9 +57,11 @@
     "editor.defaultFormatter": "kokororin.vscode-phpfmt"
   },
   "[dockerfile]": {
+    "breadcrumbs.showBooleans": true,
     "editor.quickSuggestions": {
       "strings": true
-    }
+    },
+    "editor.formatOnSave": false
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -74,5 +73,27 @@
     "editor.wordWrap": "wordWrapColumn",
     "editor.wrappingIndent": "same",
     "editor.wordWrapColumn": 80
-  }
+  },
+  "diffEditor.maxComputationTime": 0,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "vs-kubernetes": {
+    "vscode-kubernetes.minikube-path.linux": "/home/florian/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+  },
+  "redhat.telemetry.enabled": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "cmake.configureOnOpen": false,
+  "gitlens.advanced.messages": {
+    "suppressLineUncommittedWarning": true
+  },
+  "window.zoomLevel": 1
 }

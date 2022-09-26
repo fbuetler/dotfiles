@@ -1,8 +1,9 @@
 [user]
 	name = Florian Buetler
 	email = flbuetle@ethz.ch
+	signingkey = E3C1B0D5A5ACAD4B
 [core]
-    excludesfile = $HOME/.gitignore
+    excludesfile = /home/florian/.gitignore
 [alias]
     co = checkout --recurse-submodules
     st = status

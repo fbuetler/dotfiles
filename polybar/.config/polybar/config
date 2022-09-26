@@ -58,7 +58,7 @@ font-3 = FontAwesome:size=10
  
 modules-left = i3
 modules-center = 
-modules-right = spotify battery wlan eth backlight pulseaudio cpu memory filesystem date
+modules-right = spotify battery wlan wifi-data eth backlight pulseaudio cpu memory filesystem date
  
 tray-position = right
 tray-padding = 2
@@ -107,7 +107,7 @@ font-3 = FontAwesome:size=10
 
 modules-left = i3
 modules-center =
-modules-right = spotify battery wlan eth backlight pulseaudio cpu memory filesystem date
+modules-right = spotify battery wlan data eth backlight pulseaudio cpu memory filesystem date
 
 tray-position = right
 tray-padding = 2
@@ -150,7 +150,8 @@ label-indicator-underline = ${colors.secondary}
 type = internal/fs
 interval = 25
 
-mount-0 = /home
+mount-0 = /
+mount-1 = /home
 
 format-mounted-underline = #c2c5cc
 
@@ -499,6 +500,15 @@ format-prefix = " "
 format = <label>
 exec = python $HOME/.config/polybar/spotify_status.py -t 15 -f '{artist}: {song}'
 format-underline = #1db954
+
+[module/wifi-data]
+type = custom/script
+interval = 1
+format-prefix = " "
+format = <label>
+exec = printf "Sent: %s Received: %s" "$(ifconfig wlp4s0 | awk '/TX packets/ { print $6$7 }')" "$(ifconfig wlp4s0 | awk '/RX packets/ { print $6$7 }')"
+format-underline = #7ec6e0
+;#1db954
 
 [settings]
 screenchange-reload = true

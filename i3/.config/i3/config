@@ -19,13 +19,6 @@ font pango:monospace 10
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
 # ceeriously styled i3
 set $bg     #2f343f
 set $fg     #404552
@@ -64,7 +57,6 @@ bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+Shift+d exec j4-dmenu-desktop
 
 # change focus
@@ -174,35 +166,27 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-#    i3bar_command i3bar -t
-#    mode dock
-#    position bottom
-#   status_command i3status
-#   font pango:Hack, FontAwesome 10
-#}
-
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# key-bindings 
-bindsym $mod+Delete			exec --no-startup-id i3lock -n -e -c 000000
+# lock
+bindsym $mod+Delete		exec --no-startup-id i3lock -n -e -c 000000
 bindsym $mod+Shift+Delete	exec --no-startup-id i3lock -e -c 000000 && sleep 1 && systemctl suspend
+# exec --no-startup-id xautolock -time 5 -locker 'i3lock -e -c 000000' &
 
-bindsym --release Print		exec scrot -s '%Y:%m:%d-%H%M%S.png' -e 'mv $f $HOME/Pictures/Screenshots'
-bindsym --release shift+Print	exec scrot '%Y:%m:%d-%H%M%S.png' -e 'mv $f $HOME/Pictures/Screenshots'
+# screenshots
+bindsym --release Print		exec scrot -s '%Y:%m:%d-%H%M%S.png' -e 'mv $f /home/florian/Pictures/Screenshots'
+bindsym --release shift+Print	exec scrot '%Y:%m:%d-%H%M%S.png' -e 'mv $f /home/florian/Pictures/Screenshots'
 
 # Volume Key Control 
-bindsym XF86AudioMute			exec amixer -D pulse set Master 1+ toggle  
+bindsym XF86AudioMute		exec amixer -D pulse set Master 1+ toggle  
 bindsym XF86AudioLowerVolume	exec amixer -D pulse sset Master 5%-
 bindsym XF86AudioRaiseVolume	exec amixer -D pulse sset Master 5%+
-bindsym XF86AudioMicMute		exec amixer -D pulse sset Capture 1+ toggle 
+bindsym XF86AudioMicMute	exec amixer -D pulse sset Capture 1+ toggle 
 
 # Screen Brightness
-bindsym XF86MonBrightnessUp	    exec brightnessctl s +10% # increase screen brightness
-bindsym XF86MonBrightnessDown	exec brightnessctl s 10%- # decrease screen brightness
+bindsym XF86MonBrightnessUp	exec brightnessctl s +10%
+bindsym XF86MonBrightnessDown	exec brightnessctl s 10%-
 
 # connect/disconnect monitor
 bindsym XF86Display exec --no-startup-id $HOME/scripts/update_monitor_state.sh
@@ -211,13 +195,18 @@ bindsym XF86Display exec --no-startup-id $HOME/scripts/update_monitor_state.sh
 bindsym $mod+Shift+m move container to output up
 bindsym $mod+Shift+n move container to output down
 
+# move workspace between monitors
+bindsym $mod+m move workspace to output up
+bindsym $mod+n move workspace to output down
+
 # bluetooth
-#bindsym	XF86Bluetooth	   	exec service bluetooth stop
-#bindysm	XF86Bluetooth	    exec service bluetooth start
+#bindsym XF86Bluetooth	   exec service bluetooth stop
+#bindysm XF86Bluetooth	   exec service bluetooth start
 
-#exec --no-startup-id xautolock -time 5 -locker 'i3lock -n -e -c 000000' &
-
+# background
 exec_always --no-startup-id ~/.fehbg
+
+# auto start
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id slack
+

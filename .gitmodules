@@ -1,0 +1,12 @@
+[submodule "base16/base16-shell"]
+path = .include/base16/base16-shell
+url = https://github.com/chriskempson/base16-shell.git
+ignore = dirty
+[submodule ".include/antigen"]
+path = .include/antigen
+url = https://github.com/zsh-users/antigen
+ignore = dirty
+[submodule "vim/.vim/pack/plugins/start/bat.vim"]
+path = vim/.vim/pack/plugins/start/bat.vim
+url = https://github.com/jamespwilliams/bat.vim
+ignore = dirty
