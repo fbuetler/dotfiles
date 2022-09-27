@@ -381,12 +381,12 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Custom settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " show linenumbers
 set number
 
 " set format on 'gq'
 set textwidth=120
-
-" use bat syntax highlighting via plugin
-set termguicolors
-colorscheme bat
