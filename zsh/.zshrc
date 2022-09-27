@@ -1,22 +1,45 @@
+################### Antigen ############################
+
+source /usr/share/zsh/share/antigen.zsh
+
+antigen use oh-my-zsh
+
+# Load the plugins.
+antigen bundles <<EOBUNDLES
+  extract 
+  command-not-found
+  docker
+  kubectl 
+  helm
+  fzf
+
+  spaceship-prompt/spaceship-vi-mode@main
+
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-completions
+  zsh-users/zsh-history-substring-search
+  zsh-users/zsh-syntax-highlighting
+EOBUNDLES
+
+# Load the theme.
+antigen theme spaceship-prompt/spaceship-prompt
+
+# Tell Antigen that you're done.
+antigen apply
+
+################### Zsh ############################
+
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin
+export PATH=$PATH:/usr/local/bin:/opt:$HOME/scripts:$HOME/.local/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
-
-#source "/home/florian/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME="spaceship"
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# ZSH_THEME="spaceship"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -64,11 +87,24 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract web-search git-extras docker zsh-syntax-highlighting zsh-autosuggestions history-substring-search zsh-completions virtualenv)
+# plugins=(
+#   docker
+#   kubectl
+#   helm
+#   fzf
+#   extract
+#   command-not-found
+#   zsh-fzf-history-search
+#   zsh-vi-mode
+#   zsh-autosuggestions
+#   zsh-completions
+#   zsh-history-substring-search
+#   zsh-syntax-highlighting
+# )
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
-# User configuration
+################### Environment variables ############################
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -83,29 +119,26 @@ export LC_ALL="en_GB.UTF-8"
 #   export EDITOR='mvim'
 # fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-
-#add script dir to path to not have to type ./
-export PATH="$PATH:$HOME/scripts"
-export PATH="$PATH:/opt"
-
-#default set to 'xterm-termite' but servers cannot handle this therefore:
+# default set to 'xterm-termite' but servers cannot handle this therefore:
 # export TERM="xterm"
 export EDITOR="vim"
+
+# golang
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+# haskell
+# https://wiki.archlinux.org/title/Haskell#ghcup
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+
+# flyctl
+export FLYCTL_INSTALL="/home/florian/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+################### Aliases ############################
 
 alias sem='cd /home/florian/Documents/01_Ausbildung/ETH/msc/Sem3'
 alias vis='cd /home/florian/go/src/gitlab.ethz.ch/vis/cat'
@@ -123,70 +156,48 @@ alias mountdrive="sudo cryptsetup open /dev/sda drive; sudo mount /dev/mapper/dr
 alias umountdrive="sudo umount /home/florian/media; sudo cryptsetup close drive"
 alias backup="sudo rsync -aAXvP --delete --exclude=/dev --exclude=/lost+found --exclude=/media --exclude=/proc --exclude=/sys --exclude=/tmp --exclude=/run --exclude=/mnt --exclude=/var --exclude=/home/florian/Downloads --exclude=/home/florian/git --exclude=/home/florian/go --exclude=/home/florian/tmp --exclude=/home/florian/media --exclude=/home/florian/.cache / /home/florian/media"
 
-# golang
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-
-# haskell
-# https://wiki.archlinux.org/title/Haskell#ghcup
-export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
-
-#eval $(keychain --eval id_rsa) &>/dev/null
-#eval $(ssh-agent -s) &>/dev/null
-#ssh-add ~/.ssh/other_id_rsa &>/dev/null
-
 alias copy='xclip -selection c'
 alias paste='xclip -selection c -o'
 
-# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vi-mode
-# http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
-
-bindkey -v
-
-bindkey '^p' up-history
-bindkey '^n' down-history
-bindkey '^r' history-incremental-search-backward
-bindkey '^f' history-incremental-search-forward
-bindkey '^b' backward-kill-word
-bindkey '^w' vi-forward-blank-word
-bindkey '^e' end-of-line
-
-function zle-line-init zle-keymap-select {
-    zle reset-prompt
-}
-
-zle -N zle-line-init
-zle -N zle-keymap-select
-export KEYTIMEOUT=1
-
-################### Spaceship stuff ############################
+################### Spaceship ############################
+# https://spaceship-prompt.sh/config/prompt/#prompt-order
 
 SPACESHIP_PROMPT_ORDER=(
   venv
-  time          # Time stampts section
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  exec_time     # Execution time
-  line_sep      # Line break
-  vi_mode       # Vi-mode indicator
-  jobs          # Backgound jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
+  dir       # Current directory section
+  git       # Git section (git_branch + git_status)
+  exec_time # Execution time
+  line_sep  # Line break
+  vi_mode   # Vi-mode indicator
+  jobs      # Backgound jobs indicator
+  exit_code # Exit code section
+  char      # Prompt character
 )
 
+# https://github.com/spaceship-prompt/spaceship-vi-mode
+eval spaceship_vi_mode_enable
+
+################### Zsh Line Editor ############################
+# http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
+
+export KEYTIMEOUT=1
+bindkey -v
+bindkey -M viins '^B' backward-kill-word
+bindkey -M viins '^W' vi-forward-blank-word
+bindkey -M viins '^P' up-history
+bindkey -M viins '^N' down-history
+bindkey -M viins '^E' end-of-line
+bindkey -M viins '^[[A' history-substring-search-up
+bindkey -M viins '^[[B' history-substring-search-down
+
+# bindkey | rg '"\^\w"'
+# disable bindkey
+
+################### Autocompletion ############################
 
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 if [ /usr/local/bin/helm ]; then source <(helm completion zsh); fi
-if [ /usr/local/bin/minikube ]; then source <(minikube completion zsh); fi
-if [ /usr/share/fzf ]; then source /usr/share/fzf/key-bindings.zsh; source /usr/share/fzf/completion.zsh; fi
-
-autoload -U +X bashcompinit && bashcompinit
-
-GPG_TTY=$(tty)
-export GPG_TTY
-
-# flyctl
-export FLYCTL_INSTALL="/home/florian/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
+if [ /usr/share/fzf ]; then
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
+fi
