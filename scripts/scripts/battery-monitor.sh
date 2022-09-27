@@ -1,7 +1,9 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # there is a service called 'battery-monitor.service' for running  this script
-# is is enabled with systemctl --user enable batter-monitor.service
+# is is enabled with systemctl --user enable battery-monitor.service
 
 X_USER="florian"
 X_USERID="1000"
@@ -12,24 +14,32 @@ battery_remaining=$(acpi -b | sed -n '/Discharging/{s/^.*\ \([[:digit:]]\{2\}\)\
 
 backlight_cmd=$(which brightnessctl)
 notify_cmd='sudo -u '"$X_USER"' DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/'"$X_USERID"'/bus notify-send'
+calculator_cmd=$(which bc)
 
 _battery_threshold_level="20"
 _battery_critical_level="10"
 _battery_suspend_level="5"
 
 if [ ! -f "/tmp/.battery" ]; then
-    echo "${battery_level}" > /tmp/.battery
-    echo "${battery_state}" >> /tmp/.battery
+    echo "${battery_level}" >/tmp/.battery
+    echo "${battery_state}" >>/tmp/.battery
     exit
 fi
 
 previous_battery_level=$(cat /tmp/.battery | head -n 1)
 previous_battery_state=$(cat /tmp/.battery | tail -n 1)
-echo "${battery_level}" > /tmp/.battery
-echo "${battery_state}" >> /tmp/.battery
+echo "${battery_level}" >/tmp/.battery
+echo "${battery_state}" >>/tmp/.battery
 
 checkBatteryLevel() {
     if [ ${battery_state} != "Discharging" ] || [ "${battery_level}" == "${previous_battery_level}" ]; then
+        # target_brightness_perc=75
+        # current_brightness=$(${backlight_cmd} get)
+        # max_brightness=$(${backlight_cmd} max)
+        # current_brightness_perc=$("${calculator_cmd}" <<< "scale=2 ; ${max_brightness} ${current_brightness} * 100")
+        # echo $current_brightness_perc
+        # out=[[ $("${calculator_cmd}" <<< "scale=2 ; ${max_brightness} ${current_brightness} * 100") -ge "${target_brightness_perc}" ]]
+        # echo $out
         exit
     fi
 
@@ -37,10 +47,10 @@ checkBatteryLevel() {
         i3lock -e -c 000000 && sleep 1 && systemctl suspend
     elif [ ${battery_level} -le ${_battery_critical_level} ]; then
         $notify_cmd "Low Battery" "Your computer will suspend soon unless plugged into a power outlet." -u critical
-	    ${backlight_cmd} s 50%
+        ${backlight_cmd} set 50%
     elif [ ${battery_level} -le ${_battery_threshold_level} ]; then
         $notify_cmd "Low Battery" "${battery_level}% (${battery_remaining}) of battery remaining." -u normal
-	    ${backlight_cmd} s 75%
+        ${backlight_cmd} set 75%
     fi
 }
 
@@ -48,7 +58,7 @@ checkBatteryStateChange() {
     if [ "${battery_state}" != "Discharging" ] && [ "${previous_battery_state}" == "Discharging" ]; then
         $notify_cmd "Charging" "Battery is now plugged in." -u low
         echo "should send"
-	    ${backlight_cmd} s 100%
+        ${backlight_cmd} set 100%
     fi
 
     if [ "${battery_state}" == "Discharging" ] && [ "${previous_battery_state}" != "Discharging" ]; then
@@ -58,4 +68,3 @@ checkBatteryStateChange() {
 
 checkBatteryStateChange
 checkBatteryLevel
-
