@@ -25,6 +25,8 @@ env:
 # available, otherwise `xterm-256color` is used.
 #TERM: alacritty
 
+######################### Window Configuration #########################
+
 #window:
 # Window dimensions (changes require restart)
 #
@@ -60,10 +62,6 @@ env:
 # Values for `decorations`:
 #     - full: Borders and title bar
 #     - none: Neither borders nor title bar
-#
-# Values for `decorations` (macOS only):
-#     - transparent: Title bar, transparent background and title bar buttons
-#     - buttonless: Title bar, transparent background and no title bar buttons
 #decorations: full
 
 # Background opacity
@@ -79,8 +77,6 @@ env:
 #   - Maximized
 #   - Fullscreen
 #
-# Values for `startup_mode` (macOS only):
-#   - SimpleFullscreen
 #startup_mode: Windowed
 
 # Window title
@@ -103,15 +99,16 @@ env:
 # the default theme variant.
 #decorations_theme_variant: None
 
-#scrolling:
-# Maximum number of lines in the scrollback buffer.
-# Specifying '0' will disable scrolling.
-#history: 10000
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 15000
 
 # Scrolling distance multiplier.
 #multiplier: 3
 
-# Font configuration
+######################### Font Configuration #########################
+
 #font:
 # Normal (roman) font face
 #normal:
@@ -163,11 +160,23 @@ env:
 #size: 11.0
 
 font:
+  size: 8.0
+
   normal:
-    family: Fira Code
+    family: monospace
     style: Regular
 
-  size: 11.0
+  bold:
+    family: monospace
+    style: Bold
+
+  italic:
+    family: monospace
+    style: Italic
+
+  bold_italic:
+    family: monospace
+    style: Bold Italic
 
 # Offset is the extra space around each character. `offset.y` can be thought
 # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -193,12 +202,32 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
+######################### Color Configuration #########################
+
 # Colors (Tomorrow Night)
 #colors:
 # Default colors
 #primary:
 #  background: '#1d1f21'
 #  foreground: '#c5c8c6'
+
+# VSCode's integrated terminal default colors
+colors:
+  primary:
+    background: "#1e1e1e"
+    foreground: "#cccccc"
+  selection:
+    text: CellForeground
+    background: "#565656"
+  normal:
+    black: "#000000"
+    red: "#cd3131"
+    green: "#0dbc79"
+    yellow: "#e5e510"
+    blue: "#2472c8"
+    magenta: "#bc3fbc"
+    cyan: "#11a8cd"
+    white: "#e5e5e5"
 
 # Bright and dim foreground colors
 #
@@ -342,6 +371,8 @@ font:
 # regardless of their background color.
 #transparent_background_colors: false
 
+######################### Bell Configuration #########################
+
 # Bell
 #
 # The bell is rung every time the BEL control character is received.
@@ -382,6 +413,8 @@ font:
 #     args: ["Hello, World!"]
 #
 #command: None
+
+######################### Cursor Configuration #########################
 
 #selection:
 # This string contains all characters that are used as separators for
@@ -438,8 +471,8 @@ font:
 # Live config reload (changes require restart)
 #live_config_reload: true
 
-# Shell
-#
+######################### Shell Configuration #########################
+
 # You can set `shell.program` to the path of your favorite shell, e.g.
 # `/bin/fish`. Entries in `shell.args` are passed unmodified as arguments to the
 # shell.
@@ -447,8 +480,8 @@ font:
 # Default:
 #   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
+shell:
+  program: /bin/zsh
 #  args:
 #    - --login
 
@@ -476,8 +509,8 @@ font:
 # If this is `true`, the cursor is temporarily hidden when typing.
 #hide_when_typing: false
 
-# Hints
-#
+######################### Hints Configuration #########################
+
 # Terminal hints can be used to find text or hyperlink in the visible part of
 # the terminal and pipe it to other applications.
 #hints:
@@ -526,8 +559,8 @@ font:
 #     key: U
 #     mods: Control|Shift
 
-# Mouse bindings
-#
+######################### Mouse Bindings #########################
+
 # Mouse bindings are specified as a list of objects, much like the key
 # bindings further below.
 #
@@ -559,8 +592,8 @@ font:
 #  - { mouse: Right,  mods: Control, action: ExpandSelection }
 #  - { mouse: Middle, mode: ~Vi,     action: PasteSelection  }
 
-# Key bindings
-#
+######################### Key Bindings #########################
+
 # Key bindings are specified as a list of objects. For example, this is the
 # default paste binding:
 #
@@ -767,7 +800,11 @@ font:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-#key_bindings:
+
+key_bindings:
+  - {key: Right, mods: Alt, chars: "\x1BF"}
+  - {key: Left, mods: Alt, chars: "\x1BB"}
+  - {key: Return, mods: Control|Shift, action: SpawnNewInstance}
 #- { key: Paste,                                       action: Paste          }
 #- { key: Copy,                                        action: Copy           }
 #- { key: L,         mods: Control,                    action: ClearLogNotice }
@@ -776,9 +813,7 @@ font:
 #- { key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
 #- { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop    }
 #- { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
-key_bindings:
-  - {key: Right, mods: Alt, chars: "\x1BF"}
-  - {key: Left, mods: Alt, chars: "\x1BB"}
+
 # Vi Mode
 #- { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
 #- { key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          }
@@ -856,30 +891,7 @@ key_bindings:
 #- { key: Minus,          mods: Control,                         action: DecreaseFontSize }
 #- { key: NumpadSubtract, mods: Control,                         action: DecreaseFontSize }
 
-# (Windows only)
-#- { key: Return,   mods: Alt,           action: ToggleFullscreen }
-
-# (macOS only)
-#- { key: K,              mods: Command, mode: ~Vi|~Search, chars: "\x0c"                 }
-#- { key: K,              mods: Command, mode: ~Vi|~Search, action: ClearHistory          }
-#- { key: Key0,           mods: Command,                    action: ResetFontSize         }
-#- { key: Equals,         mods: Command,                    action: IncreaseFontSize      }
-#- { key: Plus,           mods: Command,                    action: IncreaseFontSize      }
-#- { key: NumpadAdd,      mods: Command,                    action: IncreaseFontSize      }
-#- { key: Minus,          mods: Command,                    action: DecreaseFontSize      }
-#- { key: NumpadSubtract, mods: Command,                    action: DecreaseFontSize      }
-#- { key: V,              mods: Command,                    action: Paste                 }
-#- { key: C,              mods: Command,                    action: Copy                  }
-#- { key: C,              mods: Command, mode: Vi|~Search,  action: ClearSelection        }
-#- { key: H,              mods: Command,                    action: Hide                  }
-#- { key: H,              mods: Command|Alt,                action: HideOtherApplications }
-#- { key: M,              mods: Command,                    action: Minimize              }
-#- { key: Q,              mods: Command,                    action: Quit                  }
-#- { key: W,              mods: Command,                    action: Quit                  }
-#- { key: N,              mods: Command,                    action: SpawnNewInstance      }
-#- { key: F,              mods: Command|Control,            action: ToggleFullscreen      }
-#- { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
-#- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
+######################### Debug Configuration #########################
 
 #debug:
 # Display the time it takes to redraw each frame.
