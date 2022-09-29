@@ -159,6 +159,10 @@ alias backup="sudo rsync -aAXvP --delete --exclude=/dev --exclude=/lost+found --
 alias copy='xclip -selection c'
 alias paste='xclip -selection c -o'
 
+alias ls='exa'
+
+alias bell='echo -ne "\007"'
+
 ################### Spaceship ############################
 # https://spaceship-prompt.sh/config/prompt/#prompt-order
 
