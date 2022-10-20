@@ -805,6 +805,9 @@ key_bindings:
   - {key: Right, mods: Alt, chars: "\x1BF"}
   - {key: Left, mods: Alt, chars: "\x1BB"}
   - {key: Return, mods: Control|Shift, action: SpawnNewInstance}
+  - {key: Plus, mods: Control|Shift, action: IncreaseFontSize}
+  - {key: V, mods: Control|Shift, action: PasteSelection}
+  - {key: C, mods: Control|Shift, action: CopySelection}
 #- { key: Paste,                                       action: Paste          }
 #- { key: Copy,                                        action: Copy           }
 #- { key: L,         mods: Control,                    action: ClearLogNotice }
