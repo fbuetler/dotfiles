@@ -2,6 +2,7 @@
 
 ################### Zsh Line Editor ############################
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
+# https://wiki.archlinux.org/title/zsh#Key_bindings
 
 export KEYTIMEOUT=1
 bindkey -v
@@ -28,6 +29,7 @@ antigen bundles <<EOBUNDLES
   command-not-found
   fzf
 
+  supercrabtree/k
   spaceship-prompt/spaceship-vi-mode@main
 
   zsh-users/zsh-autosuggestions
@@ -45,7 +47,7 @@ antigen apply
 ################### Zsh ############################
 
 # If you come from bash you might have to change your $PATH.
-export PATH="$PATH:/usr/local/bin:/opt:$HOME/scripts"
+export PATH="$PATH:/usr/local/bin:/opt:$HOME/.local/bin:$HOME/scripts"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -262,5 +264,7 @@ eval spaceship_vi_mode_enable
 #  source /usr/share/fzf/key-bindings.zsh
 #  source /usr/share/fzf/completion.zsh
 #fi
+
+eval $(thefuck --alias f)
 
 ################### Managed by others ############################
