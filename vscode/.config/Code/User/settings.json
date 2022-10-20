@@ -95,5 +95,6 @@
   "gitlens.advanced.messages": {
     "suppressLineUncommittedWarning": true
   },
+  "terminal.integrated.persistentSessionReviveProcess": "never",
   "window.zoomLevel": 1
 }
