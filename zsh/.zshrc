@@ -1,3 +1,21 @@
+#zmodload zsh/zprof # for profiling: linked to last line
+
+################### Zsh Line Editor ############################
+# http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
+
+export KEYTIMEOUT=1
+bindkey -v
+bindkey -M viins '^B' backward-kill-word
+bindkey -M viins '^W' vi-forward-blank-word
+bindkey -M viins '^P' up-history
+bindkey -M viins '^N' down-history
+bindkey -M viins '^E' end-of-line
+bindkey -M viins '^[[A' history-substring-search-up
+bindkey -M viins '^[[B' history-substring-search-down
+
+# bindkey | rg '"\^\w"'
+# disable bindkey
+
 ################### Antigen ############################
 
 source /usr/share/zsh/share/antigen.zsh
@@ -8,9 +26,6 @@ antigen use oh-my-zsh
 antigen bundles <<EOBUNDLES
   extract 
   command-not-found
-  docker
-  kubectl 
-  helm
   fzf
 
   spaceship-prompt/spaceship-vi-mode@main
@@ -220,43 +235,32 @@ SPACESHIP_PROMPT_ORDER=(
 # https://github.com/spaceship-prompt/spaceship-vi-mode
 eval spaceship_vi_mode_enable
 
-################### Zsh Line Editor ############################
-# http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
-
-export KEYTIMEOUT=1
-bindkey -v
-bindkey -M viins '^B' backward-kill-word
-bindkey -M viins '^W' vi-forward-blank-word
-bindkey -M viins '^P' up-history
-bindkey -M viins '^N' down-history
-bindkey -M viins '^E' end-of-line
-bindkey -M viins '^[[A' history-substring-search-up
-bindkey -M viins '^[[B' history-substring-search-down
-
-# bindkey | rg '"\^\w"'
-# disable bindkey
-
 ################### Autocompletion ############################
 
-function kubectl() {
-  if ! type __start_kubectl >/dev/null 2>&1; then
-    source <(command kubectl completion zsh)
-  fi
+# eagerily
+# function kubectl() {
+#   if ! type __start_kubectl >/dev/null 2>&1; then
+#     source <(command kubectl completion zsh)
+#   fi
 
-  command kubectl "$@"
-}
+#   command kubectl "$@"
+# }
 
-function helm() {
-  if ! type __start_helm >/dev/null 2>&1; then
-    source <(command helm completion zsh)
-  fi
+# function helm() {
+#   if ! type __start_helm >/dev/null 2>&1; then
+#     source <(command helm completion zsh)
+#   fi
 
-  command helm "$@"
-}
+#   command helm "$@"
+# }
 
-if [ /usr/share/fzf ]; then
-  source /usr/share/fzf/key-bindings.zsh
-  source /usr/share/fzf/completion.zsh
-fi
+# lazily
+#if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+#if [ /usr/local/bin/helm ]; then source <(helm completion zsh); fi
+
+#if [ /usr/share/fzf ]; then
+#  source /usr/share/fzf/key-bindings.zsh
+#  source /usr/share/fzf/completion.zsh
+#fi
 
 ################### Managed by others ############################
