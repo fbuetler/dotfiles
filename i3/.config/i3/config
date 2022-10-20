@@ -170,8 +170,9 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # lock
-bindsym $mod+Delete		exec --no-startup-id i3lock -n -e -c 000000
-bindsym $mod+Shift+Delete	exec --no-startup-id i3lock -e -c 000000 && sleep 1 && systemctl suspend
+exec_always --no-startup-id /usr/bin/light-locker
+bindsym $mod+Delete		exec --no-startup-id light-locker-command --lock
+bindsym $mod+Shift+Delete	exec --no-startup-id light-locker-command --lock && sleep 1 && systemctl suspend
 # exec --no-startup-id xautolock -time 5 -locker 'i3lock -e -c 000000' &
 
 # screenshots
@@ -204,7 +205,7 @@ bindsym $mod+n move workspace to output down
 #bindysm XF86Bluetooth	   exec service bluetooth start
 
 # background
-exec_always --no-startup-id ~/.fehbg
+exec_always --no-startup-id feh --no-fehbg --bg-fill '/usr/share/backgrounds/gnome/brush-strokes-d.jpg'
 
 # auto start
 exec --no-startup-id nm-applet
