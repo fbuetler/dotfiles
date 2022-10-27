@@ -175,7 +175,9 @@ bindsym --release Print		exec scrot -s '%Y:%m:%d-%H%M%S.png' -e 'mv $f /home/flo
 bindsym --release shift+Print	exec scrot '%Y:%m:%d-%H%M%S.png' -e 'mv $f /home/florian/Pictures/Screenshots'
 
 # https://github.com/Coffelius/rofi-code
-bindsym $mod+Shift+x            exec --no-startup-id rofi-code
+bindsym $mod+c                  exec --no-startup-id rofi-code
+# https://github.com/loiccoyle/rofi-nordvpn
+bindsym $mod+n                  exec --no-startup-id rofi-nordvpn
 
 # Volume Key Control 
 bindsym XF86AudioMute		exec amixer -D pulse set Master 1+ toggle  
