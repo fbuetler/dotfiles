@@ -58,7 +58,7 @@ font-3 = FontAwesome:size=10
  
 modules-left = i3
 modules-center = 
-modules-right = updates-arch-combined battery wlan wifi-data eth backlight pulseaudio cpu memory filesystem date
+modules-right = updates-arch-combined vpn wlan wifi-data eth pulseaudio battery backlight cpu memory filesystem date
  
 tray-position = right
 tray-padding = 2
@@ -107,7 +107,7 @@ font-3 = FontAwesome:size=10
 
 modules-left = i3
 modules-center =
-modules-right = updates-arch-combined battery wlan data eth backlight pulseaudio cpu memory filesystem date
+modules-right = updates-arch-combined vpn wlan wifi-data eth pulseaudio battery backlight cpu memory filesystem date
 
 tray-position = right
 tray-padding = 2
@@ -407,6 +407,16 @@ format = <label>
 exec = printf "TX: %s RX: %s" "$(ifconfig wlp4s0 | awk '/TX packets/ { print $6$7 }')" "$(ifconfig wlp4s0 | awk '/RX packets/ { print $6$7 }')"
 format-underline = #7ec6e0
 ;#1db954
+
+[module/vpn]
+type = custom/script
+exec = rofi-nordvpn -s
+interval = 10
+click-left = rofi-nordvpn &
+label = %output%
+format-prefix = ""
+format = <label>
+format-underline = #1db954
 
 [settings]
 screenchange-reload = true
