@@ -1,35 +1,40 @@
 // Place your key bindings in this file to override the defaults
 [
-    {
-        "key": "ctrl+shift+c",
-        "command": "editor.action.clipboardCopyAction",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+c",
-        "command": "-editor.action.clipboardCopyAction",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+shift+v",
-        "command": "editor.action.clipboardPasteAction",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+v",
-        "command": "editor.action.clipboardPasteAction",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+e",
-        "command": "-workbench.action.quickOpen"
-    },
-    {
-        "key": "ctrl+tab",
-        "command": "workbench.action.nextEditorInGroup"
-    },
-    {
-        "key": "ctrl+shift+tab",
-        "command": "workbench.action.previousEditorInGroup"
-    }
+  {
+    "key": "ctrl+shift+c",
+    "command": "editor.action.clipboardCopyAction",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "-editor.action.clipboardCopyAction",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+v",
+    "command": "editor.action.clipboardPasteAction",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+v",
+    "command": "editor.action.clipboardPasteAction",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "-workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpen",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.nextEditorInGroup"
+  },
+  {
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.previousEditorInGroup"
+  }
 ]

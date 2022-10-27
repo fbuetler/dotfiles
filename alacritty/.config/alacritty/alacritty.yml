@@ -422,7 +422,7 @@ colors:
 #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
 # When set to `true`, selected text will be copied to the primary clipboard.
-#save_to_clipboard: false
+save_to_clipboard: true
 
 #cursor:
 # Cursor style
@@ -806,8 +806,8 @@ key_bindings:
   - {key: Left, mods: Alt, chars: "\x1BB"}
   - {key: Return, mods: Control|Shift, action: SpawnNewInstance}
   - {key: Plus, mods: Control|Shift, action: IncreaseFontSize}
-  - {key: V, mods: Control|Shift, action: PasteSelection}
-  - {key: C, mods: Control|Shift, action: CopySelection}
+# - {key: V, mods: Control|Shift, action: PasteSelection}
+# - {key: C, mods: Control|Shift, action: CopySelection}
 #- { key: Paste,                                       action: Paste          }
 #- { key: Copy,                                        action: Copy           }
 #- { key: L,         mods: Control,                    action: ClearLogNotice }
