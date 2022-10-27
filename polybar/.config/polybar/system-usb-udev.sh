@@ -42,50 +42,50 @@ usb_update() {
     fi
 }
 
-path_pid="/home/user/.config/polybar/system-usb-udev.pid"
+path_pid="/tmp/polybar-system-usb-udev.pid"
 
 case "$1" in
-    --update)
-        usb_update
-        ;;
-    --mount)
-        devices=$(lsblk -Jplno NAME,TYPE,RM,MOUNTPOINT)
+--update)
+    usb_update
+    ;;
+--mount)
+    devices=$(lsblk -Jplno NAME,TYPE,RM,MOUNTPOINT)
 
-        for mount in $(echo "$devices" | jq -r '.blockdevices[] | select(.type == "part") | select(.rm == true) | select(.mountpoint == null) | .name'); do
-            # udisksctl mount --no-user-interaction -b "$mount"
+    for mount in $(echo "$devices" | jq -r '.blockdevices[] | select(.type == "part") | select(.rm == true) | select(.mountpoint == null) | .name'); do
+        # udisksctl mount --no-user-interaction -b "$mount"
 
-            # mountpoint=$(udisksctl mount --no-user-interaction -b $mount)
-            # mountpoint=$(echo $mountpoint | cut -d " " -f 4 | tr -d ".")
-            # terminal -e "bash -lc 'filemanager $mountpoint'"
+        # mountpoint=$(udisksctl mount --no-user-interaction -b $mount)
+        # mountpoint=$(echo $mountpoint | cut -d " " -f 4 | tr -d ".")
+        # terminal -e "bash -lc 'filemanager $mountpoint'"
 
-            mountpoint=$(udisksctl mount --no-user-interaction -b "$mount")
-            mountpoint=$(echo "$mountpoint" | cut -d " " -f 4 | tr -d ".")
-            termite -e "bash -lc 'mc $mountpoint'" &
-        done
+        mountpoint=$(udisksctl mount --no-user-interaction -b "$mount")
+        mountpoint=$(echo "$mountpoint" | cut -d " " -f 4 | tr -d ".")
+        termite -e "bash -lc 'mc $mountpoint'" &
+    done
 
-        usb_update
-        ;;
-    --unmount)
-        devices=$(lsblk -Jplno NAME,TYPE,RM,MOUNTPOINT)
+    usb_update
+    ;;
+--unmount)
+    devices=$(lsblk -Jplno NAME,TYPE,RM,MOUNTPOINT)
 
-        for unmount in $(echo "$devices" | jq -r '.blockdevices[] | select(.type == "part") | select(.rm == true) | select(.mountpoint != null) | .name'); do
-            udisksctl unmount --no-user-interaction -b "$unmount"
-            udisksctl power-off --no-user-interaction -b "$unmount"
-        done
+    for unmount in $(echo "$devices" | jq -r '.blockdevices[] | select(.type == "part") | select(.rm == true) | select(.mountpoint != null) | .name'); do
+        udisksctl unmount --no-user-interaction -b "$unmount"
+        udisksctl power-off --no-user-interaction -b "$unmount"
+    done
 
-        usb_update
-        ;;
-    *)
-        echo $$ > $path_pid
+    usb_update
+    ;;
+*)
+    echo $$ >$path_pid
 
-        trap exit INT
-        trap "echo" USR1
+    trap exit INT
+    trap "echo" USR1
 
-        while true; do
-            usb_print
+    while true; do
+        usb_print
 
-            sleep 60 &
-            wait
-        done
-        ;;
+        sleep 60 &
+        wait
+    done
+    ;;
 esac
