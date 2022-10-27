@@ -15,32 +15,14 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:monospace 10 
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# ceeriously styled i3
-set $bg     #2f343f
-set $fg     #404552
-set $hi     #fce94f
-set $ac     #2f5ed9
-set $tx     #ffffff
-set $ia     #9e9e9e
-set $be     #8faf9f
-set $yw     #f8f893
-set $gn     #81c181
-set $rd     #bf9b76
-set $id     #f9f8ff
-set $ce     #ceecee
-set $sl     #7f7f7f
-
-# set some nice colors      border  background  text    indicator
-client.focused              $ac     $ac         $tx     $id
-client.unfocused            $bg     $bg         $tx     $id
-client.focused_inactive     $bg     $bg         $tx     $id
-client.urgent               $ac     $ac         $tx     $id
-#border & indicator are ignored
-client.placeholder $bg $bg $bg $bg
+# https://i3wm.org/docs/userguide.html#client_colors
+# colorclass             border    bground   text      indicator child_border
+client.focused           #0860F2   #0860F2   #e5e5e5   #0860F2   #0860F2
+client.focused_inactive  #2f343f   #2f343f   #e5e5e5   #2f343f   #2f343f
+client.unfocused         #2f343f   #2f343f   #565656   #2f343f   #2f343f
+client.urgent            #0860F2   #ff5555   #e5e5e5   #ff5555   #ff5555
+client.placeholder       #2f343f   #2f343f   #e5e5e5   #2f343f   #2f343f
+client.background        #e5e5e5
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -128,6 +110,14 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# move focused window between monitors
+bindsym $mod+Shift+m move container to output up
+bindsym $mod+Shift+n move container to output down
+
+# move workspace between monitors
+bindsym $mod+m move workspace to output up
+bindsym $mod+n move workspace to output down
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -161,9 +151,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
 # lock
 exec_always --no-startup-id /usr/bin/light-locker
 bindsym $mod+Delete		exec --no-startup-id light-locker-command --lock
@@ -190,17 +177,12 @@ bindsym XF86MonBrightnessDown	exec brightnessctl s 10%-
 # connect/disconnect monitor
 bindsym XF86Display exec --no-startup-id $HOME/scripts/update_monitor_state.sh
 
-# move focused window between monitors
-bindsym $mod+Shift+m move container to output up
-bindsym $mod+Shift+n move container to output down
-
-# move workspace between monitors
-bindsym $mod+m move workspace to output up
-bindsym $mod+n move workspace to output down
-
 # bluetooth
 #bindsym XF86Bluetooth	   exec service bluetooth stop
 #bindysm XF86Bluetooth	   exec service bluetooth start
+
+# polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # background
 exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/i3/brush-strokes-d.jpg"
