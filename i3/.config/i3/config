@@ -174,6 +174,9 @@ bindsym $mod+Shift+Delete	exec --no-startup-id light-locker-command --lock && sy
 bindsym --release Print		exec scrot -s '%Y:%m:%d-%H%M%S.png' -e 'mv $f /home/florian/Pictures/Screenshots'
 bindsym --release shift+Print	exec scrot '%Y:%m:%d-%H%M%S.png' -e 'mv $f /home/florian/Pictures/Screenshots'
 
+# https://github.com/Coffelius/rofi-code
+bindsym $mod+Shift+x            exec --no-startup-id rofi-code
+
 # Volume Key Control 
 bindsym XF86AudioMute		exec amixer -D pulse set Master 1+ toggle  
 bindsym XF86AudioLowerVolume	exec amixer -D pulse sset Master 5%-
