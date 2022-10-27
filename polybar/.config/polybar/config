@@ -408,6 +408,7 @@ exec = printf "TX: %s RX: %s" "$(ifconfig wlp4s0 | awk '/TX packets/ { print $6$
 format-underline = #7ec6e0
 ;#1db954
 
+# https://github.com/loiccoyle/rofi-nordvpn
 [module/vpn]
 type = custom/script
 exec = rofi-nordvpn -s

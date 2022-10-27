@@ -176,8 +176,6 @@ bindsym --release shift+Print	exec scrot '%Y:%m:%d-%H%M%S.png' -e 'mv $f /home/f
 
 # https://github.com/Coffelius/rofi-code
 bindsym $mod+c                  exec --no-startup-id rofi-code
-# https://github.com/loiccoyle/rofi-nordvpn
-bindsym $mod+n                  exec --no-startup-id rofi-nordvpn
 
 # Volume Key Control 
 bindsym XF86AudioMute		exec amixer -D pulse set Master 1+ toggle  
@@ -205,7 +203,7 @@ bindsym $mod+n move workspace to output down
 #bindysm XF86Bluetooth	   exec service bluetooth start
 
 # background
-exec_always --no-startup-id feh --no-fehbg --bg-fill '/usr/share/backgrounds/gnome/brush-strokes-d.jpg'
+exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/i3/brush-strokes-d.jpg"
 
 # auto start
 exec --no-startup-id nm-applet
