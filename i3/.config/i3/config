@@ -184,6 +184,9 @@ bindsym XF86Display exec --no-startup-id $HOME/scripts/update_monitor_state.sh
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# picom
+exec_always --no-startup-id picom -b -c
+
 # background
 exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/i3/brush-strokes-d.jpg"
 
