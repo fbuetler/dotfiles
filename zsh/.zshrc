@@ -131,8 +131,8 @@ export FD_OPTIONS="--follow --exclude .git --exclude node_modules"
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 
 # monitors
-export MONITOR_0="eDP-1"
-export MONITOR_1="HDMI-2"
+export MONITOR_0=$(xrandr | rg "\bconnected\b" | awk '{ print $1 }' | sed -n '1 p')
+export MONITOR_1=$(xrandr | rg "\bconnected\b" | awk '{ print $1 }' | sed -n '2 p')
 
 ################### Aliases ############################
 

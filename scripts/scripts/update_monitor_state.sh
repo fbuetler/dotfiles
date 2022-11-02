@@ -1,22 +1,18 @@
 #!/bin/bash
 
-intern="eDP-1"
-extern="HDMI-2"
-
-connected=$(xrandr | grep "$extern connected")
-active=$(xrandr | grep -E "$extern connected (primary )?[1-9]+")
+connected=$(xrandr | rg "$MONITOR_1 connected")
+active=$(xrandr | rg "$MONITOR_1 connected (primary )?\d+")
 
 if [ "$connected" ] && [ ! "$active" ]
 then
     echo "activate"
-    xrandr --output $intern --auto --output $extern --auto --above $intern --primary
+    xrandr --output "$MONITOR_0" --auto --output "$MONITOR_1" --auto --above "$MONITOR_0" --primary
     i3-msg -q restart
 fi
 
 if [ "$connected" ] && [ "$active" ]
 then
     echo "deactivate"
-    xrandr --output $extern --off
+    xrandr --output "$MONITOR_1" --off
     i3-msg -q restart
 fi
-
