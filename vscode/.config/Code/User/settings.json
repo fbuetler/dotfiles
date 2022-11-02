@@ -126,7 +126,7 @@
   "window.zoomLevel": 1,
   "workbench.editor.untitled.hint": "hidden",
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
+    "*.ipynb": "jupyter-notebook"
   },
   "workbench.panel.defaultLocation": "bottom",
   "workbench.startupEditor": "newUntitledFile",
