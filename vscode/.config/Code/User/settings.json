@@ -1,7 +1,7 @@
 {
-  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
-  "[c]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
+  "C_Cpp.updateChannel": "Insiders",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[dockerfile]": {
     "breadcrumbs.showBooleans": true,
@@ -16,7 +16,7 @@
     }
   },
   "[html]": {
-    "editor.defaultFormatter": "HookyQR.beautify"
+    "editor.defaultFormatter": "vscode.html-language-features"
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -37,8 +37,8 @@
     "editor.wordWrapColumn": 80,
     "editor.wrappingIndent": "same"
   },
-  "[php]": {
-    "editor.defaultFormatter": "kokororin.vscode-phpfmt"
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -51,11 +51,21 @@
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "cmake.configureOnOpen": false,
+  "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.maxComputationTime": 0,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "editor.cursorStyle": "line",
   "editor.formatOnSave": true,
+  "editor.insertSpaces": false,
   "editor.largeFileOptimizations": false,
+  "editor.lineNumbers": "on",
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
+  "editor.tabSize": 8,
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "editor.wordWrap": "off",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "files.autoSave": "onFocusChange",
@@ -71,12 +81,33 @@
   "gitlens.advanced.messages": {
     "suppressLineUncommittedWarning": true
   },
+  "gitlens.codeLens.enabled": false,
+  "gitlens.currentLine.enabled": false,
+  "gitlens.defaultDateFormat": "D MMM YYYY HH:mm",
+  "gitlens.defaultDateShortFormat": "D MMM YYYY",
+  "gitlens.defaultTimeFormat": "HH:mm",
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.remotes": [
+    {
+      "domain": "git.inventage.com",
+      "type": "BitbucketServer"
+    }
+  ],
   "go.autocompleteUnimportedPackages": true,
   "go.formatTool": "goimports",
   "go.toolsManagement.autoUpdate": true,
   "go.useCodeSnippetsOnFunctionSuggest": false,
   "go.useLanguageServer": true,
   "latex-workshop.view.pdf.viewer": "browser",
+  "java.configuration.updateBuildConfiguration": "disabled",
+  "java.format.comments.enabled": false,
+  "java.inlayHints.parameterNames.enabled": "none",
+  "java.project.importOnFirstTimeStartup": "automatic",
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "prettier.ignorePath": "~/.prettierignore",
   "python.formatting.provider": "black",
   "python.languageServer": "Pylance",
   "python.showStartPage": false,
@@ -84,13 +115,16 @@
   "redhat.telemetry.enabled": false,
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.persistentSessionReviveProcess": "never",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.enablePersistentSessions": false,
   "vim.enableNeovim": true,
   "vim.neovimPath": "/usr/bin/nvim",
   "vim.textwidth": 80,
   "vs-kubernetes": {
-    "vscode-kubernetes.minikube-path.linux": "/home/florian/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+    "vscode-kubernetes.minikube-path.linux": "~/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
   },
   "window.zoomLevel": 1,
+  "workbench.editor.untitled.hint": "hidden",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
   },
