@@ -187,7 +187,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id picom -b -c
 
 # background
-exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/i3/brush-strokes-d.jpg"
+exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/i3/wallpaper.jpg"
 
 # auto start
 exec --no-startup-id nm-applet
