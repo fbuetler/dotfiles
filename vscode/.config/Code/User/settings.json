@@ -134,7 +134,7 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
-  "workbench.panel.defaultLocation": "bottom",
+  "workbench.panel.defaultLocation": "right",
   "workbench.startupEditor": "newUntitledFile",
   "yaml.format.bracketSpacing": false,
   "[yaml]": {
