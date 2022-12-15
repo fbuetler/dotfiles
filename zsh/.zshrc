@@ -1,4 +1,4 @@
-#zmodload zsh/zprof # for profiling: linked to last line
+# zmodload zsh/zprof # for profiling: linked to last line
 
 ################### Zsh Line Editor ############################
 # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
@@ -182,8 +182,9 @@ alias mountdrive="sudo cryptsetup open /dev/sda drive; sudo mount /dev/mapper/dr
 alias umountdrive="sudo umount $HOME/media; sudo cryptsetup close drive"
 alias backup="sudo rsync -aAXvP --delete --exclude=/dev --exclude=/lost+found --exclude=/media --exclude=/proc --exclude=/sys --exclude=/tmp --exclude=/run --exclude=/mnt --exclude=/var --exclude=$HOME/Downloads --exclude=$HOME/git --exclude=$HOME/go --exclude=$HOME/tmp --exclude=$HOME/media --exclude=$HOME/.cache / $HOME/media"
 
-alias copy='xclip -selection c'
-alias paste='xclip -selection c -o'
+# could also use zsh's clipcopy and clippaste
+alias copy='xclip -selection clipboard -in'
+alias paste='xclip -selection clipboard -out'
 
 alias ls='exa'
 
@@ -295,4 +296,21 @@ eval spaceship_vi_mode_enable
 
 eval $(thefuck --alias f)
 
+# reload autocompletion once a day and dump it in zcompdump
+zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
+autoload -Uz compinit
+if [ $(date +'%j') != $(stat --format '@%Y' "$zcompdump" | xargs date +'%j' -d) ]; then
+  compinit -d "$zcompdump"
+else
+  compinit -d "$zcompdump" -C
+fi
+# compile zcompdump, if modified, to increase startup speed
+{
+  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
+    zcompile "$zcompdump"
+  fi
+} &!
+
 ################### Managed by others ############################
+
+# zprof
