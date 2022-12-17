@@ -24,6 +24,9 @@ client.urgent            #0860F2   #bd2c40   #e5e5e5   #bd2c40   #bd2c40
 client.placeholder       #2f343f   #2f343f   #e5e5e5   #2f343f   #2f343f
 client.background        #e5e5e5
 
+# disable title bar on all windows
+for_window [class="^.*"] border pixel 1
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
