@@ -10,6 +10,7 @@
 "           https://github.com/amix/vimrc
 "
 " Sections:
+"    -> Plugins
 "    -> General
 "    -> VIM user interface
 "    -> Colors and Fonts
@@ -23,9 +24,32 @@
 "    -> Spell checking
 "    -> Misc
 "    -> Helper functions
+"    -> Custom Settings
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
+
+" Make sure you use single quotes
+
+" Theme: https://github.com/sonph/onehalf/tree/master/vim
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+
+" Initialize plugin system
+" - Automatically executes `filetype plugin indent on` and `syntax enable`.
+call plug#end()
+" You can revert the settings after the call like so:
+"   filetype indent off   " Disable file-type-specific indentation
+"   syntax off            " Disable syntax highlighting
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -79,7 +103,7 @@ endif
 set ruler
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -117,41 +141,27 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Properly disable sound on errors on MacVim
-if has("gui_macvim")
-    autocmd GUIEnter * set vb t_vb=
-endif
-
-
 " Add a bit extra margin to the left
-set foldcolumn=1
+set foldcolumn=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax on
 
-" Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
 
-try
-    colorscheme atom-dark
-catch
-endtry
+set t_Co=256
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
 
-set background=dark
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
+set cursorline
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -182,9 +192,12 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" Linebreak on 500 characters
+" Linebreak on 120 characters (manually: gq)
 set lbr
-set tw=500
+set textwidth=120
+
+" show linenumbers
+set number
 
 set ai "Auto indent
 set si "Smart indent
@@ -199,6 +212,9 @@ set wrap "Wrap lines
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
+" copy/paste to system clipboard
+vnoremap <C-S-c> "*y
+vnoremap <C-S-v> "*p
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -263,7 +279,17 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+" set statusline=\ %{HasPaste()}            "show when paste mode is enabled
+set statusline +=\ %n                       "buffer number
+set statusline +=\ %y                       "file type
+set statusline +=\ %<%F                     "full path
+set statusline +=%m%r%w%h                   "modified,readonly,preview,help flag
+
+set statusline +=%=                         "skip to right
+set statusline +=%5l                        "current line
+set statusline +=/%L                        "total lines
+set statusline +=%4v\                       "virtual column number
+set statusline +=0x%04B\                    "character under cursor
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -272,18 +298,11 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Move a line of text using ALT+[jk] or Command+[jk] on mac
+" Move a line of text using ALT+[jk] 
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
 
 " Delete trailing white space on save, useful for some filetypes ;)
 fun! CleanExtraSpaces()
@@ -385,20 +404,3 @@ endfunction
 " => Custom settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" show linenumbers
-set number
-
-" set format on 'gq'
-set textwidth=120
-
-filetype plugin indent on
-" show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
-set expandtab
-
-" copy/paste to system clipboard
-vnoremap <C-S-c> "*y
-vnoremap <C-S-v> "*p
