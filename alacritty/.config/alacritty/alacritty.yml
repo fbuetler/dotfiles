@@ -215,7 +215,7 @@ font:
 # VSCode's integrated terminal default colors
 colors:
   primary:
-    background: "#1e1e1e"
+    background: "#282c34"
     foreground: "#cccccc"
   selection:
     text: CellForeground
