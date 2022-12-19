@@ -271,6 +271,8 @@ endtry
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" enable mouse support (use shift to select in visual mode)
+set mouse=a
 
 """"""""""""""""""""""""""""""
 " => Status line
