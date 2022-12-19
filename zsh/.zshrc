@@ -182,9 +182,8 @@ alias mountdrive="sudo cryptsetup open /dev/sda drive; sudo mount /dev/mapper/dr
 alias umountdrive="sudo umount $HOME/media; sudo cryptsetup close drive"
 alias backup="sudo rsync -aAXvP --delete --exclude=/dev --exclude=/lost+found --exclude=/media --exclude=/proc --exclude=/sys --exclude=/tmp --exclude=/run --exclude=/mnt --exclude=/var --exclude=$HOME/Downloads --exclude=$HOME/git --exclude=$HOME/go --exclude=$HOME/tmp --exclude=$HOME/media --exclude=$HOME/.cache / $HOME/media"
 
-# could also use zsh's clipcopy and clippaste
-alias copy='xclip -selection clipboard -in'
-alias paste='xclip -selection clipboard -out'
+alias copy='clipcopy'
+alias paste='clippaste'
 
 alias ls='exa'
 
