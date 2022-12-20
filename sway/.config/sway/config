@@ -239,9 +239,6 @@ bar {
 default_border pixel 1
 default_floating_border pixel 1
 
-# Lock screen before actually starting
-exec swaylock --image $HOME/.config/sway/wallpaper.jpg --scaling fill
-
 # Lock 
 bindsym $mod+Delete		        exec swaylock --image $HOME/.config/sway/wallpaper.jpg --scaling fill  
 bindsym $mod+Shift+Delete	    exec swaylock --image $HOME/.config/sway/wallpaper.jpg --scaling fill && systemctl suspend
@@ -276,8 +273,8 @@ bindsym XF86Display exec $HOME/.config/i3/update_monitor_state.sh
 # Bluetooth
 # bindsym XF86Bluetooth	        exec bluetoothctl power off
 
-# Start trays
-exec nm-applet --indicator
-exec blueman-applet
+# Start system tray applets
+exec --no-startup-id 'nm-applet --indicator'
+exec --no-startup-id 'blueman-applet'
 
 include /etc/sway/config.d/*
