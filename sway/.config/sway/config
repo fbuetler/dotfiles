@@ -23,6 +23,20 @@ set $term alacritty
 set $menu rofi -show run 
 set $dmenu rofi -show drun 
 
+### Colors (defaults in man 5 sway)
+# colorclass               border    bground   text      indicator child_border
+client.background                    #ffffff
+client.focused             #4c7899   #0860f2   #ffffff   #2e9ef4   #285577
+client.focused_inactive    #333333   #5f676a   #ffffff   #484e50   #5f676a
+client.focused_tab_title   #333333   #5f676a   #ffffff   
+client.unfocused           #333333   #222222   #888888   #292d2e   #222222
+client.urgent              #2f343a   #bd2c40   #ffffff   #bd2c40   #bd2c40
+client.placeholder         #000000   #0c0c0c   #ffffff   #000000   #20c0c0c
+
+# disable title bar on all windows
+default_border pixel 1
+default_floating_border pixel 1
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -155,7 +169,7 @@ input type:keyboard xkb_variant "de"
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
+    bindsym $mod+t layout tabbed
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
@@ -220,24 +234,8 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position bottom
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-
     swaybar_command waybar
 }
-
-# disable title bar on all windows
-default_border pixel 1
-default_floating_border pixel 1
 
 # Lock 
 bindsym $mod+Delete		        exec swaylock --image $HOME/.config/sway/wallpaper.jpg --scaling fill  
@@ -258,10 +256,10 @@ bindsym $mod+p                  exec rofi-bluetooth
 bindsym $mod+o                  exec rofi-nordvpn
 
 # Volume Key Control
-bindsym XF86AudioMute		    exec amixer -D pulse set Master 1+ toggle  
-bindsym XF86AudioLowerVolume	exec amixer -D pulse sset Master 5%-
-bindsym XF86AudioRaiseVolume	exec amixer -D pulse sset Master 5%+
-bindsym XF86AudioMicMute	    exec amixer -D pulse sset Capture 1+ toggle 
+bindsym --locked XF86AudioMute		    exec amixer -D pulse set Master 1+ toggle  
+bindsym --locked XF86AudioLowerVolume	exec amixer -D pulse sset Master 5%-
+bindsym --locked XF86AudioRaiseVolume	exec amixer -D pulse sset Master 5%+
+bindsym XF86AudioMicMute	            exec amixer -D pulse sset Capture 1+ toggle 
 
 # Brigthness
 bindsym XF86MonBrightnessUp	    exec brightnessctl set +10%
