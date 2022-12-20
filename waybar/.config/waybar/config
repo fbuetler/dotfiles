@@ -5,10 +5,9 @@
     "spacing": 0, 
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
     "modules-center": [],
-    "modules-right": ["custom/pacman", "custom/vpn", "network", "pulseaudio", "battery", "backlight", "cpu", "memory", "disk", "disk#home", "idle_inhibitor","clock", "tray"],
+    "modules-right": ["custom/pacman", "custom/vpn", "network", "custom/download-usage", "pulseaudio", "battery", "backlight", "cpu", "memory", "disk", "disk#home", "idle_inhibitor","clock", "tray"],
     "sway/workspaces": {
         "disable-scroll": true,
-        "all-outputs": true,
         "format": "{name}"
     },
     "sway/mode": {
@@ -30,7 +29,8 @@
     "custom/vpn": {
         "format": "{} ",
         "interval": 10,
-        "exec": "rofi-nordvpn -s",
+        // return format is: $text\n$tooltip\n$class*
+        "exec": "echo \"$(rofi-nordvpn -s)\n$(rofi-nordvpn -s)\n$(rofi-nordvpn -s)\"",
         "exec-if": "exit 0", // always run
         "on-click": "rofi-nordvpn"
     },  
@@ -42,6 +42,11 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "custom/download-usage": {
+        "format": "{} ",
+        "interval": 10,
+        "exec": "ifconfig wlp4s0 | awk '/RX packets/ { print $6$7 }' | tr -d '()'"
     },
     "pulseaudio": {
         "scroll-step": 0, // %, can be a float
@@ -64,16 +69,14 @@
     },
     "battery": {
         "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
+            "warning": 20,
+            "critical": 10
         },
         "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
+        "format-full": "{capacity}% ",
+        "format-discharging": "({time}) {capacity}% {icon}",
         "format-icons": ["", "", "", "", ""]
     },
     "backlight": {
