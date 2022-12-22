@@ -62,8 +62,7 @@ button:hover {
 
 /* current Sway mode (resize etc.) */
 #mode {
-  background-color: #64727d;
-  border-bottom: 3px solid #ffffff;
+  background-color: #eb4d4b;
 }
 
 #backlight,
@@ -135,7 +134,7 @@ label:focus {
 }
 
 #pulseaudio.muted {
-  background-color: #bfbfbf;
+  background-color: #a0a0a0;
 }
 
 #custom-vpn.Off {

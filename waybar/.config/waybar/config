@@ -1,9 +1,9 @@
 {
-    // https://www.mankier.com/package/waybar
+    // man 5 waybar
     "position": "bottom", 
     "height": 30, 
     "spacing": 0, 
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
+    "modules-left": ["sway/workspaces", "sway/scratchpad", "sway/mode"],
     "modules-center": [],
     "modules-right": ["custom/pacman", "custom/vpn", "network", "custom/download-usage", "pulseaudio", "battery", "backlight", "cpu", "memory", "disk", "disk#home", "idle_inhibitor","clock", "tray"],
     "sway/workspaces": {
@@ -85,11 +85,12 @@
         "format-icons": ["🌕", "🌔", "🌓", "🌒", "🌑"]
     },
     "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
+        "format": "{usage:>2}% ",
+        "interval": 3
     },
     "memory": {
-        "format": "{}% "
+        "format": "{percentage}% ",
+        "interval": 3
     },
     "disk": {
         "interval": 30,
