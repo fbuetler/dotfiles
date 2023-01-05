@@ -239,7 +239,7 @@ bar {
 
 # Lock 
 bindsym $mod+Delete		        exec swaylock --image $HOME/.config/sway/wallpaper.jpg --scaling fill  
-bindsym $mod+Shift+Delete	    exec swaylock --image $HOME/.config/sway/wallpaper.jpg --scaling fill && systemctl suspend
+bindsym $mod+Shift+Delete	    exec systemctl suspend # lock handled by swayidle
 
 exec swayidle -w \
     timeout 120 'brightnessctl set 20%' resume 'brightnessctl set 100%' \
