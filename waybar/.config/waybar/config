@@ -30,7 +30,7 @@
         "format": "{} ",
         "interval": 10,
         // return format is: $text\n$tooltip\n$class*
-        "exec": "echo \"$(rofi-nordvpn -s)\n$(rofi-nordvpn -s)\n$(rofi-nordvpn -s)\"",
+        "exec": "printf \"$(rofi-nordvpn -s)\n%.0s\" {1..3}",
         "exec-if": "exit 0", // always run
         "on-click": "rofi-nordvpn"
     },  
@@ -72,6 +72,7 @@
             "warning": 20,
             "critical": 10
         },
+        "interval": 10,
         // "on-update": "if [ \"$(acpi -b | sed -n 's/.*\\ \\([[:digit:]]\\{1,3\\}\\)\\%.*/\\1/;p')\" -le \"5\" ]; then systemctl hibernate; fi", // battery level <= 5%
         "format": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
