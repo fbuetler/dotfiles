@@ -241,10 +241,17 @@ bar {
 bindsym $mod+Delete		        exec swaylock --image $HOME/.config/sway/wallpaper.jpg --scaling fill  
 bindsym $mod+Shift+Delete	    exec systemctl suspend # lock handled by swayidle
 
+# Idle
 exec swayidle -w \
     timeout 120 'brightnessctl set 20%' resume 'brightnessctl set 100%' \
     timeout 300 'systemctl suspend' \
     before-sleep 'swaylock --image $HOME/.config/sway/wallpaper.jpg --scaling fill'
+
+# Enables inhibit_idle when in fullscreen
+for_window [class=.*] inhibit_idle fullscreen
+
+# Enables inhibit_idle when playing audio
+exec sway-audio-idle-inhibit
 
 # Screenshot
 bindsym --release Print         exec grim -g "$(slurp)" $HOME/Pictures/Screenshots/"$(date +%Y:%m:%d-%H%M%S.png)"
