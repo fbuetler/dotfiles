@@ -93,6 +93,9 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
+# dont store commands starting with a space in the history
+setopt HIST_IGNORE_SPACE
+
 ################### Environment variables ############################
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -170,7 +173,9 @@ alias conmon="xrandr --output $MONITOR_0 --auto --output $MONITOR_1 --auto --abo
 alias disconmon="xrandr --output $MONITOR_1 --off; i3-msg -q restart"
 alias dupmon="xrandr --output $MONITOR_1 --same-as $MONITOR_0 --auto; i3-msg -q restart"
 
-alias sem='cd $HOME/Documents/01_Ausbildung/ETH/msc/Sem3'
+alias mirrormon='pipectl -n wl-present -o | wl-mirror -S `slurp -b \#00000000 -B \#00000000 -c \#859900 -w 4 -f %o -or`'
+
+alias sem='cd $HOME/Documents/01_Ausbildung/ETH/msc/Sem4'
 alias vis='cd $HOME/go/src/gitlab.ethz.ch/vis/cat'
 
 alias code='exec code .'
