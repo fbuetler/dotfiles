@@ -93,7 +93,7 @@
     "editor.formatOnPaste": false,
     "editor.suggestSelection": "recentlyUsedByPrefix",
     "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 80,
+    "editor.wordWrapColumn": 160,
     "editor.wrappingIndent": "same"
   },
   "markdown.updateLinksOnFileMove.enabled": "always",
@@ -109,6 +109,10 @@
   "python.languageServer": "Pylance",
   "python.showStartPage": false,
   "python.terminal.activateEnvironment": false,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnType": true
+  },
   "[php]": {
     "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
   },
@@ -128,7 +132,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "vs-kubernetes": {
-    "vscode-kubernetes.minikube-path.linux": "~/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+    "vscode-kubernetes.minikube-path.linux": "~/.vs-kubernetes/tools/minikube/linux-amd64/minikube",
+    "vs-kubernetes.crd-code-completion": "disabled"
   },
   "window.zoomLevel": 1,
   "workbench.editor.untitled.hint": "hidden",
