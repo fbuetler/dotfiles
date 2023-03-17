@@ -36,3 +36,8 @@ light = false     # set to true if you're in a terminal w/ a light background co
 hyperlinks = true # link to GitHub/GitLab/Bitbucket
 [diff]
 colorMoved = default
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
