@@ -29,8 +29,16 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins
+" => Plugins (vim-plug)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Auto install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/0.11.0/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin()
 " The default plugin directory will be as follows:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
@@ -192,9 +200,9 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" Linebreak on 120 characters (manually: gq)
+" Linebreak on 160 characters (manually: gq)
 set lbr
-set textwidth=120
+set textwidth=160
 
 " show linenumbers
 set number
