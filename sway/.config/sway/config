@@ -40,8 +40,8 @@ default_floating_border pixel 1
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg $HOME/.config/i3/wallpaper.jpg fill
-# exec_always setwall set $HOME/.config/i3/wallpaper.jpg --comp sway --output eDP-1 --output HDMI-2
+output * bg $HOME/.config/sway/wallpaper.jpg fill
+# exec_always setwall set $HOME/.config/sway/wallpaper.jpg --comp sway --output eDP-1 --output HDMI-2
 
 # Example configuration:
 #
@@ -239,7 +239,7 @@ bar {
 
 # Lock 
 bindsym $mod+Delete		        exec swaylock --image $HOME/.config/sway/wallpaper.jpg --scaling fill  
-bindsym $mod+Shift+Delete	    exec systemctl suspend # lock handled by swayidle
+bindsym $mod+Shift+Delete	    exec systemctl suspend -i # lock handled by swayidle
 
 # Idle
 exec swayidle -w \
@@ -273,7 +273,7 @@ bindsym XF86MonBrightnessUp	    exec brightnessctl set +10%
 bindsym XF86MonBrightnessDown	exec brightnessctl set 10%-
 
 # Connect/Disconnect Monitor
-bindsym XF86Display exec $HOME/.config/i3/update_monitor_state.sh
+bindsym XF86Display exec $HOME/.config/sway/update_monitor_state.sh
 
 # Bluetooth
 # bindsym XF86Bluetooth	        exec bluetoothctl power off
@@ -282,4 +282,5 @@ bindsym XF86Display exec $HOME/.config/i3/update_monitor_state.sh
 exec --no-startup-id 'nm-applet --indicator'
 exec --no-startup-id 'blueman-applet'
 
+# include local and global config files
 include /etc/sway/config.d/*
