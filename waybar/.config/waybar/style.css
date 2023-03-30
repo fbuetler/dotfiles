@@ -107,6 +107,37 @@ label:focus {
   background-color: #000000;
 }
 
+#cpu.warning {
+  background-color: #f56d3c;
+  color: #ffffff;
+}
+
+#cpu.critical {
+  background-color: #eb4d4b;
+  color: #ffffff;
+}
+
+#memory.warning {
+  background-color: #f56d3c;
+  color: #ffffff;
+}
+
+#memory.critical {
+  background-color: #eb4d4b;
+  color: #ffffff;
+}
+
+#disk.warning {
+  background-color: #f56d3c;
+  color: #ffffff;
+}
+
+#disk.critical {
+  background-color: #eb4d4b;
+  color: #ffffff;
+}
+
+
 #battery.warning:not(.charging) {
   background-color: #f56d3c;
   color: #ffffff;
