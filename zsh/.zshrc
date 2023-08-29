@@ -29,13 +29,12 @@ antigen bundles <<EOBUNDLES
   command-not-found
   fzf
 
-  supercrabtree/k
   spaceship-prompt/spaceship-vi-mode@main
 
   zsh-users/zsh-autosuggestions
   zsh-users/zsh-completions
   zsh-users/zsh-history-substring-search
-  zsh-users/zsh-syntax-highlighting
+  zdharma-continuum/fast-syntax-highlighting
 EOBUNDLES
 
 # Load the theme.
