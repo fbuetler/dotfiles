@@ -1,11 +1,30 @@
 {
     // man 5 waybar
-    "position": "bottom", 
-    "height": 30, 
-    "spacing": 0, 
-    "modules-left": ["sway/workspaces", "sway/scratchpad", "sway/mode"],
+    "position": "bottom",
+    "height": 30,
+    "spacing": 0,
+    "modules-left": [
+        "sway/workspaces",
+        "sway/scratchpad",
+        "sway/mode"
+    ],
     "modules-center": [],
-    "modules-right": ["custom/pacman", "custom/vpn", "network", "custom/download-usage", "pulseaudio", "battery", "backlight", "cpu", "memory", "disk", "disk#home", "idle_inhibitor","clock", "tray"],
+    "modules-right": [
+        "custom/pacman",
+        "custom/vpn",
+        "network",
+        "custom/download-usage",
+        "pulseaudio",
+        "battery",
+        "backlight",
+        "cpu",
+        "memory",
+        "disk",
+        "disk#home",
+        "idle_inhibitor",
+        "clock",
+        "tray"
+    ],
     "sway/workspaces": {
         "disable-scroll": true,
         "format": "{name}"
@@ -16,7 +35,10 @@
     "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
-        "format-icons": ["", ""],
+        "format-icons": [
+            "",
+            ""
+        ],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
@@ -33,7 +55,7 @@
         "exec": "printf \"$(rofi-nordvpn -s)\n%.0s\" {1..3}",
         "exec-if": "exit 0", // always run
         "on-click": "rofi-nordvpn"
-    },  
+    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "  {essid} ({signalStrength}%) ",
@@ -63,7 +85,11 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
         "on-click": "pavucontrol"
     },
@@ -79,11 +105,23 @@
         "format-plugged": " {capacity}%",
         "format-full": "  {capacity}%",
         "format-discharging": "{icon} {capacity}% ({time})",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "backlight": {
         "format": "{icon} {percent}%",
-        "format-icons": ["🌕", "🌔", "🌓", "🌒", "🌑"]
+        "format-icons": [
+            "🌕",
+            "🌔",
+            "🌓",
+            "🌒",
+            "🌑"
+        ]
     },
     "cpu": {
         "states": {
@@ -130,6 +168,25 @@
     },
     "tray": {
         "spacing": 10
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{} {icon}",
+        "format-icons": {
+            "notification": "",
+            "none": "",
+            "dnd-notification": "",
+            "dnd-none": "",
+            "inhibited-notification": "",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     }
 }
-
