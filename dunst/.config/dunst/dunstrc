@@ -129,7 +129,7 @@
     # Draw a line of "separatpr_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
-    separator_height = 2
+    separator_height = 1
 
     # Padding between text and separator.
     padding = 6
@@ -192,23 +192,23 @@
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
     # You may specify a transparency component in #RGBA or #RRGGBBAA format.
-    frame_color = "#48c44190"
+    frame_color = "#19875450"
     foreground = "#000000"
-    background = "#3b9936"
+    background = "#198754"
     timeout = 4
     # new_icon = dialog-warning-symbolic.symbolic
 
 [urgency_normal]
-    frame_color = "#3b89e390"
+    frame_color = "#0d6efd50"
     foreground = "#000000"
-    background = "#3275c2"
+    background = "#0d6efd"
     timeout = 6
     # new_icon = dialog-warning-symbolic.symbolic
 
 [urgency_critical]
-    frame_color = "#d9513090"
+    frame_color = "#dc354550"
     foreground = "#000000"
-    background = "#B7472A"
+    background = "#dc3545"
     timeout = 8
     # new_icon = dialog-warning-symbolic.symbolic
 

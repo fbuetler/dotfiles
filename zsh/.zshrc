@@ -210,6 +210,9 @@ alias gitpull='fd --type d -H ".git" . \
       cd $OLDPWD; 
     done'
 
+# https://github.com/github/hub
+alias git=hub
+
 ################### Functions ############################
 
 function dip() {
@@ -297,8 +300,6 @@ eval spaceship_vi_mode_enable
 #  source /usr/share/fzf/key-bindings.zsh
 #  source /usr/share/fzf/completion.zsh
 #fi
-
-eval $(thefuck --alias f)
 
 # reload autocompletion once a day and dump it in zcompdump
 zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"

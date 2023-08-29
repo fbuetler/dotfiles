@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # there is a service called 'battery-monitor.service' for running  this script
-# is is enabled with systemctl --user enable battery-monitor.service
+# is is enabled with systemctl enable battery-monitor.service
 
 X_USER="florian"
 X_USERID="1000"
@@ -44,7 +44,7 @@ checkBatteryLevel() {
     fi
 
     if [ ${battery_level} -le ${_battery_suspend_level} ]; then
-        i3lock -e -c 000000 && sleep 1 && systemctl suspend
+        systemctl suspend
     elif [ ${battery_level} -le ${_battery_critical_level} ]; then
         $notify_cmd "Low Battery" "Your computer will suspend soon unless plugged into a power outlet." -u critical
         ${backlight_cmd} set 50%
@@ -57,7 +57,6 @@ checkBatteryLevel() {
 checkBatteryStateChange() {
     if [ "${battery_state}" != "Discharging" ] && [ "${previous_battery_state}" == "Discharging" ]; then
         $notify_cmd "Charging" "Battery is now plugged in." -u low
-        echo "should send"
         ${backlight_cmd} set 100%
     fi
 

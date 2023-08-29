@@ -7,8 +7,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "cmake.configureOnOpen": false,
+  "csharp.referencesCodeLens.enabled": false,
   "diffEditor.ignoreTrimWhitespace": false,
-  "diffEditor.diffAlgorithm": "experimental",
+  "diffEditor.diffAlgorithm": "advanced",
   "diffEditor.maxComputationTime": 0,
   "[dockerfile]": {
     "breadcrumbs.showBooleans": true,
@@ -51,6 +52,13 @@
   "gitlens.defaultDateFormat": "D MMM YYYY HH:mm",
   "gitlens.defaultDateShortFormat": "D MMM YYYY",
   "gitlens.defaultTimeFormat": "HH:mm",
+  "gitlens.graph.dimMergeCommits": true,
+  "gitlens.graph.dateFormat": null,
+  "gitlens.statusBar.pullRequests.enabled": false,
+  "gitlens.graph.avatars": false,
+  "gitlens.graph.minimap.additionalTypes": [
+    "localBranches"
+  ],
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.remotes": [
     {
@@ -136,9 +144,11 @@
     "vs-kubernetes.crd-code-completion": "disabled"
   },
   "window.zoomLevel": 1,
+  "workbench.colorTheme": "Default Dark+",
   "workbench.editor.untitled.hint": "hidden",
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter-notebook"
+    "*.ipynb": "jupyter-notebook",
+    "git-rebase-todo": "gitlens.rebase"
   },
   "workbench.panel.defaultLocation": "right",
   "workbench.startupEditor": "newUntitledFile",
