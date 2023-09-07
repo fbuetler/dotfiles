@@ -40,6 +40,8 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin()
+" See for installation: https://github.com/junegunn/vim-plug
+" Run :PlugInstall for plugin installation
 " The default plugin directory will be as follows:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
 "   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
