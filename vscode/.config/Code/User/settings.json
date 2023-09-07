@@ -1,8 +1,4 @@
 {
-  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
-  "[c]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -23,7 +19,7 @@
   },
   "editor.cursorStyle": "line",
   "editor.formatOnSave": true,
-  "editor.detectIndentation": true,
+  "editor.detectIndentation": false,
   "editor.insertSpaces": true,
   "editor.largeFileOptimizations": false,
   "editor.lineNumbers": "on",
@@ -56,9 +52,7 @@
   "gitlens.graph.dateFormat": null,
   "gitlens.statusBar.pullRequests.enabled": false,
   "gitlens.graph.avatars": false,
-  "gitlens.graph.minimap.additionalTypes": [
-    "localBranches"
-  ],
+  "gitlens.graph.minimap.additionalTypes": ["localBranches"],
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.remotes": [
     {
@@ -80,10 +74,25 @@
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },
+  "intellicodeApiExamples.typescript.enabled": false,
+  "java.cleanup.actionsOnSave": ["addOverride"],
+  "java.codeGeneration.generateComments": true,
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.completion.chain.enabled": true,
+  "java.completion.importOrder": ["#", ""],
   "java.configuration.updateBuildConfiguration": "disabled",
-  "java.format.comments.enabled": false,
+  "java.eclipse.downloadSources": true,
+  "java.help.firstView": "none",
   "java.inlayHints.parameterNames.enabled": "none",
+  "java.jdt.ls.androidSupport.enabled": "off",
+  "java.maven.downloadSources": true,
   "java.project.importOnFirstTimeStartup": "automatic",
+  "java.saveActions.organizeImports": true,
+  "[java]": {
+    "breadcrumbs.showArrays": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.defaultFormatter": "redhat.java"
+  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -91,7 +100,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 4
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -121,9 +131,6 @@
     "editor.defaultFormatter": "ms-python.python",
     "editor.formatOnType": true
   },
-  "[php]": {
-    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
-  },
   "redhat.telemetry.enabled": false,
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.persistentSessionReviveProcess": "never",
@@ -131,11 +138,11 @@
   "terminal.integrated.enablePersistentSessions": false,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
+    "editor.tabSize": 4
   },
   "vim.enableNeovim": true,
   "vim.neovimPath": "/usr/bin/nvim",
-  "vim.textwidth": 80,
+  "vim.textwidth": 240,
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -143,7 +150,7 @@
     "vscode-kubernetes.minikube-path.linux": "~/.vs-kubernetes/tools/minikube/linux-amd64/minikube",
     "vs-kubernetes.crd-code-completion": "disabled"
   },
-  "window.zoomLevel": 1,
+  "window.zoomLevel": -1,
   "workbench.colorTheme": "Default Dark+",
   "workbench.editor.untitled.hint": "hidden",
   "workbench.editorAssociations": {
@@ -155,5 +162,12 @@
   "yaml.format.bracketSpacing": false,
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
-  }
+  },
+  "files.associations": {
+    "*.xml": "xml"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml"
+  },
+  "xmlTools.splitXmlnsOnFormat": false
 }
