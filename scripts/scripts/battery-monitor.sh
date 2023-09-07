@@ -31,6 +31,8 @@ previous_battery_state=$(cat /tmp/.battery | tail -n 1)
 echo "${battery_level}" >/tmp/.battery
 echo "${battery_state}" >>/tmp/.battery
 
+backlight_current=$(echo "100.0 * $(brightnessctl get) / $(brightnessctl max)" | bc)
+
 checkBatteryLevel() {
     if [ ${battery_state} != "Discharging" ] || [ "${battery_level}" == "${previous_battery_level}" ]; then
         # target_brightness_perc=75
@@ -47,10 +49,14 @@ checkBatteryLevel() {
         systemctl suspend
     elif [ ${battery_level} -le ${_battery_critical_level} ]; then
         $notify_cmd "Low Battery" "Your computer will suspend soon unless plugged into a power outlet." -u critical
-        ${backlight_cmd} set 50%
+        if [[ $backlight_current -gt 50 ]]; then
+            ${backlight_cmd} set 50%
+        fi
     elif [ ${battery_level} -le ${_battery_threshold_level} ]; then
         $notify_cmd "Low Battery" "${battery_level}% (${battery_remaining}) of battery remaining." -u normal
-        ${backlight_cmd} set 75%
+        if [[ $backlight_current -gt 75 ]]; then
+            ${backlight_cmd} set 75%
+        fi
     fi
 }
 
