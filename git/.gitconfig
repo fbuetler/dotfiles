@@ -1,43 +1,43 @@
 [user]
-name = Florian Bütler
-email = flbuetle@ethz.ch
-signingkey = E3C1B0D5A5ACAD4B
+    name = Florian Bütler
+    email = flbuetle@ethz.ch
+	signingkey = E3C1B0D5A5ACAD4b
 [core]
-excludesfile = $HOME/.gitignore
-pager = delta
+    excludesfile = $HOME/.gitignore
+    pager = delta
 [alias]
-co = checkout --recurse-submodules
-
+    co = checkout --recurse-submodules
+    graph = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)%aD (%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
 [url "ssh://git@gitlab.ethz.ch/"]
 insteadOf = https://gitlab.ethz.ch/
 [pull]
-rebase = true
-autoStash = true
+    rebase = true
+    autoStash = true
 [rebase]
-autoStash = true
+    autoStash = true
 [merge]
-tool = code
-conflictstyle = diff3
+    tool = code
+    conflictstyle = diff3
 [mergetool "code"]
-cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+    cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [fetch]
-# prune = true
+    # prune = true
 [init]
-defaultBranch = main
+    defaultBranch = main
 [credential]
-helper = store
+    helper = store
 [interactive]
-diffFilter = delta --color-only
+    diffFilter = delta --color-only
 [add.interactive]
-useBuiltin = false # required for git 2.37.0
+    useBuiltin = false # required for git 2.37.0
 [delta]
-navigate = true   # use n and N to move between diff sections
-light = false     # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
-hyperlinks = true # link to GitHub/GitLab/Bitbucket
+    navigate = true   # use n and N to move between diff sections
+    light = false     # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    hyperlinks = true # link to GitHub/GitLab/Bitbucket
 [diff]
-colorMoved = default
+    colorMoved = default
 [filter "lfs"]
-clean = git-lfs clean -- %f
-smudge = git-lfs smudge -- %f
-process = git-lfs filter-process
-required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
