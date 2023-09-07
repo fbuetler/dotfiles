@@ -132,6 +132,18 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export FD_OPTIONS="--follow --exclude .git --exclude node_modules"
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 
+# kubectl krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# kubectl diff
+KUBECTL_EXTERNAL_DIFF="diff -N -u --color"
+
+# kubectl configs
+export KUBECONFIG="$HOME/.kube/ips:$HOME/.kube/akkp:$HOME/.kube/microk8s"
+#
+# podman
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
+
 # monitors
 export MONITOR_0=$(xrandr | rg "\bconnected\b" | awk '{ print $1 }' | sed -n '1 p')
 export MONITOR_1=$(xrandr | rg "\bconnected\b" | awk '{ print $1 }' | sed -n '2 p')
@@ -201,16 +213,28 @@ alias gitlog='fd --type d -H ".git" . | while read d; do
    cd $OLDPWD;
 done'
 
-alias gitpull='fd --type d -H ".git" . \
-  | while read d; 
-      do cd $d/..; 
-      echo "${BGREEN}${PWD}${REGULAR} >"; 
+alias gitpull='fd --type d -H ".git" . | while read d; do
+      cd $d/..; 
+      echo "${BGREEN}${PWD}${REGULAR} - ${BBLUE}$(git branch --show-current)${REGULAR} >"; 
+      git remote prune origin;
       git pull; 
       cd $OLDPWD; 
     done'
 
 # https://github.com/github/hub
 alias git=hub
+
+alias gitbranches='fd --type d -H ".git" . | sort | while read d; do
+            cd $d/..;
+            echo "\t${BGREEN}$(basename $PWD)${REGULAR}";
+            git fetch --all > /dev/null;
+            git remote prune origin;
+            for branch in `git branch -r | rg -v "HEAD|main|master|.*\d+\.\d+\.(\d+|x).*"`; do
+                echo -e "\t\t`git log --pretty=format:\"%<(30)%ci %<(30)%cr %<(20)%an\" $branch | head -n 1` \\t`echo -n \"$branch\" | cut -c 8-`";
+            done \
+            | sort -r;
+            cd $OLDPWD; \
+done'
 
 ################### Functions ############################
 
