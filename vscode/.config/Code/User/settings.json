@@ -143,6 +143,9 @@
   "vim.enableNeovim": true,
   "vim.neovimPath": "/usr/bin/nvim",
   "vim.textwidth": 240,
+  "vim.handleKeys": {
+    "<C-p>": false
+  },
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
