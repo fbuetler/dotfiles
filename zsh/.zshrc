@@ -189,7 +189,7 @@ alias dupmon="xrandr --output $MONITOR_1 --same-as $MONITOR_0 --auto; i3-msg -q 
 
 alias mirrormon='pipectl -n wl-present -o | wl-mirror -S `slurp -b \#00000000 -B \#00000000 -c \#859900 -w 4 -f %o -or`'
 
-alias sem='cd $HOME/Documents/01_Ausbildung/ETH/msc/Sem4'
+alias sem='cd $HOME/Documents/01_Ausbildung/ETH/msc/Sem5'
 alias vis='cd $HOME/go/src/gitlab.ethz.ch/vis/cat'
 
 alias code='exec code .'
