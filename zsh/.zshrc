@@ -148,6 +148,9 @@ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
 export MONITOR_0=$(xrandr | rg "\bconnected\b" | awk '{ print $1 }' | sed -n '1 p')
 export MONITOR_1=$(xrandr | rg "\bconnected\b" | awk '{ print $1 }' | sed -n '2 p')
 
+# kubectl krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 # ansi escape code: color
 # 0; = regular
 export REGULAR="\033[0m" # no color
