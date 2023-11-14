@@ -51,6 +51,9 @@ output * bg $HOME/.config/sway/wallpaper.jpg fill
 output eDP-1 mode 1920x1080 position 0,1080 scale 1
 output HDMI-A-2 mode 1920x1080 position 0,0 scale 1
 
+# ovis widescreen
+# output HDMI-A-2 mode 3440x1440 position 0,0 scale 1 
+
 ### Idle configuration
 #
 # Example configuration:
