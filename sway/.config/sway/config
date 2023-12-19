@@ -52,6 +52,7 @@ output eDP-1 mode 1920x1080 position 0,1080 scale 1
 output HDMI-A-2 mode 1920x1080 position 0,0 scale 1
 
 # ovis widescreen
+# output eDP-1 mode 1920x1080 position 0,1440 scale 1
 # output HDMI-A-2 mode 3440x1440 position 0,0 scale 1 
 
 ### Idle configuration
@@ -264,6 +265,7 @@ bindsym --release Shift+Print   exec grim $HOME/Pictures/Screenshots/"$(date +%Y
 bindsym $mod+c                  exec rofi-code 
 bindsym $mod+p                  exec rofi-bluetooth
 bindsym $mod+o                  exec rofi-nordvpn
+bindsym $mod+q                  exec $HOME/.local/bin/rofi-copyq
 
 # Volume Key Control
 bindsym --locked XF86AudioMute		    exec amixer -D pulse set Master 1+ toggle  
@@ -284,6 +286,7 @@ bindsym XF86Display exec $HOME/.config/sway/update_monitor_state.sh
 # Start system tray applets
 exec --no-startup-id 'nm-applet --indicator'
 exec --no-startup-id 'blueman-applet'
+exec --no-startup-id 'copyq'
 
 # include local and global config files
 include /etc/sway/config.d/*
