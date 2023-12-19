@@ -16,8 +16,8 @@
     }
   },
   "editor.codeActionsOnSave": {
-    "source.organizeImports": true
-  },
+    "source.organizeImports": "explicit"
+},
   "editor.cursorStyle": "line",
   "editor.formatOnSave": true,
   "editor.detectIndentation": false,
@@ -69,7 +69,7 @@
   "gopls": { "ui.semanticTokens": true },
   "[go]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+        "source.organizeImports": "explicit"
     }
   },
   "[html]": {
@@ -131,7 +131,7 @@
   "python.showStartPage": false,
   "python.terminal.activateEnvironment": true,
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python",
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnType": true
   },
   "redhat.telemetry.enabled": false,
