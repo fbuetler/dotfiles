@@ -148,6 +148,10 @@ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
 export MONITOR_0=$(xrandr | rg "\bconnected\b" | awk '{ print $1 }' | sed -n '1 p')
 export MONITOR_1=$(xrandr | rg "\bconnected\b" | awk '{ print $1 }' | sed -n '2 p')
 
+# podman
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
+export DOCKER_BUILDKIT=0 # https://github.com/containers/podman/issues/13889
+
 # kubectl krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
@@ -190,6 +194,7 @@ alias dupmon="xrandr --output $MONITOR_1 --same-as $MONITOR_0 --auto; i3-msg -q 
 alias mirrormon='pipectl -n wl-present -o | wl-mirror -S `slurp -b \#00000000 -B \#00000000 -c \#859900 -w 4 -f %o -or`'
 
 alias sem='cd $HOME/Documents/01_Ausbildung/ETH/msc/Sem5'
+alias ma='cd $HOME/Documents/01_Ausbildung/ETH/msc/MA'
 alias vis='cd $HOME/go/src/gitlab.ethz.ch/vis/cat'
 
 alias code='exec code .'
@@ -223,9 +228,6 @@ alias gitpull='fd --type d -H ".git" . | while read d; do
       git pull; 
       cd $OLDPWD; 
     done'
-
-# https://github.com/github/hub
-alias git=hub
 
 alias gitbranches='fd --type d -H ".git" . | sort | while read d; do
             cd $d/..;
