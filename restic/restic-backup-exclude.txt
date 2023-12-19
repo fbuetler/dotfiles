@@ -1,0 +1,41 @@
+/dev
+/lib/modules/*/volatile/.mounted
+/lost+found
+/media
+/mnt
+/proc
+/run
+/sys
+/tmp
+/var/cache
+/var/cache/apt/archives/*
+/var/lib/docker
+/var/lock
+/var/run
+/var/tmp
+
+/home/*/**/.cache
+/home/*/**/.venv
+/home/*/**/Cache
+/home/*/**/__pycache__
+/home/*/**/env
+/home/*/**/venv
+/home/*/.config/*/Cache
+/home/*/.config/*/GPUCache
+/home/*/.config/*/ShaderCache
+/home/*/.config/Code/CachedData
+/home/*/.config/Code/CachedExtensions
+/home/*/.config/Code/logs
+/home/*/.config/chromium/Default/Application Cache
+/home/*/.config/chromium/Default/Local Storage
+/home/*/.config/chromium/Default/Session Storage
+/home/*/.local/share/Trash
+/home/*/.mozilla/firefox/*/Cache
+/home/*/.mozilla/firefox/*/minidumps
+/home/*/.mozilla/firefox/*/storage
+/home/*/.thunderbird/*/ImapMail
+/home/*/Downloads
+/home/*/git
+/home/*/go
+/home/*/media
+/home/*/tmp
