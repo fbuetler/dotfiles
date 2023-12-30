@@ -146,6 +146,7 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 # bat, fd
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 export FD_OPTIONS="--follow --exclude .git --exclude node_modules"
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 
@@ -354,6 +355,7 @@ if [ $(date +'%j') != $(stat --format '@%Y' "$zcompdump" | xargs date +'%j' -d) 
 else
   compinit -d "$zcompdump" -C
 fi
+
 # compile zcompdump, if modified, to increase startup speed
 {
   if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
@@ -362,5 +364,8 @@ fi
 } &!
 
 ################### Managed by others ############################
+
+# nvm
+source /usr/share/nvm/init-nvm.sh
 
 # zprof
