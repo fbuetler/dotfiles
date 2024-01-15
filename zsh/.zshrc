@@ -154,7 +154,7 @@ export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # kubectl diff
-KUBECTL_EXTERNAL_DIFF="diff -N -u --color"
+export KUBECTL_EXTERNAL_DIFF="diff -N -u --color"
 
 # kubectl configs
 export KUBECONFIG="$HOME/.kube/ips:$HOME/.kube/akkp:$HOME/.kube/microk8s"
@@ -238,6 +238,13 @@ alias gitlog='fd --type d -H ".git" . | while read d; do
    echo "";
    cd $OLDPWD;
 done'
+
+alias gitstatus='fd --type d -H ".git" . | while read d; do
+      cd $d/..; 
+      echo "${BGREEN}${PWD}${REGULAR} - ${BBLUE}$(git branch --show-current)${REGULAR} >"; 
+      git status --porcelain
+      cd $OLDPWD; 
+    done'
 
 alias gitpull='fd --type d -H ".git" . | while read d; do
       cd $d/..; 
