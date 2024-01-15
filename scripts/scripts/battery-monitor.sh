@@ -13,7 +13,7 @@ battery_state=$(acpi -b | awk '{print $3}' | tr -d ",")
 battery_remaining=$(acpi -b | sed -n '/Discharging/{s/^.*\ \([[:digit:]]\{2\}\)\:\([[:digit:]]\{2\}\).*/\1h \2min/;p}')
 
 backlight_cmd=$(which brightnessctl)
-notify_cmd='sudo -u '"$X_USER"' DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/'"$X_USERID"'/bus notify-send'
+notify_cmd='sudo -u '"$X_USER"' DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/'"$X_USERID"'/bus notify-send --expire-time 5000'
 calculator_cmd=$(which bc)
 
 _battery_threshold_level="20"
