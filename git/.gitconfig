@@ -50,12 +50,17 @@
     date = iso
 [help]
     autocorrect = 10 # run autocorrect suggestion after 1s
+[branch]
+    sort = -committerdate
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
     required = true
     submodule = log
+[maintenance]
+    auto = false
+    strategy = incremental
  
 # replace HTTP with SSH
 [url "ssh://git@gitlab.ethz.ch/"]
