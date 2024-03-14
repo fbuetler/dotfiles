@@ -258,8 +258,9 @@ for_window [class=.*] inhibit_idle fullscreen
 exec sway-audio-idle-inhibit
 
 # Screenshot
-bindsym --release Print         exec grim -g "$(slurp)" $HOME/Pictures/Screenshots/"$(date +%Y:%m:%d-%H%M%S.png)"
-bindsym --release Shift+Print   exec grim $HOME/Pictures/Screenshots/"$(date +%Y:%m:%d-%H%M%S.png)"
+bindsym --release Print                 exec grim -g "$(slurp)" $HOME/Pictures/Screenshots/"$(date +%Y:%m:%d-%H%M%S.png)"
+bindsym --release Shift+Print           exec grim $HOME/Pictures/Screenshots/"$(date +%Y:%m:%d-%H%M%S.png)"
+bindsym --release Control+Shift+Print   exec grim $HOME/Pictures/Screenshots/"$(date +%Y:%m:%d-%H%M%S.png)" -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
 
 # rofi-code/rofi-bluetooth
 bindsym $mod+c                  exec rofi-code 
