@@ -231,22 +231,21 @@ alias ls='exa'
 
 alias bell='echo -ne "\007"'
 
-alias gitlog='fd --type d -H ".git" . | while read d; do
+alias gitlog='fd --type d -H "\.git" . | while read d; do
    cd $d/..;
    echo "${BGREEN}$PWD${REGULAR} >";
-   git --no-pager log --pretty=tformat:"%ad%x09%s" --author="Florian Bütler" --since=7.days;
-   echo "";
+   git --no-pager log --pretty=tformat:"%ad%x09%s" --author="Florian Bütler" --since=6.days;
    cd $OLDPWD;
 done'
 
-alias gitstatus='fd --type d -H ".git" . | while read d; do
+alias gitstatus='fd --type d -H "\.git" . | while read d; do
       cd $d/..; 
       echo "${BGREEN}${PWD}${REGULAR} - ${BBLUE}$(git branch --show-current)${REGULAR} >"; 
       git status --porcelain
       cd $OLDPWD; 
     done'
 
-alias gitpull='fd --type d -H ".git" . | while read d; do
+alias gitpull='fd --type d -H "\.git" . | while read d; do
       cd $d/..; 
       echo "${BGREEN}${PWD}${REGULAR} - ${BBLUE}$(git branch --show-current)${REGULAR} >"; 
       git remote prune origin;
@@ -254,7 +253,7 @@ alias gitpull='fd --type d -H ".git" . | while read d; do
       cd $OLDPWD; 
     done'
 
-alias gitbranches='fd --type d -H ".git" . | sort | while read d; do
+alias gitbranches='fd --type d -H "\.git" . | sort | while read d; do
             cd $d/..;
             echo "\t${BGREEN}$(basename $PWD)${REGULAR}";
             git fetch --all > /dev/null;
