@@ -8,20 +8,25 @@
 [alias]
     co = checkout --recurse-submodules
     graph = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)%aD (%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
-[url "ssh://git@gitlab.ethz.ch/"]
-insteadOf = https://gitlab.ethz.ch/
+[status]
+    submoduleSummary = true
 [pull]
     rebase = true
     autoStash = true
+[push]
+    default = current
+    followtags = true
 [rebase]
     autoStash = true
+    autoSquash = true
 [merge]
     tool = code
     conflictstyle = diff3
 [mergetool "code"]
     cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [fetch]
-    # prune = true
+    prune = true
+    prunetags = true
 [init]
     defaultBranch = main
 [credential]
@@ -36,8 +41,24 @@ insteadOf = https://gitlab.ethz.ch/
     hyperlinks = true # link to GitHub/GitLab/Bitbucket
 [diff]
     colorMoved = default
+    algorithm = histogram
+[submodule]
+    recurse = true
+[rerere]
+    enabled = true
+[log]
+    date = iso
+[help]
+    autocorrect = 10 # run autocorrect suggestion after 1s
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
     required = true
+    submodule = log
+ 
+# replace HTTP with SSH
+[url "ssh://git@gitlab.ethz.ch/"]
+    insteadOf = "https://gitlab.ethz.ch/"
+[url "git@github.com:"]
+	insteadOf = "https://github.com/"
