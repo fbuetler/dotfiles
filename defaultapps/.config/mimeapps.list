@@ -1,0 +1,28 @@
+[Default Applications]
+application/pdf=org.gnome.Evince.desktop
+image/jpeg=viewnior.desktop
+image/png=viewnior.desktop
+message/rfc822=userapp-Thunderbird-TZ98N1.desktop
+text/plain=vim.desktop;
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-TZ98N1.desktop
+x-scheme-handler/mid=userapp-Thunderbird-TZ98N1.desktop
+x-scheme-handler/msteams=teams.desktop
+x-scheme-handler/postman=Postman.desktop
+
+[Added Associations]
+application/pdf=foxitreader.desktop;org.gnome.Evince.desktop;
+application/vnd.sqlite3=visual-studio-code.desktop;
+application/x-ms-wmz=gimp.desktop;
+image/gif=viewnior.desktop;
+image/jpeg=viewnior.desktop;
+image/png=viewnior.desktop;
+image/x-xcf=viewnior.desktop;
+message/rfc822=userapp-Thunderbird-GLYN3Z.desktop;
+text/install_instructions=visual-studio-code.desktop;
+text/plain=vim.desktop;visual-studio-code.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-GLYN3Z.desktop;userapp-Thunderbird-TZ98N1.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-TZ98N1.desktop;
