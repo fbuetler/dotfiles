@@ -27,7 +27,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/dp0]
-monitor = ${env:MONITOR:eDP-1}
+monitor = ${env:MONITOR_0:eDP-1-1}
 width = 100%
 height = 27
 ;offset-x = 1%
@@ -57,7 +57,7 @@ font-3 = FontAwesome:size=10
  
 modules-left = i3
 modules-center = 
-modules-right = updates-arch-combined vpn wlan wifi-data eth pulseaudio battery backlight cpu memory filesystem date
+modules-right = wifi-data wlan eth pulseaudio battery backlight cpu memory filesystem xkeyboard date
  
 tray-position = right
 tray-padding = 2
@@ -76,7 +76,7 @@ enable-scroll = false
 bottom = true
 
 [bar/dp1]
-monitor = ${env:MONITOR:HDMI-2}
+monitor = ${env:MONITOR_1:DP-2}
 width = 100%
 height = 27
 ;offset-x = 1%
@@ -106,7 +106,7 @@ font-3 = FontAwesome:size=10
 
 modules-left = i3
 modules-center =
-modules-right = updates-arch-combined vpn wlan wifi-data eth pulseaudio battery backlight cpu memory filesystem date
+modules-right = wifi-data wlan eth pulseaudio battery backlight cpu memory filesystem xkeyboard date
 
 tray-position = right
 tray-padding = 2
@@ -130,7 +130,6 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-mount-1 = /home
 
 format-mounted-underline = #c2c5cc
 
@@ -227,7 +226,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp4s0
+interface = wlp0s20f3
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -382,14 +381,6 @@ tail = true
 click-left = $HOME/.config/polybar/system-usb-udev.sh --mount
 click-right = $HOME/.config/polybar/system-usb-udev.sh --unmount
 
-[module/updates-arch-combined]
-type = custom/script
-exec = $HOME/.config/polybar/updates-arch-combined.sh
-interval = 600
-format-prefix = " "
-format = <label>
-format-underline = #0a6cf5
-
 [module/spotify]
 type = custom/script
 exec = python $HOME/.config/polybar/spotify_status.py -t 15 -f '{artist}: {song}'
@@ -403,7 +394,7 @@ type = custom/script
 interval = 1
 format-prefix = " "
 format = <label>
-exec = printf "TX: %s RX: %s" "$(ifconfig wlp4s0 | awk '/TX packets/ { print $6$7 }')" "$(ifconfig wlp4s0 | awk '/RX packets/ { print $6$7 }')"
+exec = printf "TX: %s RX: %s" "$(ifconfig wlp0s20f3 | awk '/TX packets/ { print $6$7 }')" "$(ifconfig wlp0s20f3 | awk '/RX packets/ { print $6$7 }')"
 format-underline = #7ec6e0
 ;#1db954
 

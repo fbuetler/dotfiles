@@ -155,9 +155,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # lock
-exec_always --no-startup-id /usr/bin/light-locker
-bindsym $mod+Delete		exec --no-startup-id light-locker-command --lock
-bindsym $mod+Shift+Delete	exec --no-startup-id light-locker-command --lock && systemctl suspend
+exec_always --no-startup-id /usr/bin/gnome-screensaver
+bindsym $mod+Delete		exec --no-startup-id gnome-screensaver-command --lock
+bindsym $mod+Shift+Delete	exec --no-startup-id gnome-screensaver-command --lock && systemctl suspend
 
 # screenshots
 bindsym --release Print		            exec scrot --select $HOME/Pictures/Screenshots/"$(date +%Y:%m:%d-%H%M%S.png)"
@@ -189,7 +189,7 @@ bindsym XF86Display exec --no-startup-id $HOME/.config/i3/update_monitor_state.s
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # background
-exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/i3/wallpaper.jpg"
+exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/i3/jammy-jellyfish.jpg"
 
 # auto start
 exec --no-startup-id nm-applet
@@ -197,3 +197,12 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id dunst
 exec --no-startup-id copyq
 
+# keyboard
+exec --no-startup-id "setxkbmap -layout 'ch,us' -variant 'de,' -option 'grp:alt_space_toggle'"
+
+# setup
+exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/firefox'
+
+exec --no-startup-id i3-msg 'workspace 10; exec /usr/bin/thunderbird'
+exec --no-startup-id i3-msg 'workspace 10; exec /usr/bin/spotify'
+exec --no-startup-id i3-msg 'workspace 10; exec /snap/bin/rocketchat-desktop'

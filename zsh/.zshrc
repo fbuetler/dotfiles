@@ -205,7 +205,7 @@ export UWHITE="\033[4;37m"
 
 ################### Aliases ############################
 
-alias conmon="xrandr --output $MONITOR_0 --auto --output $MONITOR_1 --auto --above $MONITOR_0 --primary; i3-msg -q restart"
+alias conmon="xrandr --output $MONITOR_0 --auto --primary --output $MONITOR_1 --auto --above $MONITOR_0; i3-msg -q restart"
 alias disconmon="xrandr --output $MONITOR_1 --off; i3-msg -q restart"
 alias dupmon="xrandr --output $MONITOR_1 --same-as $MONITOR_0 --auto; i3-msg -q restart"
 
