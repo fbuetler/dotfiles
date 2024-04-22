@@ -356,7 +356,7 @@ eval spaceship_vi_mode_enable
 # reload autocompletion once a day and dump it in zcompdump
 zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
 autoload -Uz compinit
-if [ $(date +'%j') != $(stat --format '@%Y' "$zcompdump" | xargs date +'%j' -d) ]; then
+if [[ -n "$zcompdump"/.zcompdump(#qN.mh+24) ]]; then
   compinit -d "$zcompdump"
 else
   compinit -d "$zcompdump" -C
@@ -368,6 +368,9 @@ fi
     zcompile "$zcompdump"
   fi
 } &!
+
+# zoxide
+eval "$(zoxide init --cmd cd zsh)"
 
 ################### Managed by others ############################
 
