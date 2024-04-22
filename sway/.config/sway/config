@@ -82,8 +82,11 @@ output HDMI-A-2 mode 1920x1080 position 0,0 scale 1
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-input type:keyboard xkb_layout "ch" 
-input type:keyboard xkb_variant "de"
+input type:keyboard {
+    xkb_layout "ch,us" 
+    xkb_variant "de,"
+    xkb_options "grp:alt_space_toggle"
+}
 
 ### Key bindings
 #

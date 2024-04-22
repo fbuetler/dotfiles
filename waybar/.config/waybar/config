@@ -21,6 +21,7 @@
         "memory",
         "disk",
         "disk#home",
+        "custom/keyboard",
         "idle_inhibitor",
         "clock",
         "tray"
@@ -188,5 +189,10 @@
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
+    },
+    "custom/keyboard": {
+        "exec": "swaymsg -t get_inputs | jq -r '.[] | select((.identifier == \"6058:20564:ThinkPad_Extra_Buttons\") and (.type == \"keyboard\")) | .xkb_active_layout_name' | awk '{if ($1 == \"English\") {print(\"US\")} else {print(\"CH\")}}'",
+        "interval": 1,
+        "format": "   {} "
     }
 }
