@@ -17,8 +17,9 @@
 ;==========================================================
 
 [colors]
-background = #80222222
-background-alt = #80444444
+# TTRRGGBB
+background = #FF222222
+background-alt = #FF444444
 foreground = #dfdfdf
 foreground-alt = #555555
 primary = #ffb52a
@@ -60,7 +61,7 @@ modules-right = updates-arch-combined vpn wlan wifi-data eth pulseaudio battery 
  
 tray-position = right
 tray-padding = 2
-;tray-background = #0063ff
+tray-background = ${colors.background}
  
 ;wm-restack = 
 override-redirect = false
@@ -109,7 +110,7 @@ modules-right = updates-arch-combined vpn wlan wifi-data eth pulseaudio battery 
 
 tray-position = right
 tray-padding = 2
-;tray-background = #0063ff
+tray-background = ${colors.background}
 
 ;wm-restack =
 override-redirect = false
