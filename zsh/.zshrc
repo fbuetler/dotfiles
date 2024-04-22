@@ -231,38 +231,38 @@ alias ls='exa'
 
 alias bell='echo -ne "\007"'
 
-alias gitlog='fd --type d -H "\.git" . | while read d; do
-   cd $d/..;
-   echo "${BGREEN}$PWD${REGULAR} >";
-   git --no-pager log --pretty=tformat:"%ad%x09%s" --author="Florian Bütler" --since=6.days;
-   cd $OLDPWD;
+alias gitlog='fd --type d --max-depth 3 --hidden --no-ignore "^\\.git$" . | while read d; do
+    cd $d/..;
+    echo "${BGREEN}$(basename $PWD)${REGULAR} - ${BBLUE}$(git branch --show-current)${REGULAR} >"; 
+    git --no-pager log --pretty=tformat:"%ad%x09%s" --author="Florian Bütler" --since=6.days;
+    cd $OLDPWD;
 done'
 
-alias gitstatus='fd --type d -H "\.git" . | while read d; do
-      cd $d/..; 
-      echo "${BGREEN}${PWD}${REGULAR} - ${BBLUE}$(git branch --show-current)${REGULAR} >"; 
-      git status --porcelain
-      cd $OLDPWD; 
-    done'
+alias gitstatus='fd --type d --max-depth 3 --hidden --no-ignore "^\\.git$" . | while read d; do
+    cd $d/..; 
+    echo "${BGREEN}$(basename $PWD)${REGULAR} - ${BBLUE}$(git branch --show-current)${REGULAR} >"; 
+    git status --porcelain
+    cd $OLDPWD; 
+done'
 
-alias gitpull='fd --type d -H "\.git" . | while read d; do
-      cd $d/..; 
-      echo "${BGREEN}${PWD}${REGULAR} - ${BBLUE}$(git branch --show-current)${REGULAR} >"; 
-      git remote prune origin;
-      git pull; 
-      cd $OLDPWD; 
-    done'
+alias gitpull='fd --type d --max-depth 3 --hidden --no-ignore "^\\.git$" . | while read d; do
+    cd $d/..; 
+    echo "${BGREEN}$(basename $PWD)${REGULAR} - ${BBLUE}$(git branch --show-current)${REGULAR} >"; 
+    git remote prune origin;
+    git pull; 
+    cd $OLDPWD; 
+done'
 
-alias gitbranches='fd --type d -H "\.git" . | sort | while read d; do
-            cd $d/..;
-            echo "\t${BGREEN}$(basename $PWD)${REGULAR}";
-            git fetch --all > /dev/null;
-            git remote prune origin;
-            for branch in `git branch -r | rg -v "HEAD|main|master|.*\d+\.\d+\.(\d+|x).*"`; do
-                echo -e "\t\t`git log --pretty=format:\"%<(30)%ci %<(30)%cr %<(20)%an\" $branch | head -n 1` \\t`echo -n \"$branch\" | cut -c 8-`";
-            done \
-            | sort -r;
-            cd $OLDPWD; \
+alias gitbranches='fd --type d --max-depth 3 --hidden --no-ignore "^\\.git$" . | sort | while read d; do
+    cd $d/..;
+    echo "\t${BGREEN}$(basename $PWD)${REGULAR} >"; 
+    git fetch --all > /dev/null;
+    git remote prune origin;
+    for branch in `git branch -r | rg -v "HEAD|main|master|.*\d+\.\d+\.(\d+|x).*"`; do
+        echo -e "\t\t`git log --pretty=format:\"%<(30)%ci %<(30)%cr %<(20)%an\" $branch | head -n 1` \\t`echo -n \"$branch\" | cut -c 8-`";
+    done \
+    | sort -r;
+    cd $OLDPWD; \
 done'
 
 ################### Functions ############################
