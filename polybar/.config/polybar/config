@@ -417,6 +417,11 @@ format-prefix = ""
 format = <label>
 format-underline = #1db954
 
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+
 [settings]
 screenchange-reload = true
 ;compositing-background = xor

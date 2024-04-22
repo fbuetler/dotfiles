@@ -37,7 +37,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec rofi -show run
-bindsym $mod+Shift+d exec rofi -show drun
+bindsym $mod+Shift+d exec rofi -show drun -show-icons
 
 # change focus
 bindsym $mod+h focus left
@@ -139,7 +139,7 @@ mode "resize" {
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
-        bindsym odiaeresis resize grow width 10 px or 10 ppt
+        bindsym h resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -160,11 +160,13 @@ bindsym $mod+Delete		exec --no-startup-id light-locker-command --lock
 bindsym $mod+Shift+Delete	exec --no-startup-id light-locker-command --lock && systemctl suspend
 
 # screenshots
-bindsym --release Print		exec scrot -s $HOME/Pictures/Screenshots/"$(date +%Y:%m:%d-%H%M%S.png)"
-bindsym --release shift+Print	exec scrot $HOME/Pictures/Screenshots/"$(date +%Y:%m:%d-%H%M%S.png)"
+bindsym --release Print		            exec scrot --select $HOME/Pictures/Screenshots/"$(date +%Y:%m:%d-%H%M%S.png)"
+bindsym --release shift+Print	        exec scrot $HOME/Pictures/Screenshots/"$(date +%Y:%m:%d-%H%M%S.png)"
+bindsym --release control+shift+Print	exec scrot --focused $HOME/Pictures/Screenshots/"$(date +%Y:%m:%d-%H%M%S.png)"
 
 # https://github.com/Coffelius/rofi-code
 bindsym $mod+c                  exec --no-startup-id rofi-code
+bindsym $mod+q                  exec --no-startup-id rofi-copyq
 
 # Volume Key Control 
 bindsym XF86AudioMute		exec amixer -D pulse set Master 1+ toggle  
@@ -186,13 +188,12 @@ bindsym XF86Display exec --no-startup-id $HOME/.config/i3/update_monitor_state.s
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# picom
-exec_always --no-startup-id picom -b -c
-
 # background
 exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/i3/wallpaper.jpg"
 
 # auto start
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
+exec --no-startup-id dunst
+exec --no-startup-id copyq
 
