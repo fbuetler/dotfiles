@@ -2,13 +2,6 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cmake.configureOnOpen": false,
-  "cmake.showOptionsMovedNotification": false,
-  "diffEditor.diffAlgorithm": "advanced",
-  "diffEditor.hideUnchangedRegions.enabled": true,
-  "diffEditor.ignoreTrimWhitespace": false,
-  "diffEditor.maxComputationTime": 0,
-  "diffEditor.renderSideBySide": true,
   "[dockerfile]": {
     "breadcrumbs.showBooleans": true,
     "editor.formatOnSave": false,
@@ -16,14 +9,73 @@
       "strings": true
     }
   },
+  "[go]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[java]": {
+    "breadcrumbs.showArrays": true,
+    "editor.defaultFormatter": "redhat.java",
+    "editor.suggest.snippetsPreventQuickSuggestions": false
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[latex]": {
+    "editor.formatOnPaste": false,
+    "editor.suggestSelection": "recentlyUsedByPrefix",
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 160,
+    "editor.wrappingIndent": "same"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnType": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 4
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "cmake.configureOnOpen": false,
+  "cmake.showOptionsMovedNotification": false,
+  "diffEditor.diffAlgorithm": "advanced",
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.maxComputationTime": 0,
+  "diffEditor.renderSideBySide": true,
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "always",
     "source.fixAll": "always",
     "source.organizeImports": "always"
   },
   "editor.cursorStyle": "line",
-  "editor.formatOnSave": true,
   "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.largeFileOptimizations": false,
   "editor.lineNumbers": "on",
@@ -34,6 +86,9 @@
   "editor.wordWrap": "off",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "files.associations": {
+    "*.xml": "xml"
+  },
   "files.autoSave": "onFocusChange",
   "files.exclude": {
     "**/.classpath": true,
@@ -52,11 +107,12 @@
   "gitlens.defaultDateFormat": "D MMM YYYY HH:mm",
   "gitlens.defaultDateShortFormat": "D MMM YYYY",
   "gitlens.defaultTimeFormat": "HH:mm",
-  "gitlens.graph.dimMergeCommits": true,
-  "gitlens.graph.dateFormat": null,
-  "gitlens.statusBar.pullRequests.enabled": false,
   "gitlens.graph.avatars": false,
-  "gitlens.graph.minimap.additionalTypes": ["localBranches"],
+  "gitlens.graph.dateFormat": null,
+  "gitlens.graph.dimMergeCommits": true,
+  "gitlens.graph.minimap.additionalTypes": [
+    "localBranches"
+  ],
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.remotes": [
     {
@@ -64,24 +120,24 @@
       "type": "BitbucketServer"
     }
   ],
+  "gitlens.statusBar.pullRequests.enabled": false,
   "go.formatTool": "goimports",
   "go.toolsManagement.autoUpdate": true,
   "go.useLanguageServer": true,
-  "gopls": { "ui.semanticTokens": true },
-  "[go]": {
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": "explicit"
-    }
-  },
-  "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
+  "gopls": {
+    "ui.semanticTokens": true
   },
   "intellicodeApiExamples.typescript.enabled": false,
-  "java.cleanup.actionsOnSave": ["addOverride"],
+  "java.cleanup.actionsOnSave": [
+    "addOverride"
+  ],
   "java.codeGeneration.generateComments": true,
   "java.compile.nullAnalysis.mode": "automatic",
   "java.completion.chain.enabled": true,
-  "java.completion.importOrder": ["#", ""],
+  "java.completion.importOrder": [
+    "#",
+    ""
+  ],
   "java.configuration.updateBuildConfiguration": "disabled",
   "java.eclipse.downloadSources": true,
   "java.help.firstView": "none",
@@ -90,36 +146,9 @@
   "java.maven.downloadSources": true,
   "java.project.importOnFirstTimeStartup": "automatic",
   "java.saveActions.organizeImports": true,
-  "[java]": {
-    "breadcrumbs.showArrays": true,
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
-    "editor.defaultFormatter": "redhat.java"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "latex-workshop.view.pdf.viewer": "browser",
   "latex-workshop.latex.autoBuild.run": "never",
-  "[latex]": {
-    "editor.formatOnPaste": false,
-    "editor.suggestSelection": "recentlyUsedByPrefix",
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 160,
-    "editor.wrappingIndent": "same"
-  },
+  "latex-workshop.view.pdf.viewer": "browser",
   "markdown.updateLinksOnFileMove.enabled": "always",
-  "[markdown]": {
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
-  },
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
@@ -132,33 +161,22 @@
   "python.languageServer": "Pylance",
   "python.showStartPage": false,
   "python.terminal.activateEnvironment": true,
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.formatOnType": true
-  },
   "redhat.telemetry.enabled": false,
-  "security.workspace.trust.untrustedFiles": "open",
   "scm.experimental.showHistoryGraph": true,
-  "terminal.integrated.persistentSessionReviveProcess": "never",
+  "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "terminal.integrated.enablePersistentSessions": false,
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 4
-  },
+  "terminal.integrated.persistentSessionReviveProcess": "never",
   "vim.enableNeovim": true,
-  "vim.neovimPath": "/usr/bin/nvim",
-  "vim.textwidth": 160,
   "vim.handleKeys": {
     "<C-p>": false
   },
-  "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "vim.neovimPath": "/usr/bin/nvim",
+  "vim.textwidth": 160,
   "vs-kubernetes": {
-    "vscode-kubernetes.minikube-path.linux": "~/.vs-kubernetes/tools/minikube/linux-amd64/minikube",
     "vs-kubernetes.crd-code-completion": "disabled",
-    "vs-kubernetes.minikube-show-information-expiration": "2024-04-14T14:07:29.675Z"
+    "vs-kubernetes.minikube-show-information-expiration": "2024-04-14T14:07:29.675Z",
+    "vscode-kubernetes.minikube-path.linux": "~/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
   },
   "window.zoomLevel": -1,
   "workbench.colorTheme": "Default Dark+",
@@ -169,15 +187,6 @@
   },
   "workbench.panel.defaultLocation": "right",
   "workbench.startupEditor": "newUntitledFile",
-  "yaml.format.bracketSpacing": false,
-  "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  },
-  "files.associations": {
-    "*.xml": "xml"
-  },
-  "[xml]": {
-    "editor.defaultFormatter": "DotJoshJohnson.xml"
-  },
-  "xmlTools.splitXmlnsOnFormat": false
+  "xmlTools.splitXmlnsOnFormat": false,
+  "yaml.format.bracketSpacing": false
 }
