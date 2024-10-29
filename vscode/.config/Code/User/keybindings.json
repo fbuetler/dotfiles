@@ -1,5 +1,6 @@
 // Place your key bindings in this file to override the defaults
 [
+  // copy/paste
   {
     "key": "ctrl+shift+c",
     "command": "editor.action.clipboardCopyAction",
@@ -20,6 +21,7 @@
     "command": "editor.action.clipboardPasteAction",
     "when": "editorTextFocus"
   },
+  // quick open
   {
     "key": "ctrl+e",
     "command": "-workbench.action.quickOpen"
@@ -29,6 +31,7 @@
     "command": "-workbench.action.quickOpen",
     "when": "terminalFocus"
   },
+  // cycle tabs
   {
     "key": "ctrl+tab",
     "command": "workbench.action.nextEditorInGroup"
