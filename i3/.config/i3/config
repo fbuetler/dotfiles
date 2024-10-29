@@ -198,7 +198,7 @@ exec --no-startup-id dunst
 exec --no-startup-id copyq
 
 # keyboard
-exec --no-startup-id "setxkbmap -layout 'ch,us' -variant 'de,' -option 'grp:alt_space_toggle'"
+exec_always -no-startup-id "setxkbmap -layout 'ch,us' -variant 'de,' -option 'grp:alt_space_toggle'"
 
 # setup
 exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/firefox'
