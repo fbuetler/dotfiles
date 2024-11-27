@@ -6,7 +6,7 @@
 # "~/.config/alacritty/keybindings.toml",
 # ]
 
-[shell]
+[terminal.shell]
 program = "/bin/zsh"
 
 # working_directory     = "None"
