@@ -157,7 +157,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export KUBECTL_EXTERNAL_DIFF="diff -N -u --color"
 
 # kubectl configs
-export KUBECONFIG="$HOME/.kube/ips:$HOME/.kube/akkp:$HOME/.kube/microk8s"
+export KUBECONFIG="$(fd --type file --max-depth 1 . $HOME/.kube | tr '\n' ':' | sed 's/:$/\n/')"
 #
 # podman
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
