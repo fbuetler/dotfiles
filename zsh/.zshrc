@@ -162,10 +162,6 @@ export KUBECONFIG="$HOME/.kube/ips:$HOME/.kube/akkp:$HOME/.kube/microk8s"
 # podman
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
 
-# monitors
-export MONITOR_0=$(xrandr | rg "\bconnected\b" | awk '{ print $1 }' | sed -n '1 p')
-export MONITOR_1=$(xrandr | rg "\bconnected\b" | awk '{ print $1 }' | sed -n '2 p')
-
 # podman
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
 export DOCKER_BUILDKIT=0 # https://github.com/containers/podman/issues/13889
@@ -205,9 +201,9 @@ export UWHITE="\033[4;37m"
 
 ################### Aliases ############################
 
-alias conmon="xrandr --output $MONITOR_0 --auto --primary --output $MONITOR_1 --auto --above $MONITOR_0; i3-msg -q restart"
-alias disconmon="xrandr --output $MONITOR_1 --off; i3-msg -q restart"
-alias dupmon="xrandr --output $MONITOR_1 --same-as $MONITOR_0 --auto; i3-msg -q restart"
+alias togo="$HOME/.screenlayout/togo.sh"
+alias office="$HOME/.screenlayout/office.sh"
+alias homeoffice="$HOME/.screenlayout/homeoffice.sh"
 
 alias mirrormon='pipectl -n wl-present -o | wl-mirror -S `slurp -b \#00000000 -B \#00000000 -c \#859900 -w 4 -f %o -or`'
 
