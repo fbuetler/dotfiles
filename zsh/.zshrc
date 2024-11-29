@@ -25,7 +25,7 @@ antigen use oh-my-zsh
 
 # Load the plugins.
 antigen bundles <<EOBUNDLES
-  extract 
+  extract
   command-not-found
   fzf
 
@@ -46,7 +46,7 @@ antigen apply
 ################### Zsh ############################
 
 # If you come from bash you might have to change your $PATH.
-export PATH="$PATH:/usr/local/bin:/opt:$HOME/.local/bin:$HOME/scripts"
+export PATH="$PATH:/usr/local/bin:/opt:$HOME/.local/bin:$HOME/scripts:$HOME/.mvn/bin"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -365,12 +365,12 @@ fi
   fi
 } &!
 
-# zoxide
-eval "$(zoxide init --cmd cd zsh)"
-
 ################### Managed by others ############################
 
 # nvm
 source /usr/share/nvm/init-nvm.sh
 
 # zprof
+
+# zoxide
+eval "$(zoxide init --cmd cd zsh)"
