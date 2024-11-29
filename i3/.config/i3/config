@@ -189,7 +189,7 @@ bindsym XF86Display exec --no-startup-id $HOME/.config/i3/update_monitor_state.s
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # background
-exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/i3/jammy-jellyfish.jpg"
+exec_always --no-startup-id feh --no-fehbg --bg-fill "$HOME/.config/i3/nobel-numbat.png"
 
 # auto start
 exec --no-startup-id nm-applet
