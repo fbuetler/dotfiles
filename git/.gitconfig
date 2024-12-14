@@ -1,8 +1,8 @@
-[user]
-    name = Florian Bütler
-    email = flbuetle@ethz.ch
-    # email = florian.buetler@hotmail.com
-    signingkey = E3C1B0D5A5ACAD4b
+[include]
+	path = ~/.config/git/gitconfig-default
+[includeIf "gitdir:~/git/inventage/**"]
+	path = ~/.config/git/gitconfig-inventage
+
 [core]
     excludesfile = $HOME/.gitignore
     pager = delta
