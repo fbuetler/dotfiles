@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
-# Terminate already running bar instances
-killall -q polybar
+set -eEuo pipefail
 
-# Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+# polybar dp0 >> "$HOME/.local/log/polybar.log" 2>&1 & disown
 
-# Launch bar
-polybar dp0 &
-polybar dp1 &
+polybar-msg cmd quit >> "$HOME/.local/log/polybar.log" 2>&1
 
-echo "Bars launched..."
+MONITORS=$(xrandr --listmonitors | awk '{ print $4}' | tail -n +2)
+for m in $MONITORS; do
+    MONITOR=$m polybar dp0 >> "$HOME/.local/log/polybar.log" 2>&1 & disown
+done
