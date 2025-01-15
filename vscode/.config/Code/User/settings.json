@@ -63,7 +63,9 @@
   },
   "cmake.configureOnOpen": false,
   "cmake.showOptionsMovedNotification": false,
+  "debug.showVariableTypes": true,
   "diffEditor.diffAlgorithm": "advanced",
+  "diffEditor.experimental.useVersion2": true,
   "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.maxComputationTime": 0,
@@ -99,6 +101,7 @@
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "never",
   "gitlens.advanced.messages": {
     "suppressLineUncommittedWarning": true
   },
@@ -124,8 +127,8 @@
   "go.formatTool": "goimports",
   "go.toolsManagement.autoUpdate": true,
   "go.useLanguageServer": true,
-  "gopls": {
-    "ui.semanticTokens": true
+  "[helm]": {
+    "editor.formatOnSave": false
   },
   "intellicodeApiExamples.typescript.enabled": false,
   "java.cleanup.actionsOnSave": [

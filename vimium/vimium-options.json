@@ -1,0 +1,15 @@
+{
+  "newTabUrl": "pages/blank.html",
+  "scrollStepSize": 100,
+  "settingsVersion": "2.1.2",
+  "exclusionRules": [
+    {
+      "passKeys": "",
+      "pattern": "https?://mail.google.com/*"
+    },
+    {
+      "passKeys": "d w m y",
+      "pattern": "https?://calendar.google.com/*"
+    }
+  ]
+}

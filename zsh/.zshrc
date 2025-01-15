@@ -136,14 +136,6 @@ export EDITOR="vim"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
-# haskell
-# https://wiki.archlinux.org/title/Haskell#ghcup
-export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
-
-# flyctl
-export FLYCTL_INSTALL="$HOME/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
-
 # bat, fd
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
