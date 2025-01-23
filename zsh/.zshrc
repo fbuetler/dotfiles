@@ -1,3 +1,6 @@
+#!/usr/bin/env zsh
+# https://github.com/protiumx/.dotfiles/blob/main/stow/zsh/.zshrc
+
 # zmodload zsh/zprof # for profiling: linked to last line
 
 ################### Zsh Line Editor ############################
@@ -19,7 +22,7 @@ bindkey -M viins '^[[B' history-substring-search-down
 
 ################### Antigen ############################
 
-source /usr/share/zsh/share/antigen.zsh
+source "$HOMEBREW_PREFIX/share/antigen/antigen.zsh"
 
 antigen use oh-my-zsh
 
@@ -65,7 +68,7 @@ export PATH="$PATH:/usr/local/bin:/opt:$HOME/.local/bin:$HOME/scripts:$HOME/.mvn
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -145,12 +148,20 @@ export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 # kubectl krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+# prefer brew CLIs
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+
 # kubectl diff
 export KUBECTL_EXTERNAL_DIFF="diff -N -u --color"
 
 # kubectl configs
 export KUBECONFIG="$(fd --type file --max-depth 1 . $HOME/.kube | tr '\n' ':' | sed 's/:$/\n/')"
-#
+
 # podman
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
 
@@ -204,7 +215,6 @@ alias ma='cd $HOME/Documents/01_Ausbildung/ETH/msc/MA'
 alias vis='cd $HOME/go/src/gitlab.ethz.ch/vis/cat'
 
 alias code='exec code .'
-alias open="xdg-open"
 
 alias getsecret="jq '.data.value' -r | base64 --decode | cut -c 1-"
 
@@ -212,12 +222,10 @@ alias mountdrive="sudo cryptsetup open /dev/sda drive; sudo mount /dev/mapper/dr
 alias umountdrive="sudo umount $HOME/media; sudo cryptsetup close drive"
 alias backup="sudo rsync -aAXvP --delete --exclude=/dev --exclude=/lost+found --exclude=/media --exclude=/proc --exclude=/sys --exclude=/tmp --exclude=/run --exclude=/mnt --exclude=/var --exclude=$HOME/Downloads --exclude=$HOME/git --exclude=$HOME/go --exclude=$HOME/tmp --exclude=$HOME/media --exclude=$HOME/.cache / $HOME/media"
 
-alias copy='clipcopy'
-alias paste='clippaste'
+alias copy='pbcopy'
+alias paste='pbpaste'
 
-alias ls='exa'
-
-alias bell='echo -ne "\007"'
+alias ls='eza'
 
 alias gitlog='fd --type d --max-depth 3 --hidden --no-ignore "^\\.git$" . | while read d; do
     cd $d/..;
@@ -360,9 +368,12 @@ fi
 ################### Managed by others ############################
 
 # nvm
-source /usr/share/nvm/init-nvm.sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  
 
 # zprof
 
 # zoxide
 eval "$(zoxide init --cmd cd zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

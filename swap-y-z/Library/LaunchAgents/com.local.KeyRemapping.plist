@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <!-- https://lukas.zapletalovi.com/posts/2021/swap-y-and-z-keys-on-us-keyboard-in-macos/ -->
+        <key>Label</key>
+        <string>com.local.KeyRemapping</string>
+        <key>ProgramArguments</key>
+        <array>
+            <!-- https://hidutil-generator.netlify.app/ -->
+            <string>/usr/bin/hidutil</string>
+            <string>property</string>
+            <string>--set</string>
+            <string>{"UserKeyMapping":[
+                {
+                    "HIDKeyboardModifierMappingSrc": 0x70000001C,
+                    "HIDKeyboardModifierMappingDst": 0x70000001D
+                },
+                {
+                    "HIDKeyboardModifierMappingSrc": 0x70000001D,
+                    "HIDKeyboardModifierMappingDst": 0x70000001C
+                }
+            ]}</string>
+        </array>
+        <key>RunAtLoad</key>
+        <true/>
+        <key>KeepAlive</key>
+        <false/>
+    </dict>
+</plist>

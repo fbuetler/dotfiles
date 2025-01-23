@@ -8,7 +8,9 @@
  * 
  * or alternatively see https://superuser.com/questions/1268732/how-to-hide-tab-bar-tabstrip-in-firefox-57-quantum
  */
-#main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar > .toolbar-items {
+#main-window[tabsintitlebar="true"]:not([extradragspace="true"])
+  #TabsToolbar
+  > .toolbar-items {
   opacity: 0;
   pointer-events: none;
 }
@@ -19,9 +21,17 @@
 /* Hide the "Tree Style Tab" header at the top of the sidebar
  *
  * see https://github.com/piroor/treestyletab/wiki/Code-snippets-for-custom-style-rules#hide-the-tree-style-tab-header-at-the-top-of-the-sidebar
- */ 
-
-#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+ */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]
+  #sidebar-header {
   display: none;
 }
 
+/* Hide the "Sidebery" header at the top of the sidebar
+ *
+ * see https://github.com/mbnuqw/sidebery/issues/448 
+ */
+#sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]
+  #sidebar-header {
+  display: none;
+}

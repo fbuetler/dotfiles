@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+ITEM_DIR="$CONFIG_DIR/items"
+
+##### Bar Appearance #####
+# Configuring the general appearance of the bar.
+# These are only some of the options available. For all options see:
+# https://felixkratz.github.io/SketchyBar/config/bar
+# If you are looking for other colors, see the color picker:
+# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+bar=(
+    position=bottom
+    display=all
+    topmost=window
+    sticky=on
+
+    height=30
+    blur_radius=30
+    color=0x40000000
+)
+sketchybar --bar "${bar[@]}"
+
+##### Changing Defaults #####
+# We now change some default values, which are applied to all further items.
+# For a full list of all available item properties see:
+# https://felixkratz.github.io/SketchyBar/config/items
+
+default=(
+    padding_left=5
+    padding_right=5
+    label.font="Hack Nerd Font:Bold:14.0"
+    label.color=0xffffffff
+    label.padding_left=4
+    label.padding_right=4
+    icon.font="Hack Nerd Font:Bold:17.0"
+    icon.color=0xffffffff
+    icon.padding_left=4
+    icon.padding_right=4
+)
+sketchybar --default "${default[@]}"
+
+source "$ITEM_DIR/workspaces.sh"
+source "$ITEM_DIR/indicator.sh"

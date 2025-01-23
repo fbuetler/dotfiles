@@ -1,0 +1,10 @@
+.yarn
+.git
+.elixir_ls
+node_modules
+_build
+.cache
+.Trash
+.licenses
+.venv
+venv
