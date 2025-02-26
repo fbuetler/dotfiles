@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Battery_battery_additional</key>
+        <string>percentage</string>
+        <key>Battery_battery_chargerInside</key>
+        <true />
+        <key>Battery_battery_color</key>
+        <false />
+        <key>Battery_battery_xlSize</key>
+        <false />
+        <key>Battery_color</key>
+        <false />
+        <key>Battery_notifications_low</key>
+        <string>0.03</string>
+        <key>Bluetooth_state</key>
+        <false />
+        <key>Clock_state</key>
+        <false />
+        <key>CombinedModules</key>
+        <true />
+        <key>CombinedModules_popup</key>
+        <false />
+        <key>CombinedModules_separator</key>
+        <false />
+        <key>Disk_disk</key>
+        <string>Macintosh HD</string>
+        <key>Disk_removable</key>
+        <true />
+        <key>GPU_state</key>
+        <true />
+        <key>LaunchAtLoginNext</key>
+        <true />
+        <key>NSStatusItem Preferred Position CombinedModules</key>
+        <real>239</real>
+        <key>NSStatusItem Restore Position Battery_battery</key>
+        <integer>238</integer>
+        <key>NSStatusItem Restore Position CPU_mini</key>
+        <integer>485</integer>
+        <key>NSStatusItem Restore Position Disk_mini</key>
+        <integer>344</integer>
+        <key>NSStatusItem Restore Position GPU_mini</key>
+        <integer>438</integer>
+        <key>NSStatusItem Restore Position Network_speed</key>
+        <integer>280</integer>
+        <key>NSStatusItem Restore Position RAM_mini</key>
+        <integer>391</integer>
+        <key>NSToolbar Configuration eu.exelban.Stats.Settings.Toolbar</key>
+        <dict>
+            <key>TB Display Mode</key>
+            <integer>1</integer>
+            <key>TB Icon Size Mode</key>
+            <integer>1</integer>
+            <key>TB Is Shown</key>
+            <true />
+            <key>TB Size Mode</key>
+            <integer>1</integer>
+        </dict>
+        <key>NSWindow Frame NSNavPanelAutosaveName</key>
+        <string>1065 939 430 163 0 0 2560 1415 </string>
+        <key>Network_VPNMode</key>
+        <false />
+        <key>Network_label_position</key>
+        <integer>1</integer>
+        <key>Network_networkChart_position</key>
+        <integer>2</integer>
+        <key>Network_notifications_connection_state</key>
+        <false />
+        <key>Network_notifications_interface_state</key>
+        <false />
+        <key>Network_notifications_localIP_state</key>
+        <false />
+        <key>Network_notifications_publicIP_state</key>
+        <false />
+        <key>Network_notifications_wifi_state</key>
+        <false />
+        <key>Network_speed_downloadColor</key>
+        <string>secondBlue</string>
+        <key>Network_speed_icon</key>
+        <string>none</string>
+        <key>Network_speed_mode</key>
+        <string>twoRows</string>
+        <key>Network_speed_position</key>
+        <integer>0</integer>
+        <key>Network_speed_valueAlignment</key>
+        <string>center</string>
+        <key>Network_speed_valueColor</key>
+        <string>none</string>
+        <key>Network_state_position</key>
+        <integer>3</integer>
+        <key>Network_text_position</key>
+        <integer>4</integer>
+        <key>Network_widget</key>
+        <string>speed</string>
+        <key>Sensors_barChart_position</key>
+        <integer>3</integer>
+        <key>Sensors_hid</key>
+        <false />
+        <key>Sensors_label_position</key>
+        <integer>2</integer>
+        <key>Sensors_mini_position</key>
+        <integer>0</integer>
+        <key>Sensors_sensor</key>
+        <string>Average System Total</string>
+        <key>Sensors_speed</key>
+        <false />
+        <key>Sensors_stack_position</key>
+        <integer>1</integer>
+        <key>Sensors_state</key>
+        <false />
+        <key>Sensors_unknown</key>
+        <false />
+        <key>Sensors_widget</key>
+        <string>mini</string>
+        <key>dockIcon</key>
+        <false />
+        <key>runAtLoginInitialized</key>
+        <true />
+        <key>sensor_F0Ac</key>
+        <false />
+        <key>sensor_TW0P</key>
+        <false />
+        <key>setupProcess</key>
+        <true />
+        <key>support_ts</key>
+        <integer>1738143460</integer>
+        <key>telemetry</key>
+        <false />
+        <key>telemetry_id</key>
+        <string>37524086-4812-4D13-953C-BBA7A39FCC4D</string>
+        <key>temperature_units</key>
+        <string>system</string>
+        <key>update-interval</key>
+        <string>Never</string>
+        <key>updater_check_ts</key>
+        <integer>1738143460</integer>
+        <key>version</key>
+        <string>2.11.28</string>
+    </dict>
+</plist>

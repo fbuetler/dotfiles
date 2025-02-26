@@ -75,6 +75,7 @@
     "source.fixAll": "always",
     "source.organizeImports": "always"
   },
+  "editor.accessibilitySupport": "off",
   "editor.cursorStyle": "line",
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
@@ -98,6 +99,7 @@
     "**/.project": true,
     "**/.settings": true
   },
+  "git-graph.repository.commits.showSignatureStatus": true,
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
@@ -163,6 +165,7 @@
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "terminal.integrated.enablePersistentSessions": false,
   "terminal.integrated.persistentSessionReviveProcess": "never",
+  "terminal.integrated.scrollback": 10000,
   "vim.enableNeovim": true,
   "vim.handleKeys": {
     "<C-p>": false
@@ -204,6 +207,5 @@
         "~/git/inventage/ips/portal-gateway/helm/src/main/resources/**/portal-gateway.json"
       ]
     }
-  ],
-  "editor.accessibilitySupport": "off"
+  ]
 }

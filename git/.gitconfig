@@ -4,8 +4,8 @@
 	path = ~/.config/git/gitconfig-inventage
 
 [core]
-    excludesfile = $HOME/.config/git/ignore
-    pager = delta
+    excludesfile = ~/.config/git/ignore
+    # pager = delta
 	autocrlf = input
 [color]
 	ui = auto
@@ -25,10 +25,6 @@
     graph = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)%aD (%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
     ign = ls-files -o -i --exclude-standard
     unstage = reset HEAD
-[commit]
-    # gpgsign = true
-[tag]
-    # gpgSign = true
 [status]
     showUntrackedFiles = all
     submoduleSummary = true
@@ -36,7 +32,8 @@
     rebase = true
     autoStash = true
 [push]
-	default = upstream
+	default = simple
+    autoSetupRemote = true
     followtags = true
 [rebase]
     autoStash = true
@@ -50,6 +47,7 @@
 [fetch]
     prune = true
     prunetags = true
+    all = true
 [init]
     defaultBranch = main
 [credential]
@@ -63,19 +61,26 @@
     light = false     # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
     hyperlinks = true # link to GitHub/GitLab/Bitbucket
 [diff]
-    colorMoved = default
+    colorMoved = plain
     algorithm = histogram
+    mnemonicPrefix = true
+    renames = true
 [submodule]
     recurse = true
 [rerere]
     # reuse recorded resolution
     enabled = true
+    autoupdate = true
 [log]
     date = iso
 [help]
-    autocorrect = 10 # run autocorrect suggestion after 1s
+    autocorrect = prompt
 [branch]
     sort = -committerdate
+[tag]
+    sort = version:refname
+[commit]
+    verbose = true
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f

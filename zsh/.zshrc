@@ -162,13 +162,6 @@ export KUBECTL_EXTERNAL_DIFF="diff -N -u --color"
 # kubectl configs
 export KUBECONFIG="$(fd --type file --max-depth 1 . $HOME/.kube | tr '\n' ':' | sed 's/:$/\n/')"
 
-# podman
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
-
-# podman
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
-export DOCKER_BUILDKIT=0 # https://github.com/containers/podman/issues/13889
-
 # kubectl krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
@@ -348,6 +341,9 @@ eval spaceship_vi_mode_enable
 #  source /usr/share/fzf/key-bindings.zsh
 #  source /usr/share/fzf/completion.zsh
 #fi
+
+# docker
+fpath=(/Users/f/.docker/completions $fpath)
 
 # reload autocompletion once a day and dump it in zcompdump
 zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"

@@ -1,4 +1,8 @@
 [user]
     name = Florian Bütler
-    email = florian.buetler@hotmail.com
-    signingkey = E3C1B0D5A5ACAD4b
+    email = florian.buetler@proton.me
+    signingkey = 12BCE1D740101EFE
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
