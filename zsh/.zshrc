@@ -160,7 +160,7 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export KUBECTL_EXTERNAL_DIFF="diff -N -u --color"
 
 # kubectl configs
-export KUBECONFIG="$(fd --type file --max-depth 1 . $HOME/.kube | tr '\n' ':' | sed 's/:$/\n/')"
+export KUBECONFIG="$(fd --type file --max-depth 1 --exclude "*.crt" --exclude "*.key" . $HOME/.kube | tr '\n' ':' | sed 's/:$/\n/')"
 
 # kubectl krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
@@ -196,6 +196,8 @@ export UCYAN="\033[4;36m"
 export UWHITE="\033[4;37m"
 
 ################### Aliases ############################
+
+alias vim=nvim
 
 alias togo="$HOME/.screenlayout/togo.sh"
 alias office="$HOME/.screenlayout/office.sh"
