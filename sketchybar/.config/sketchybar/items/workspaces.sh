@@ -6,10 +6,12 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 # aerospace/sketchybar monitor mapping
 declare -A MONITOR_MAPPING=(
-    ["1"]=2
-    ["2"]=1
-    ["3"]=3
+    ["1"]=1
+    # ["1"]=2
+    # ["2"]=1
+    # ["3"]=3
 )
+# source "$PLUGIN_DIR/monitor_mapping.sh"
 
 sketchybar --add event aerospace_workspace_change
 

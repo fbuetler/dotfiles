@@ -7,6 +7,14 @@
 # https://github.com/FelixKratz/SketchyBar/issues/628
 # https://github.com/nikitabobko/AeroSpace/issues/336
 
+declare -A MONITOR_MAPPING=(
+    ["1"]=1
+    # ["1"]=2
+    # ["2"]=1
+    # ["3"]=3
+)
+exit 0
+
 MONITOR_IDS=$(aerospace list-monitors --format '%{monitor-appkit-nsscreen-screens-id}')
 N_MONITORS=$(echo "$MONITOR_IDS" | wc -l)
 
