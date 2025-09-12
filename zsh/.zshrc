@@ -139,6 +139,9 @@ export EDITOR="vim"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
+# rust
+export PATH=$PATH:$(brew --prefix rustup)/bin
+
 # bat, fd
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
@@ -199,16 +202,6 @@ export UWHITE="\033[4;37m"
 
 alias vim=nvim
 
-alias togo="$HOME/.screenlayout/togo.sh"
-alias office="$HOME/.screenlayout/office.sh"
-alias homeoffice="$HOME/.screenlayout/homeoffice.sh"
-
-alias mirrormon='pipectl -n wl-present -o | wl-mirror -S `slurp -b \#00000000 -B \#00000000 -c \#859900 -w 4 -f %o -or`'
-
-alias sem='cd $HOME/Documents/01_Ausbildung/ETH/msc/Sem5'
-alias ma='cd $HOME/Documents/01_Ausbildung/ETH/msc/MA'
-alias vis='cd $HOME/go/src/gitlab.ethz.ch/vis/cat'
-
 alias code='exec code .'
 
 alias getsecret="jq '.data.value' -r | base64 --decode | cut -c 1-"
@@ -258,19 +251,6 @@ done'
 
 ################### Functions ############################
 
-function dip() {
-  OUTPUT="ID; Name; IPs; Ports; PublishedPorts\n"
-  docker ps --filter status=running --format "{{.ID}}" | while read -r line; do
-    PORTS=$(docker port "$line" | sed 's/\/.*:/ -> /g' | cut -f2 -d: | tr '\n' ', ')
-    if [ -z "${PORTS}" ]; then
-      OUTPUT="${OUTPUT}$(echo $line";" $(docker inspect --format '{{ .Name }}; {{range .NetworkSettings.Networks}}{{.IPAddress}} {{end}}; {{range $port, $val := .NetworkSettings.Ports }}{{ $port }} {{end}}; ' $line | sed 's/\///') 'none')\n"
-    else
-      OUTPUT="${OUTPUT}$(echo $line";" $(docker inspect --format '{{ .Name }}; {{range .NetworkSettings.Networks}}{{.IPAddress}} {{end}}; {{range $port, $val := .NetworkSettings.Ports }}{{ $port }} {{end}}; ' $line | sed 's/\///') ${PORTS})\n"
-    fi
-  done
-  echo $OUTPUT | column -t -s ';'
-}
-
 decode_base64_url() {
   local len=$((${#1} % 4))
   local result="$1"
@@ -302,6 +282,7 @@ sha256() {
 # https://spaceship-prompt.sh/config/prompt/#prompt-order
 
 SPACESHIP_PROMPT_ORDER=(
+  host
   venv
   dir       # Current directory section
   git       # Git section (git_branch + git_status)
