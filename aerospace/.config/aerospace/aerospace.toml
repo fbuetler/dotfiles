@@ -20,7 +20,7 @@ after-startup-command = [
 exec-on-workspace-change = [
     '/bin/bash',
     '-c',
-    'sketchybar --trigger aerospace_workspace_change AEROSPACE_FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE AEROSPACE_PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
+    'sketchybar --trigger aerospace_workspace_change AEROSPACE_FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
@@ -45,11 +45,14 @@ default-root-container-orientation = 'horizontal'
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 # Fallback value (if you omit the key): on-focused-monitor-changed = []
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focused-monitor-changed = [
+    'move-mouse monitor-lazy-center',
+    'exec-and-forget sketchybar --trigger aerospace_display_change',
+]
 
 on-focus-changed = [
     'move-mouse window-lazy-center',
-    'exec-and-forget sketchybar --trigger aerospace_workspace_change',
+    'exec-and-forget sketchybar --trigger aerospace_focus_change',
 ]
 
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
