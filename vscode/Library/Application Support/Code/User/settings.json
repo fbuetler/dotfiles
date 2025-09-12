@@ -7,7 +7,8 @@
     "editor.formatOnSave": false,
     "editor.quickSuggestions": {
       "strings": true
-    }
+    },
+    "editor.defaultFormatter": "docker.docker"
   },
   "[go]": {
     "editor.codeActionsOnSave": {
@@ -56,13 +57,45 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[xml]": {
-    "editor.defaultFormatter": "redhat.vscode-xml"
+    "editor.defaultFormatter": "redhat.vscode-xml",
+    "editor.formatOnSave": false
   },
   "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "diffEditor.ignoreTrimWhitespace": false
   },
+  "chat.commandCenter.enabled": false,
+  "comments.thread.confirmOnCollapse": "never",
   "cmake.configureOnOpen": false,
   "cmake.showOptionsMovedNotification": false,
+  "cSpell.userWords": [
+    "Adafruit",
+    "Appender",
+    "blub",
+    "certmagic",
+    "Chirpstack",
+    "DUTYCYCLE",
+    "freeradius",
+    "hass",
+    "hazelcast",
+    "infinispan",
+    "inventage",
+    "LORAWAN",
+    "macduff",
+    "MATOMO",
+    "Organisation",
+    "PKCE",
+    "QUARKUS",
+    "ROCKETCHAT",
+    "shellcheck",
+    "Substitutor",
+    "tailscale",
+    "templatize",
+    "traefik",
+    "uniport",
+    "Verticle",
+    "vertx"
+  ],
   "debug.showVariableTypes": true,
   "diffEditor.diffAlgorithm": "advanced",
   "diffEditor.experimental.useVersion2": true,
@@ -70,6 +103,7 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.maxComputationTime": 0,
   "diffEditor.renderSideBySide": true,
+  "docker.extension.enableComposeLanguageServer": false,
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "always",
     "source.fixAll": "always",
@@ -90,7 +124,9 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "files.associations": {
-    "*.xml": "xml"
+    "*.xml": "xml",
+    "*.go": "go",
+    "*.env": "properties"
   },
   "files.autoSave": "onFocusChange",
   "files.exclude": {
@@ -104,6 +140,98 @@
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "never",
+  "git.replaceTagsWhenPull": true,
+  "git.blame.editorDecoration.enabled": false,
+  "git.blame.statusBarItem.enabled": false,
+  "githubPullRequests.pullBranch": "never",
+  "githubPullRequests.defaultMergeMethod": "rebase",
+  "gitlens.views.scm.grouped.views": {
+    "commits": true,
+    "branches": true,
+    "remotes": true,
+    "stashes": true,
+    "tags": true,
+    "worktrees": true,
+    "contributors": true,
+    "fileHistory": false,
+    "repositories": false,
+    "searchAndCompare": true,
+    "launchpad": false
+  },
+  "gitlens.autolinks": [
+    {
+      "url": "https://inventage-all.atlassian.net/browse/PORTAL-<num>",
+      "prefix": "PORTAL-",
+      "alphanumeric": false
+    }
+  ],
+  "gitlens.statusBar.command": "gitlens.showCommitsInView",
+  "gitlens.changes.locations": ["gutter", "line", "overview"],
+  "gitlens.menus": {
+    "editor": {
+      "blame": true,
+      "clipboard": true,
+      "compare": true,
+      "history": true,
+      "remote": true
+    },
+    "editorGroup": false,
+    "editorGutter": {
+      "compare": true,
+      "remote": true,
+      "share": true
+    },
+    "editorTab": {
+      "clipboard": true,
+      "compare": true,
+      "history": true,
+      "remote": true
+    },
+    "explorer": {
+      "clipboard": true,
+      "compare": true,
+      "history": true,
+      "remote": true
+    },
+    "ghpr": {
+      "worktree": true
+    },
+    "scm": {
+      "graph": true
+    },
+    "scmRepositoryInline": {
+      "generateCommitMessage": true,
+      "graph": true,
+      "stash": true
+    },
+    "scmRepository": {
+      "authors": true,
+      "generateCommitMessage": true,
+      "patch": true,
+      "graph": false
+    },
+    "scmGroupInline": {
+      "stash": true
+    },
+    "scmGroup": {
+      "compare": true,
+      "openClose": true,
+      "patch": true,
+      "stash": true
+    },
+    "scmItemInline": {
+      "stash": false
+    },
+    "scmItem": {
+      "clipboard": true,
+      "compare": true,
+      "history": true,
+      "patch": true,
+      "remote": true,
+      "share": true,
+      "stash": true
+    }
+  },
   "gitlens.advanced.messages": {
     "suppressLineUncommittedWarning": true
   },
@@ -131,7 +259,7 @@
     "editor.formatOnSave": false
   },
   "intellicodeApiExamples.typescript.enabled": false,
-  "java.cleanup.actionsOnSave": ["addOverride"],
+  "java.cleanup.actions": ["addOverride"],
   "java.codeGeneration.generateComments": true,
   "java.compile.nullAnalysis.mode": "automatic",
   "java.completion.chain.enabled": true,
@@ -144,6 +272,20 @@
   "java.maven.downloadSources": true,
   "java.project.importOnFirstTimeStartup": "automatic",
   "java.saveActions.organizeImports": true,
+  "json.schemas": [
+    {
+      "url": "~/git/inventage/ips/portal-gateway/config-schemas/src/main/resources/schema/portalGatewayDynamicSchema.json",
+      "fileMatch": [
+        "~/git/inventage/ips/portal-gateway/helm/src/main/resources/**/dynamic-config/**/config.json"
+      ]
+    },
+    {
+      "url": "~/git/inventage/ips/portal-gateway/config-schemas/src/main/resources/schema/portalGatewayStaticSchema.json",
+      "fileMatch": [
+        "~/git/inventage/ips/portal-gateway/helm/src/main/resources/**/portal-gateway.json"
+      ]
+    }
+  ],
   "latex-workshop.latex.autoBuild.run": "never",
   "latex-workshop.view.pdf.viewer": "browser",
   "markdown.updateLinksOnFileMove.enabled": "always",
@@ -161,8 +303,10 @@
   "python.terminal.activateEnvironment": true,
   "redhat.telemetry.enabled": false,
   "scm.experimental.showHistoryGraph": true,
+  "search.searchView.keywordSuggestions": true,
   "security.workspace.trust.untrustedFiles": "open",
-  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "shellcheck.enableQuickFix": false,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.enablePersistentSessions": false,
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.scrollback": 10000,
@@ -174,11 +318,12 @@
   "vim.textwidth": 160,
   "vs-kubernetes": {
     "vs-kubernetes.crd-code-completion": "disabled",
-    "vs-kubernetes.minikube-show-information-expiration": "2024-04-14T14:07:29.675Z",
+    "vs-kubernetes.minikube-show-information-expiration": "2025-07-02T15:13:35.072Z",
     "vscode-kubernetes.minikube-path.linux": "~/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
   },
   "window.zoomLevel": -1,
   "workbench.colorTheme": "Default Dark+",
+  "workbench.editor.revealIfOpen": true,
   "workbench.editor.empty.hint": "hidden",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook",
@@ -186,26 +331,12 @@
   },
   "workbench.panel.defaultLocation": "right",
   "workbench.startupEditor": "newUntitledFile",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
   "xmlTools.splitXmlnsOnFormat": false,
   "yaml.format.bracketSpacing": false,
-  "chat.commandCenter.enabled": false,
   "yaml.schemas": {
     "~/git/inventage/ips/portal-helm-chart-library/helm/src/main/resources/values.schema.json": [
       "~/git/inventage/ips/*/helm/src/main/resources/**/values*.yaml"
     ]
-  },
-  "json.schemas": [
-    {
-      "url": "~/git/inventage/ips/portal-gateway/config-schemas/src/main/resources/schema/portalGatewayDynamicSchema.json",
-      "fileMatch": [
-        "~/git/inventage/ips/portal-gateway/helm/src/main/resources/**/dynamic-config/**/config.json"
-      ]
-    },
-    {
-      "url": "~/git/inventage/ips/portal-gateway/config-schemas/src/main/resources/schema/portalGatewayStaticSchema.json",
-      "fileMatch": [
-        "~/git/inventage/ips/portal-gateway/helm/src/main/resources/**/portal-gateway.json"
-      ]
-    }
-  ]
+  }
 }
