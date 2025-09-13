@@ -11,11 +11,10 @@ local QUERY_VISIBLE_WORKSPACES =
 
 local QUERY_FOCUSED_WORKSPACES = "aerospace list-workspaces --focused"
 
-local QUERY_WINDOWS = "aerospace list-windows --monitor all --format '%{workspace}%{app-name}' --json"
+local QUERY_WINDOWS = "aerospace list-windows --monitor all --format '%{workspace}' --json"
 
 local MONITOR_KEY = "monitor-appkit-nsscreen-screens-id"
 local WORKSPACE_KEY = "workspace"
-local APP_NAME_KEY = "app-name"
 
 local WORKSPACE_CHANGE_EVENT = "aerospace_workspace_change"
 local MONITOR_CHANGE_EVENT = "aerospace_display_change"
@@ -28,19 +27,23 @@ local root = sbar.add("item", {
 local workspaces = {}
 
 local function getWorkspacesState(f)
-    local open_windows = {}
+    local workspace_has_apps = {}
     sbar.exec(QUERY_WINDOWS, function(workspace_and_app)
         for _, entry in ipairs(workspace_and_app) do
-            local workspace_index, app = entry[WORKSPACE_KEY], entry[APP_NAME_KEY]
-            if open_windows[workspace_index] == nil then
-                open_windows[workspace_index] = {}
-            end
-            table.insert(open_windows[workspace_index], app)
+            local workspace_index = entry[WORKSPACE_KEY]
+            workspace_has_apps[workspace_index] = true
         end
 
         sbar.exec(QUERY_FOCUSED_WORKSPACES, function(focused_workspaces)
             local focused_workspace = focused_workspaces:match("^%s*(.-)%s*$")
+
             sbar.exec(QUERY_VISIBLE_WORKSPACES, function(visible_workspaces)
+                local workspace_is_visible = {}
+                for _, entry in ipairs(visible_workspaces) do
+                    local workspace_index = entry[WORKSPACE_KEY]
+                    workspace_is_visible[workspace_index] = true
+                end
+
                 sbar.exec(QUERY_WORKSPACES, function(workspaces_and_monitors)
                     local workspace_to_monitor = {}
                     for _, entry in ipairs(workspaces_and_monitors) do
@@ -50,9 +53,9 @@ local function getWorkspacesState(f)
                     end
 
                     local args = {
-                        open_windows = open_windows,
+                        workspace_has_apps = workspace_has_apps,
+                        workspace_is_visible = workspace_is_visible,
                         focused_workspace = focused_workspace,
-                        visible_workspaces = visible_workspaces,
                         workspace_to_monitor = workspace_to_monitor
                     }
                     f(args)
@@ -63,31 +66,13 @@ local function getWorkspacesState(f)
 end
 
 local function toggleWorkspaceVisibility(workspace_index, args)
-    local open_windows = args.open_windows[workspace_index]
+    local has_apps = args.workspace_has_apps[workspace_index]
+    local is_visible = args.workspace_is_visible[workspace_index]
     local focused_workspace = args.focused_workspace
-    local visible_workspaces = args.visible_workspaces
     local workspace_to_monitor = args.workspace_to_monitor
 
-    if open_windows == nil then
-        open_windows = {}
-    end
-
-    -- TODO maybe pass no_app directly
-    local no_app = true
-    for _, _ in ipairs(open_windows) do
-        no_app = false
-    end
-    local has_apps = not no_app
-
-    local is_visible = false
-    for _, visible_workspace in ipairs(visible_workspaces) do
-        if workspace_index == visible_workspace[WORKSPACE_KEY] then
-            is_visible = true
-            break
-        end
-    end
-
     -- show empty focused workspace/non-empty workspace
+    if (not has_apps and is_visible) or (has_apps) then
         workspaces[workspace_index]:set({
             display = workspace_to_monitor[workspace_index],
         })
@@ -95,7 +80,7 @@ local function toggleWorkspaceVisibility(workspace_index, args)
     end
 
     -- hide empty unfocused workspace
-    if no_app and workspace_index ~= focused_workspace then
+    if not has_apps and workspace_index ~= focused_workspace then
         workspaces[workspace_index]:set({
             display = 0,
         })
