@@ -28,7 +28,7 @@ local root = sbar.add("item", {
 
 local workspaces = {}
 
-local function withWindows(f)
+local function getWorkspacesState(f)
     local open_windows = {}
     sbar.exec(QUERY_WINDOWS, function(workspace_and_app)
         for _, entry in ipairs(workspace_and_app) do
@@ -40,10 +40,11 @@ local function withWindows(f)
         end
 
         sbar.exec(QUERY_FOCUSED_WORKSPACES, function(focused_workspaces)
+            local focused_workspace = focused_workspaces:match("^%s*(.-)%s*$")
             sbar.exec(QUERY_VISIBLE_WORKSPACES, function(visible_workspaces)
                 local args = {
                     open_windows = open_windows,
-                    focused_workspaces = focused_workspaces,
+                    focused_workspace = focused_workspace,
                     visible_workspaces = visible_workspaces
                 }
                 f(args)
@@ -52,9 +53,9 @@ local function withWindows(f)
     end)
 end
 
-local function updateWindow(workspace_index, args)
+local function toggleWorkspaceVisibility(workspace_index, args)
     local open_windows = args.open_windows[workspace_index]
-    local focused_workspaces = args.focused_workspaces
+    local focused_workspace = args.focused_workspace
     local visible_workspaces = args.visible_workspaces
 
     if open_windows == nil then
@@ -67,59 +68,36 @@ local function updateWindow(workspace_index, args)
         no_app = false
     end
 
-    sbar.animate(settings.animation.curve, settings.animation.duration, function()
-        -- show empty focused workspace
-        for _, visible_workspace in ipairs(visible_workspaces) do
-            if no_app and workspace_index == visible_workspace[WORKSPACE_KEY] then
-                local monitor_id = visible_workspace[MONITOR_KEY]
+    -- show empty focused workspace
+    for _, visible_workspace in ipairs(visible_workspaces) do
+        if no_app and workspace_index == visible_workspace[WORKSPACE_KEY] then
+            local monitor_id = visible_workspace[MONITOR_KEY]
 
-                workspaces[workspace_index]:set({
-                    icon = { drawing = true },
-                    label = { drawing = true },
-                    background = { drawing = true },
-                    display = monitor_id, -- TODO needed?
-                })
-                return
-            end
-        end
-
-        -- hide empty unfocused workspace
-        if no_app and workspace_index ~= focused_workspaces then
             workspaces[workspace_index]:set({
-                icon = { drawing = false },
-                label = { drawing = false },
-                background = { drawing = false },
+                display = monitor_id,
             })
             return
         end
+    end
 
-        -- show empty focused workspace (TODO redundant?)
-        if no_app and workspace_index == focused_workspaces then
-            workspaces[workspace_index]:set({
-                icon = { drawing = true },
-                label = { drawing = true },
-                background = { drawing = true },
-            })
-        end
-
-        -- show by default (TODO needed?)
+    -- hide empty unfocused workspace
+    if no_app and workspace_index ~= focused_workspace then
         workspaces[workspace_index]:set({
-            label = { drawing = true },
-            icon = { drawing = true },
-            background = { drawing = true },
+            display = 0,
         })
-    end)
+        return
+    end
 end
 
-local function updateWindows()
-    withWindows(function(args)
+local function toggleWorkspaceVisibilities()
+    getWorkspacesState(function(args)
         for workspace_index, _ in pairs(workspaces) do
-            updateWindow(workspace_index, args)
+            toggleWorkspaceVisibility(workspace_index, args)
         end
     end)
 end
 
-local function updateWorkspaceMonitor()
+local function displayWorkspacesOnMonitor()
     local workspace_monitor = {}
     sbar.exec(QUERY_WORKSPACES, function(workspaces_and_monitors)
         for _, entry in ipairs(workspaces_and_monitors) do
@@ -173,29 +151,29 @@ sbar.exec(QUERY_WORKSPACES, function(workspaces_and_monitors)
                 workspace:set({
                     background = {
                         border_width = is_focused and settings.workspace.border.width_focused or
-                            settings.workspace.border.width,
+                            settings.workspace.border.width, -- tenary operation
                     },
                 })
             end)
         end)
     end
 
-    root:subscribe(FOCUS_CHANGE_EVENT, function()
-        updateWindows()
+    root:subscribe(WORKSPACE_CHANGE_EVENT, function()
+        toggleWorkspaceVisibilities()
     end)
 
+    -- a monitor change also triggers a workspace change
     root:subscribe(MONITOR_CHANGE_EVENT, function()
-        updateWindows()
-        updateWorkspaceMonitor()
+        displayWorkspacesOnMonitor()
     end)
 
     -- initial setup
-    updateWindows()
-    updateWorkspaceMonitor()
+    toggleWorkspaceVisibilities()
+    displayWorkspacesOnMonitor()
 
     -- initial focus
-    sbar.exec(QUERY_FOCUSED_WORKSPACES, function(focused_workspace)
-        local focused_workspace = focused_workspace:match("^%s*(.-)%s*$")
+    sbar.exec(QUERY_FOCUSED_WORKSPACES, function(focused_workspaces)
+        local focused_workspace = focused_workspaces:match("^%s*(.-)%s*$")
         workspaces[focused_workspace]:set({
             background = { border_width = settings.workspace.border.width_focused },
         })
