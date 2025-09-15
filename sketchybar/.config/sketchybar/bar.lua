@@ -18,15 +18,15 @@
 -- )
 -- sketchybar --bar "${bar[@]}"
 
-local colors = require("colors")
+local settings = require("settings")
 
 sbar.bar({
-    position = "bottom",
-    display = "all",
-    topmost = "window",
-    sticky = "on",
+    position = settings.bar.position,
+    display = settings.bar.display,
+    topmost = settings.bar.topmost,
+    sticky = settings.bar.sticky,
 
-    height = 30,
-    blur_radius = 30,
-    color = colors.bar.background
+    height = settings.bar.height,
+    blur_radius = settings.bar.blur_radius,
+    color = settings.bar.color
 })

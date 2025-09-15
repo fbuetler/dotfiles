@@ -1,16 +1,14 @@
 #!/usr/bin/env lua
 
 return {
+    -- solid
     white = 0xffffffff,
+    black = 0xff000000,
+    yellow = 0xffffcc00,
 
-    bar = {
-        background = 0x40000000, -- transparent
-    },
-
-    workspace = {
-        background = 0x40ffffff, -- grey
-        border = 0xffffcc00,     -- yellow
-    },
+    -- transparent
+    transparent_grey = 0x40ffffff,
+    transparent_black = 0x40000000,
 
     with_alpha = function(color, alpha)
         if alpha > 1.0 or alpha < 0.0 then return color end

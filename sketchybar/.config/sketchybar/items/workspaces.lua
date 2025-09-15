@@ -102,23 +102,22 @@ sbar.exec(QUERY_WORKSPACES, function(workspaces_and_monitors)
 
         local workspace = sbar.add("item", {
             icon = {
-                align = "center",
+                align = settings.workspace.icon.align,
+                width = settings.workspace.icon.width,
                 padding_left = settings.workspace.icon.padding,
                 padding_right = settings.workspace.icon.padding,
                 string = workspace_index,
             },
             label = {
-                align = "center",
-                padding_left = settings.workspace.label.padding,
-                padding_right = settings.workspace.label.padding,
+                width = settings.workspace.label.width,
             },
             background = {
-                color = colors.workspace.background,
+                color = settings.workspace.background.color,
                 corner_radius = settings.workspace.background.corner_radius,
                 height = settings.workspace.background.height,
 
-                border_color = colors.workspace.border,
-                border_width = settings.workspace.border.width,
+                border_color = settings.workspace.background.border.color,
+                border_width = settings.workspace.background.border.width,
             },
             display = 0,
             click_script = "aerospace workspace " .. workspace_index,
@@ -133,8 +132,8 @@ sbar.exec(QUERY_WORKSPACES, function(workspaces_and_monitors)
             sbar.animate(settings.animation.curve, settings.animation.duration, function()
                 workspace:set({
                     background = {
-                        border_width = is_focused and settings.workspace.border.width_focused or
-                            settings.workspace.border.width, -- tenary operation
+                        border_width = is_focused and settings.workspace.background.border.width_focused or
+                            settings.workspace.background.border.width, -- tenary operation
                     },
                 })
             end)
@@ -161,7 +160,7 @@ sbar.exec(QUERY_WORKSPACES, function(workspaces_and_monitors)
     sbar.exec(QUERY_FOCUSED_WORKSPACES, function(focused_workspaces)
         local focused_workspace = focused_workspaces:match("^%s*(.-)%s*$")
         workspaces[focused_workspace]:set({
-            background = { border_width = settings.workspace.border.width_focused },
+            background = { border_width = settings.workspace.background.border.width_focused },
         })
     end)
 end)

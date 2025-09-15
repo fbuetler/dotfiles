@@ -1,25 +1,27 @@
 #!/usr/bin/env lua
 
+local settings = require("settings")
+
 local indicator = sbar.add("item", {
-    display = "active",
-    position = "center",
+    display = settings.indicator.display,
+    position = settings.indicator.position,
     drawing = false,
 
     icon = {
-        padding_left = 0,
-        padding_right = 0,
+        padding_left = settings.indicator.icon.padding,
+        padding_right = settings.indicator.icon.padding,
     },
     label = {
         string = "",
-        color = 0xff000000,
-        align = "center",
-        padding_left = 8,
-        padding_right = 8,
+        align = settings.indicator.label.align,
+        padding_left = settings.indicator.label.padding,
+        padding_right = settings.indicator.label.padding,
+        color = settings.indicator.label.color,
     },
     background = {
-        color = 0xffffcc00,
-        corner_radius = 5,
-        height = 25,
+        color = settings.indicator.background.color,
+        corner_radius = settings.indicator.background.corner_radius,
+        height = settings.indicator.background.height,
     },
 })
 

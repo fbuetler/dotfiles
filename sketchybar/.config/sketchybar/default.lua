@@ -22,32 +22,31 @@
 -- sketchybar --default "${default[@]}"
 
 local settings = require("settings")
-local colors = require("colors")
 
 -- Equivalent to the --default domain
 sbar.default({
-    padding_left = 5,
-    padding_right = 5,
-
-    label = {
-        font = {
-            family = settings.font.text,
-            style = settings.font.style_map["Bold"],
-            size = 14.0
-        },
-        color = colors.white,
-        padding_left = settings.paddings,
-        padding_right = settings.paddings,
-    },
+    padding_left = settings.default.padding_left,
+    padding_right = settings.default.padding_right,
 
     icon = {
         font = {
-            family = settings.font.text,
-            style = settings.font.style_map["Bold"],
-            size = 17.0
+            family = settings.default.font.text,
+            style = settings.default.font.style_map[settings.default.icon.font.style],
+            size = settings.default.icon.font.size,
         },
-        color = colors.white,
-        padding_left = settings.paddings,
-        padding_right = settings.paddings,
+        color = settings.default.icon.color,
+        padding_left = settings.default.icon.padding_left,
+        padding_right = settings.default.icon.padding_right,
+    },
+
+    label = {
+        font = {
+            family = settings.default.font.text,
+            style = settings.default.font.style_map[settings.default.label.font.style],
+            size = settings.default.label.font.size,
+        },
+        color = settings.default.label.color,
+        padding_left = settings.default.label.padding_left,
+        padding_right = settings.default.label.padding_right,
     },
 })
