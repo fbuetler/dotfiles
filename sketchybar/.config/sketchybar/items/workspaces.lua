@@ -23,9 +23,9 @@ local root = sbar.add("item", {
 
 local workspaces = {}
 
-local function getWorkspacesState(f)
-    local workspace_has_apps = {}
+local function getState(callback)
     sbar.exec(QUERY_WINDOWS, function(workspace_and_app)
+        local workspace_has_apps = {}
         for _, entry in ipairs(workspace_and_app) do
             local workspace_index = entry[WORKSPACE_KEY]
             workspace_has_apps[workspace_index] = true
@@ -46,64 +46,61 @@ local function getWorkspacesState(f)
                     workspace_to_monitor[workspace_index] = monitor_id
                 end
 
-                local args = {
+                local state = {
                     workspace_has_apps = workspace_has_apps,
                     workspace_is_visible = workspace_is_visible,
                     workspace_to_monitor = workspace_to_monitor
                 }
-                f(args)
+                callback(state)
             end)
         end)
     end)
 end
 
-local function toggleWorkspaceVisibility(workspace_index, args)
-    local has_apps = args.workspace_has_apps[workspace_index]
-    local is_visible = args.workspace_is_visible[workspace_index]
-    local workspace_to_monitor = args.workspace_to_monitor
-
+local function setVisibility(workspace, has_apps, is_visible, monitor)
     -- show empty focused workspace/non-empty workspace
     if (not has_apps and is_visible) or (has_apps) then
-        workspaces[workspace_index]:set({
-            display = workspace_to_monitor[workspace_index],
+        workspace:set({
+            display = monitor,
         })
         return
     end
 
     -- hide empty unfocused workspace
     if not has_apps and not is_visible then
-        workspaces[workspace_index]:set({
+        workspace:set({
             display = 0,
         })
         return
     end
 end
 
-local function toggleWorkspaceVisibilities()
-    getWorkspacesState(function(args)
-        for workspace_index, _ in pairs(workspaces) do
-            toggleWorkspaceVisibility(workspace_index, args)
-        end
+local function setHighlight(workspace, is_visible)
+    sbar.animate(settings.animation.curve, settings.animation.duration, function()
+        workspace:set({
+            background = {
+                border_width = is_visible and settings.workspace.background.border.width_focused or
+                    settings.workspace.background.border.width,
+            },
+        })
     end)
 end
 
-local function toggleWorkspaceHighlight(workspace, workspace_index)
-    sbar.exec(QUERY_VISIBLE_WORKSPACES, function(visible_workspaces)
-        local workspace_is_visible = {}
-        for _, entry in ipairs(visible_workspaces) do
-            workspace_is_visible[entry[WORKSPACE_KEY]] = true
+local function update()
+    getState(function(state)
+        for workspace_index, workspace in pairs(workspaces) do
+            setVisibility(
+                workspace,
+                state.workspace_has_apps[workspace_index],
+                state.workspace_is_visible[workspace_index],
+                state.workspace_to_monitor[workspace_index]
+            )
+
+            setHighlight(
+                workspace,
+                state.workspace_is_visible[workspace_index]
+            )
         end
-
-        local is_visible = workspace_is_visible[workspace_index]
-
-        sbar.animate(settings.animation.curve, settings.animation.duration, function()
-            workspace:set({
-                background = {
-                    border_width = is_visible and settings.workspace.background.border.width_focused or
-                        settings.workspace.background.border.width,
-                },
-            })
-        end)
     end)
 end
 
@@ -134,33 +131,22 @@ sbar.exec(QUERY_WORKSPACES, function(workspaces_and_monitors)
             click_script = "aerospace workspace " .. workspace_index,
         })
 
-        -- initial focus
-        toggleWorkspaceHighlight(workspace, workspace_index)
-
         workspaces[workspace_index] = workspace
-
-        workspace:subscribe(WORKSPACE_CHANGE_EVENT, function(env)
-            toggleWorkspaceHighlight(workspace, workspace_index)
-        end)
-
-        workspace:subscribe(MONITOR_CHANGE_EVENT, function(env)
-            toggleWorkspaceHighlight(workspace, workspace_index)
-        end)
     end
 
+    -- initial
+    update()
+
     -- all combinations of workspace and monitor change events may happen:
-    -- only workspace: change workspace on same monitor
+    -- only workspace: switch to workspace on same monitor
     -- only monitor: move workspace between monitors
-    -- both: change workspace on another monitor
+    -- both: switch to workspace on another monitor
 
     root:subscribe(WORKSPACE_CHANGE_EVENT, function()
-        toggleWorkspaceVisibilities()
+        update()
     end)
 
     root:subscribe(MONITOR_CHANGE_EVENT, function()
-        toggleWorkspaceVisibilities()
+        update()
     end)
-
-    -- initial visibility
-    toggleWorkspaceVisibilities()
 end)
