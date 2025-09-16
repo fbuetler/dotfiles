@@ -1,6 +1,5 @@
 #!/usr/bin/env lua
 
-local colors = require("colors")
 local settings = require("settings")
 
 local QUERY_WORKSPACES =
@@ -19,7 +18,7 @@ local WORKSPACE_KEY = "workspace"
 local WORKSPACE_CHANGE_EVENT = "aerospace_workspace_change"
 local MONITOR_CHANGE_EVENT = "aerospace_display_change"
 
--- Add padding to the left
+-- Add dummy item as global events receiver
 local root = sbar.add("item", {
     width = 0,
 })
@@ -34,32 +33,27 @@ local function getWorkspacesState(f)
             workspace_has_apps[workspace_index] = true
         end
 
-        sbar.exec(QUERY_FOCUSED_WORKSPACES, function(focused_workspaces)
-            local focused_workspace = focused_workspaces:match("^%s*(.-)%s*$")
+        sbar.exec(QUERY_VISIBLE_WORKSPACES, function(visible_workspaces)
+            local workspace_is_visible = {}
+            for _, entry in ipairs(visible_workspaces) do
+                local workspace_index = entry[WORKSPACE_KEY]
+                workspace_is_visible[workspace_index] = true
+            end
 
-            sbar.exec(QUERY_VISIBLE_WORKSPACES, function(visible_workspaces)
-                local workspace_is_visible = {}
-                for _, entry in ipairs(visible_workspaces) do
+            sbar.exec(QUERY_WORKSPACES, function(workspaces_and_monitors)
+                local workspace_to_monitor = {}
+                for _, entry in ipairs(workspaces_and_monitors) do
                     local workspace_index = entry[WORKSPACE_KEY]
-                    workspace_is_visible[workspace_index] = true
+                    local monitor_id = entry[MONITOR_KEY]
+                    workspace_to_monitor[workspace_index] = monitor_id
                 end
 
-                sbar.exec(QUERY_WORKSPACES, function(workspaces_and_monitors)
-                    local workspace_to_monitor = {}
-                    for _, entry in ipairs(workspaces_and_monitors) do
-                        local workspace_index = entry[WORKSPACE_KEY]
-                        local monitor_id = entry[MONITOR_KEY]
-                        workspace_to_monitor[workspace_index] = monitor_id
-                    end
-
-                    local args = {
-                        workspace_has_apps = workspace_has_apps,
-                        workspace_is_visible = workspace_is_visible,
-                        focused_workspace = focused_workspace,
-                        workspace_to_monitor = workspace_to_monitor
-                    }
-                    f(args)
-                end)
+                local args = {
+                    workspace_has_apps = workspace_has_apps,
+                    workspace_is_visible = workspace_is_visible,
+                    workspace_to_monitor = workspace_to_monitor
+                }
+                f(args)
             end)
         end)
     end)
@@ -68,7 +62,6 @@ end
 local function toggleWorkspaceVisibility(workspace_index, args)
     local has_apps = args.workspace_has_apps[workspace_index]
     local is_visible = args.workspace_is_visible[workspace_index]
-    local focused_workspace = args.focused_workspace
     local workspace_to_monitor = args.workspace_to_monitor
 
     -- show empty focused workspace/non-empty workspace
@@ -80,7 +73,7 @@ local function toggleWorkspaceVisibility(workspace_index, args)
     end
 
     -- hide empty unfocused workspace
-    if not has_apps and workspace_index ~= focused_workspace then
+    if not has_apps and not is_visible then
         workspaces[workspace_index]:set({
             display = 0,
         })
