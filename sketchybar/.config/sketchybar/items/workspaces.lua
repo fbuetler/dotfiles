@@ -8,8 +8,6 @@ local QUERY_WORKSPACES =
 local QUERY_VISIBLE_WORKSPACES =
 "aerospace list-workspaces --visible --monitor all --format '%{workspace}' --json"
 
-local QUERY_FOCUSED_WORKSPACES = "aerospace list-workspaces --focused"
-
 local QUERY_WINDOWS = "aerospace list-windows --monitor all --format '%{workspace}' --json"
 
 local MONITOR_KEY = "monitor-appkit-nsscreen-screens-id"
@@ -89,6 +87,26 @@ local function toggleWorkspaceVisibilities()
     end)
 end
 
+local function toggleWorkspaceHighlight(workspace, workspace_index)
+    sbar.exec(QUERY_VISIBLE_WORKSPACES, function(visible_workspaces)
+        local workspace_is_visible = {}
+        for _, entry in ipairs(visible_workspaces) do
+            workspace_is_visible[entry[WORKSPACE_KEY]] = true
+        end
+
+        local is_visible = workspace_is_visible[workspace_index]
+
+        sbar.animate(settings.animation.curve, settings.animation.duration, function()
+            workspace:set({
+                background = {
+                    border_width = is_visible and settings.workspace.background.border.width_focused or
+                        settings.workspace.background.border.width,
+                },
+            })
+        end)
+    end)
+end
+
 sbar.exec(QUERY_WORKSPACES, function(workspaces_and_monitors)
     for _, entry in ipairs(workspaces_and_monitors) do
         local workspace_index = entry.workspace
@@ -116,20 +134,17 @@ sbar.exec(QUERY_WORKSPACES, function(workspaces_and_monitors)
             click_script = "aerospace workspace " .. workspace_index,
         })
 
+        -- initial focus
+        toggleWorkspaceHighlight(workspace, workspace_index)
+
         workspaces[workspace_index] = workspace
 
         workspace:subscribe(WORKSPACE_CHANGE_EVENT, function(env)
-            local focused_workspace = env.AEROSPACE_FOCUSED_WORKSPACE
-            local is_focused = focused_workspace == workspace_index
+            toggleWorkspaceHighlight(workspace, workspace_index)
+        end)
 
-            sbar.animate(settings.animation.curve, settings.animation.duration, function()
-                workspace:set({
-                    background = {
-                        border_width = is_focused and settings.workspace.background.border.width_focused or
-                            settings.workspace.background.border.width, -- tenary operation
-                    },
-                })
-            end)
+        workspace:subscribe(MONITOR_CHANGE_EVENT, function(env)
+            toggleWorkspaceHighlight(workspace, workspace_index)
         end)
     end
 
@@ -148,12 +163,4 @@ sbar.exec(QUERY_WORKSPACES, function(workspaces_and_monitors)
 
     -- initial visibility
     toggleWorkspaceVisibilities()
-
-    -- initial focus
-    sbar.exec(QUERY_FOCUSED_WORKSPACES, function(focused_workspaces)
-        local focused_workspace = focused_workspaces:match("^%s*(.-)%s*$")
-        workspaces[focused_workspace]:set({
-            background = { border_width = settings.workspace.background.border.width_focused },
-        })
-    end)
 end)
