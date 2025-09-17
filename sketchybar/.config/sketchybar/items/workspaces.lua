@@ -2,16 +2,56 @@
 
 local settings = require("settings")
 
-local QUERY_WORKSPACES =
-"aerospace list-workspaces --all --format '%{workspace}%{monitor-appkit-nsscreen-screens-id}' --json"
-
 local QUERY_VISIBLE_WORKSPACES =
 "aerospace list-workspaces --visible --monitor all --format '%{workspace}' --json"
 
 local QUERY_WINDOWS = "aerospace list-windows --monitor all --format '%{workspace}' --json"
 
-local MONITOR_KEY = "monitor-appkit-nsscreen-screens-id"
+local QUERY_WORKSPACES_AND_SCREENS =
+"aerospace list-workspaces --all --format '%{workspace}%{monitor-appkit-nsscreen-screens-id}' --json"
+
+local QUERY_SCREENS_AND_DISPLAYS = [[
+swift -e '
+    import AppKit;
+    import CoreGraphics;
+    import Foundation;
+
+    struct ScreenInfo: Encodable {
+        let nsscreenId: Int
+        let displayId: Int
+
+        enum CodingKeys: String, CodingKey {
+            case nsscreenId = "monitor-appkit-nsscreen-screens-id"
+            case displayId = "display-id"
+        }
+    }
+
+    var screensInfo = [ScreenInfo]()
+
+    for (i, scr) in NSScreen.screens.enumerated() {
+        let n = scr.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as! NSNumber
+        let screen = ScreenInfo(nsscreenId: i + 1, displayId: n.intValue)
+        screensInfo.append(screen)
+    }
+
+    do {
+        let jsonData = try JSONEncoder().encode(screensInfo)
+        if let jsonString = String(data: jsonData, encoding: .utf8) {
+            print(jsonString)
+        }
+    } catch {
+        print("Error encoding JSON: \(error)")
+    }
+'
+]]
+
+local QUERY_DISPLAYS_ARRANGEMENTS = "sketchybar --query displays"
+
 local WORKSPACE_KEY = "workspace"
+local SCREEN_KEY = "monitor-appkit-nsscreen-screens-id"
+local DISPLAY_KEY = "display-id"
+local DIRECT_ID = "DirectDisplayID"
+local ARRANGEMENT_KEY = "arrangement-id"
 
 local WORKSPACE_CHANGE_EVENT = "aerospace_workspace_change"
 local MONITOR_CHANGE_EVENT = "aerospace_display_change"
@@ -38,30 +78,69 @@ local function getState(callback)
                 workspace_is_visible[workspace_index] = true
             end
 
-            sbar.exec(QUERY_WORKSPACES, function(workspaces_and_monitors)
-                local workspace_to_monitor = {}
-                for _, entry in ipairs(workspaces_and_monitors) do
+            -- the following part is real ugly
+            -- * aerospace uses NSScreen to display its workspaces on
+            -- * sketchybar uses DirectScreen to display its items on
+            -- * both have their internal numeration of monitors: monitor-id (aerospace)/arrangement-id (sketchybar)
+            -- * they do not share an ordering
+            -- hence, in order to map a aerospace workspace to a sketchybar item, we need
+            -- * to query the OS to get a mapping from NSScreen to DirectScreen
+            -- then we can create the mapping:
+            -- workspace (monitor-id) -> NSScreen -> DirectScreen -> item (arrangement-id)
+
+            -- workspace (aerospace) on NSScreen
+            sbar.exec(QUERY_WORKSPACES_AND_SCREENS, function(workspaces_and_screens)
+                local workspace_to_screen = {}
+                for _, entry in ipairs(workspaces_and_screens) do
                     local workspace_index = entry[WORKSPACE_KEY]
-                    local monitor_id = entry[MONITOR_KEY]
-                    workspace_to_monitor[workspace_index] = monitor_id
+                    local screen_id = entry[SCREEN_KEY]
+                    workspace_to_screen[workspace_index] = screen_id
                 end
 
-                local state = {
-                    workspace_has_apps = workspace_has_apps,
-                    workspace_is_visible = workspace_is_visible,
-                    workspace_to_monitor = workspace_to_monitor
-                }
-                callback(state)
+                -- NSScreen to Direct
+                sbar.exec(QUERY_SCREENS_AND_DISPLAYS, function(screens_and_displays)
+                    local screen_to_display = {}
+                    for _, entry in ipairs(screens_and_displays) do
+                        local screen_id = entry[SCREEN_KEY]
+                        local display_id = entry[DISPLAY_KEY]
+                        screen_to_display[screen_id] = display_id
+                    end
+
+
+                    -- Direct to arrangement (sketchybar)
+                    sbar.exec(QUERY_DISPLAYS_ARRANGEMENTS, function(displays_and_arrangements)
+                        local display_to_arrangement = {}
+                        for _, entry in ipairs(displays_and_arrangements) do
+                            local display_id = entry[DIRECT_ID]
+                            local arrangement_id = entry[ARRANGEMENT_KEY]
+                            display_to_arrangement[display_id] = arrangement_id
+                        end
+
+                        -- workspace (aerospace) to arrangement (sketchybar)
+                        local workspace_to_arrangement = {}
+                        for workspace_index, screen_id in pairs(workspace_to_screen) do
+                            workspace_to_arrangement[workspace_index] = display_to_arrangement
+                                [screen_to_display[screen_id]]
+                        end
+
+                        local state = {
+                            workspace_has_apps = workspace_has_apps,
+                            workspace_is_visible = workspace_is_visible,
+                            workspace_to_arrangement = workspace_to_arrangement
+                        }
+                        callback(state)
+                    end)
+                end)
             end)
         end)
     end)
 end
 
-local function setVisibility(workspace, has_apps, is_visible, monitor)
+local function setVisibility(workspace, has_apps, is_visible, display)
     -- show empty focused workspace/non-empty workspace
     if (not has_apps and is_visible) or (has_apps) then
         workspace:set({
-            display = monitor,
+            display = display,
         })
         return
     end
@@ -93,7 +172,7 @@ local function update()
                 workspace,
                 state.workspace_has_apps[workspace_index],
                 state.workspace_is_visible[workspace_index],
-                state.workspace_to_monitor[workspace_index]
+                state.workspace_to_arrangement[workspace_index]
             )
 
             setHighlight(
@@ -104,7 +183,7 @@ local function update()
     end)
 end
 
-sbar.exec(QUERY_WORKSPACES, function(workspaces_and_monitors)
+sbar.exec(QUERY_WORKSPACES_AND_SCREENS, function(workspaces_and_monitors)
     for _, entry in ipairs(workspaces_and_monitors) do
         local workspace_index = entry.workspace
 
