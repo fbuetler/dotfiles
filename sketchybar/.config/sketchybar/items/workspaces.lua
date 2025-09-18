@@ -10,6 +10,8 @@ local QUERY_WINDOWS = "aerospace list-windows --monitor all --format '%{workspac
 local QUERY_WORKSPACES_AND_SCREENS =
 "aerospace list-workspaces --all --format '%{workspace}%{monitor-appkit-nsscreen-screens-id}' --json"
 
+local QUERY_MONITOR_COUNT = "aerospace list-monitors --count | tr -d '\n'"
+
 local QUERY_SCREENS_AND_DISPLAYS = [[
 swift -e '
     import AppKit;
@@ -63,6 +65,49 @@ local root = sbar.add("item", {
 
 local workspaces = {}
 
+local screen_to_arrangement_cache = {}
+
+-- the query to get the mapping from NSScreen to DirectDisplay is expensive
+-- hence we cache it here based on the number of monitors we have
+-- (ASSUMPTION: the mapping does not change while the number of monitors stays the same)
+local function getScreenToArrangement(callback)
+    sbar.exec(QUERY_MONITOR_COUNT, function(current_monitors)
+        local cached_screen_to_arrangement = screen_to_arrangement_cache[current_monitors]
+        if cached_screen_to_arrangement ~= nil then
+            callback(cached_screen_to_arrangement) -- hit
+            return
+        end
+
+        local screen_to_arrangement = {} -- miss
+
+        -- Direct to arrangement (sketchybar)
+        sbar.exec(QUERY_DISPLAYS_ARRANGEMENTS, function(displays_and_arrangements)
+            local display_to_arrangement = {}
+            for _, entry in ipairs(displays_and_arrangements) do
+                local display_id = entry[DIRECT_ID]
+                local arrangement_id = entry[ARRANGEMENT_KEY]
+                display_to_arrangement[display_id] = arrangement_id
+            end
+
+            -- NSScreen to Direct
+            sbar.exec(QUERY_SCREENS_AND_DISPLAYS, function(screens_and_displays)
+                -- local screen_to_display = {}
+                for _, entry in ipairs(screens_and_displays) do
+                    local screen_id = entry[SCREEN_KEY]
+                    local display_id = entry[DISPLAY_KEY]
+                    -- screen_to_display[screen_id] = display_id
+
+                    screen_to_arrangement[screen_id] = display_to_arrangement[display_id]
+                end
+
+                screen_to_arrangement_cache = {}                                      -- flush
+                screen_to_arrangement_cache[current_monitors] = screen_to_arrangement -- set
+                callback(screen_to_arrangement)
+            end)
+        end)
+    end)
+end
+
 local function getState(callback)
     sbar.exec(QUERY_WINDOWS, function(workspace_and_app)
         local workspace_has_apps = {}
@@ -97,39 +142,19 @@ local function getState(callback)
                     workspace_to_screen[workspace_index] = screen_id
                 end
 
-                -- NSScreen to Direct
-                sbar.exec(QUERY_SCREENS_AND_DISPLAYS, function(screens_and_displays)
-                    local screen_to_display = {}
-                    for _, entry in ipairs(screens_and_displays) do
-                        local screen_id = entry[SCREEN_KEY]
-                        local display_id = entry[DISPLAY_KEY]
-                        screen_to_display[screen_id] = display_id
+                getScreenToArrangement(function(screen_to_arrangement)
+                    -- workspace (aerospace) to arrangement (sketchybar)
+                    local workspace_to_arrangement = {}
+                    for workspace_index, screen_id in pairs(workspace_to_screen) do
+                        workspace_to_arrangement[workspace_index] = screen_to_arrangement[screen_id]
                     end
 
-
-                    -- Direct to arrangement (sketchybar)
-                    sbar.exec(QUERY_DISPLAYS_ARRANGEMENTS, function(displays_and_arrangements)
-                        local display_to_arrangement = {}
-                        for _, entry in ipairs(displays_and_arrangements) do
-                            local display_id = entry[DIRECT_ID]
-                            local arrangement_id = entry[ARRANGEMENT_KEY]
-                            display_to_arrangement[display_id] = arrangement_id
-                        end
-
-                        -- workspace (aerospace) to arrangement (sketchybar)
-                        local workspace_to_arrangement = {}
-                        for workspace_index, screen_id in pairs(workspace_to_screen) do
-                            workspace_to_arrangement[workspace_index] = display_to_arrangement
-                                [screen_to_display[screen_id]]
-                        end
-
-                        local state = {
-                            workspace_has_apps = workspace_has_apps,
-                            workspace_is_visible = workspace_is_visible,
-                            workspace_to_arrangement = workspace_to_arrangement
-                        }
-                        callback(state)
-                    end)
+                    local state = {
+                        workspace_has_apps = workspace_has_apps,
+                        workspace_is_visible = workspace_is_visible,
+                        workspace_to_arrangement = workspace_to_arrangement
+                    }
+                    callback(state)
                 end)
             end)
         end)
