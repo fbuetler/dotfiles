@@ -117,23 +117,19 @@ export HISTSIZE=1000000
 # the maximum number of history events to save in the history file. 
 export SAVEHIST=$HISTSIZE
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
 # You may need to manually set your language environment
 export LANG=en_GB.UTF-8
 export LC_ALL="en_GB.UTF-8"
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 export EDITOR="vim"
+
+# prefer GNU CLIs
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:\
+/opt/homebrew/opt/findutils/libexec/gnubin:\
+/opt/homebrew/opt/grep/libexec/gnubin:\
+/opt/homebrew/opt/gnu-sed/libexec/gnubin:\
+/opt/homebrew/opt/gawk/libexec/gnubin:\
+/opt/homebrew/opt/curl/bin:$PATH"
 
 # golang
 export GOPATH=$HOME/go
@@ -148,30 +144,14 @@ export MANROFFOPT="-c"
 export FD_OPTIONS="--follow --exclude .git --exclude node_modules"
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 
-# kubectl krew
+# kubectl 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-# prefer brew CLIs
-export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-
-# kubectl diff
 export KUBECTL_EXTERNAL_DIFF="diff -N -u --color"
-
-# kubectl configs
 export KUBECONFIG="$(fd --type file --max-depth 1 --exclude "*.crt" --exclude "*.key" . $HOME/.kube | tr '\n' ':' | sed 's/:$/\n/')"
-
-# kubectl krew
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # ansi escape code: color
 # 0; = regular
 export REGULAR="\033[0m" # no color
-export BLACK="\033[0;30m"
 export RED="\033[0;31m"
 export GREEN="\033[0;32m"
 export YELLOW="\033[0;33m"
@@ -202,18 +182,17 @@ export UWHITE="\033[4;37m"
 
 alias vim=nvim
 
+alias ls='eza'
+
 alias code='exec code .'
+
+alias copy='pbcopy'
+alias paste='pbpaste'
 
 alias getsecret="jq '.data.value' -r | base64 --decode | cut -c 1-"
 
 alias mountdrive="sudo cryptsetup open /dev/sda drive; sudo mount /dev/mapper/drive $HOME/media"
 alias umountdrive="sudo umount $HOME/media; sudo cryptsetup close drive"
-alias backup="sudo rsync -aAXvP --delete --exclude=/dev --exclude=/lost+found --exclude=/media --exclude=/proc --exclude=/sys --exclude=/tmp --exclude=/run --exclude=/mnt --exclude=/var --exclude=$HOME/Downloads --exclude=$HOME/git --exclude=$HOME/go --exclude=$HOME/tmp --exclude=$HOME/media --exclude=$HOME/.cache / $HOME/media"
-
-alias copy='pbcopy'
-alias paste='pbpaste'
-
-alias ls='eza'
 
 alias gitlog='fd --type d --max-depth 3 --hidden --no-ignore "^\\.git$" . | while read d; do
     cd $d/..;
@@ -299,27 +278,6 @@ eval spaceship_vi_mode_enable
 
 ################### Autocompletion ############################
 
-# eagerily
-# function kubectl() {
-#   if ! type __start_kubectl >/dev/null 2>&1; then
-#     source <(command kubectl completion zsh)
-#   fi
-
-#   command kubectl "$@"
-# }
-
-# function helm() {
-#   if ! type __start_helm >/dev/null 2>&1; then
-#     source <(command helm completion zsh)
-#   fi
-
-#   command helm "$@"
-# }
-
-# lazily
-#if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
-#if [ /usr/local/bin/helm ]; then source <(helm completion zsh); fi
-
 #if [ /usr/share/fzf ]; then
 #  source /usr/share/fzf/key-bindings.zsh
 #  source /usr/share/fzf/completion.zsh
@@ -344,15 +302,16 @@ fi
   fi
 } &!
 
+# zprof
+
 ################### Managed by others ############################
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  
 
-# zprof
-
 # zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
