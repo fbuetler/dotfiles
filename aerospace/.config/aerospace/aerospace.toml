@@ -197,11 +197,11 @@ alt-shift-backspace = 'exec-and-forget pmset sleepnow'
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-r = [
     'mode resize',
-    'exec-and-forget sketchybar --trigger show_indicator INDICATOR="r"',
+    'exec-and-forget sketchybar --trigger show_indicator INDICATOR="resize"',
 ]
 alt-shift-semicolon = [
     'mode service',
-    'exec-and-forget sketchybar --trigger show_indicator INDICATOR="s"',
+    'exec-and-forget sketchybar --trigger show_indicator INDICATOR="service"',
 ]
 
 [mode.resize.binding] # 2. Declare 'resize' binding mode
