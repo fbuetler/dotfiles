@@ -31,13 +31,13 @@ One liner:
 ```sh
 git clone https://github.com/fbuetler/dotfiles.git ~/.dotfiles \
     && cd ~/.dotfiles \
-    && stow {zsh,profile,vim,neovim,alacritty,git,ssh,fd,jq,ripgrep,gnupg,vscode,firefox,vimium}
+    && stow {zsh,profile,vim,neovim,alacritty,git,ssh,fd,jq,ripgrep,tmux,gnupg,vscode,firefox,vimium}
 ```
 
 Additionally,
 
 * MacOS: `stow {aerospace,sketchybar,jankyborders,Stats}` (manual `keyboard`)
-* Linux: `stow {sway,swaync,waybar,rofi,dunst,defaultapps}`
+* Linux: `stow {sway,swaync,waybar,rofi,dunst,defaultapps,restic}`
 
 Fine-grained:
 
@@ -48,3 +48,9 @@ $ stow -D vim
 # Example: reinstall vim configuration
 $ stow -R vim
 ```
+
+Currently unused:
+
+* `psql`
+* `ranger`
+* `swap-y-z`

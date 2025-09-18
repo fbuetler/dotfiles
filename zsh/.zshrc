@@ -49,7 +49,7 @@ antigen apply
 ################### Zsh ############################
 
 # If you come from bash you might have to change your $PATH.
-export PATH="$PATH:/usr/local/bin:/opt:$HOME/.local/bin:$HOME/scripts:$HOME/.mvn/bin"
+export PATH="$PATH:/usr/local/bin:/opt:$HOME/.local/bin:$HOME/.mvn/bin"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
