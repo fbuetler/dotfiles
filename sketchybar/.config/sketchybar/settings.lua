@@ -69,7 +69,7 @@ return {
             border = {
                 color = colors.yellow,
                 width = 0,
-                width_focused = 3,
+                width_focused = 2,
             },
         },
     },
