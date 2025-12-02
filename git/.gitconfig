@@ -65,6 +65,9 @@
     algorithm = histogram
     mnemonicPrefix = true
     renames = true
+    tool = code
+[difftool "code"]
+    cmd = code --wait --diff $LOCAL $REMOTE
 [submodule]
     recurse = true
 [rerere]
