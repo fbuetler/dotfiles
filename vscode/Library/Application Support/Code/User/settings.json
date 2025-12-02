@@ -43,10 +43,11 @@
     "editor.wrappingIndent": "same"
   },
   "[markdown]": {
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+    "diffEditor.ignoreTrimWhitespace": true
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnType": true
   },
   "[typescript]": {
@@ -62,7 +63,7 @@
   },
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml",
-    "diffEditor.ignoreTrimWhitespace": false
+    "diffEditor.ignoreTrimWhitespace": true
   },
   "chat.commandCenter.enabled": false,
   "comments.thread.confirmOnCollapse": "never",
@@ -74,6 +75,7 @@
     "blub",
     "certmagic",
     "Chirpstack",
+    "crossplane",
     "DUTYCYCLE",
     "freeradius",
     "hass",
@@ -85,12 +87,16 @@
     "MATOMO",
     "Organisation",
     "PKCE",
+    "promtail",
     "QUARKUS",
+    "RESTIC",
     "ROCKETCHAT",
     "shellcheck",
+    "stackgres",
     "Substitutor",
     "tailscale",
     "templatize",
+    "tenary",
     "traefik",
     "uniport",
     "Verticle",
@@ -126,7 +132,8 @@
   "files.associations": {
     "*.xml": "xml",
     "*.go": "go",
-    "*.env": "properties"
+    "*.env": "properties",
+    "*.gohtml": "gohtml"
   },
   "files.autoSave": "onFocusChange",
   "files.exclude": {
@@ -252,6 +259,7 @@
     }
   ],
   "gitlens.statusBar.pullRequests.enabled": false,
+  "go.goroot": "/opt/homebrew/opt/go/libexec",
   "go.formatTool": "goimports",
   "go.toolsManagement.autoUpdate": true,
   "go.useLanguageServer": true,
@@ -338,5 +346,32 @@
     "~/git/inventage/ips/portal-helm-chart-library/helm/src/main/resources/values.schema.json": [
       "~/git/inventage/ips/*/helm/src/main/resources/**/values*.yaml"
     ]
+  },
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "githubLocalActions.dockerDesktopPath": "/Applications/Docker.app",
+  "terminal.integrated.allowedLinkSchemes": [
+    "file",
+    "http",
+    "https",
+    "mailto",
+    "vscode",
+    "vscode-insiders",
+    "docker-desktop"
+  ],
+  "[csv]": {
+    "editor.inlayHints.maximumLength": 0
   }
 }
