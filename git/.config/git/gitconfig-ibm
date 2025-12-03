@@ -1,0 +1,8 @@
+[user]
+    name = Florian Bütler
+    email = florian.buetler@ibm.com
+    signingkey = 2B6C6734582C662A
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true

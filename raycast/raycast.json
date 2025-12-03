@@ -1,0 +1,1796 @@
+{
+    "builtin_package_raycastNotes": {
+        "notes": [],
+        "provider_schemaVersion": 1,
+        "disabledCommands": [
+            "builtin_command_raycastNotes_ask"
+        ]
+    },
+    "builtin_package_quicklinks": {
+        "enableQuickSearch": false,
+        "enableAutoFillLink": false,
+        "disabledCommands": [
+            "builtin_command_exportQuicklinks",
+            "builtin_command_importQuicklinks"
+        ],
+        "quicklinks": [
+            {
+                "name": "Search Google",
+                "uuid": "C210E753-18B2-4936-8CA4-BB6342CBF9E3",
+                "updatedAt": "2025-12-02T15:40:03Z",
+                "isEnabled": true,
+                "url": "https:\/\/google.com\/search?q={argument}",
+                "openCount": 0
+            },
+            {
+                "updatedAt": "2025-12-02T15:40:03Z",
+                "isEnabled": true,
+                "name": "Search DuckDuckGo",
+                "openCount": 0,
+                "url": "https:\/\/duckduckgo.com\/?q={argument}",
+                "uuid": "09714DC3-8220-4AAC-8479-6B2A7F60AB20"
+            }
+        ],
+        "provider_schemaVersion": 1
+    },
+    "remote_package_flux-kontext": {
+        "provider_schemaVersion": 1,
+        "disabledCommands": [
+            "remote_command_flux-kontext"
+        ]
+    },
+    "builtin_package_jira": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_emoji": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_translator": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_calculator": {
+        "provider_schemaVersion": 1,
+        "disabledCommands": [
+            "builtin_command_ask_calculator"
+        ]
+    },
+    "builtin_package_asana": {
+        "provider_schemaVersion": 1
+    },
+    "remote_package_gemini_image": {
+        "provider_schemaVersion": 1,
+        "disabledCommands": [
+            "remote_command_gemini_image"
+        ]
+    },
+    "raycast_onboarding": {
+        "showOnboardingItem": true,
+        "completedTaskIdentifiers": [
+            "snippets",
+            "calendar",
+            "floatingNotes",
+            "windowManagement",
+            "calculator",
+            "raycastShortcuts",
+            "startWalkthrough",
+            "openActionPanel",
+            "setHotkeyAndAlias",
+            "installFirstExtension"
+        ],
+        "provider_schemaVersion": 1
+    },
+    "remote_package_stable_diffusion": {
+        "disabledCommands": [
+            "remote_command_stable_diffusion"
+        ],
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_scriptCommands": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_contacts": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_raycastExtensions": {
+        "extensions": [
+            {
+                "access": "public",
+                "name": "1password",
+                "tokenSets": [],
+                "commands": [
+                    {
+                        "name": "item-list",
+                        "enabled": true
+                    },
+                    {
+                        "enabled": false,
+                        "name": "renew-auth"
+                    },
+                    {
+                        "name": "vault-list",
+                        "enabled": true
+                    },
+                    {
+                        "enabled": true,
+                        "name": "generate-password"
+                    }
+                ],
+                "owner": "khasbilegt",
+                "title": "1Password",
+                "prefs": [
+                    {
+                        "required": true,
+                        "type": "dropdown",
+                        "name": "version"
+                    },
+                    {
+                        "name": "primaryAction",
+                        "type": "dropdown",
+                        "required": false
+                    },
+                    {
+                        "type": "dropdown",
+                        "required": false,
+                        "name": "secondaryAction"
+                    },
+                    {
+                        "required": false,
+                        "type": "checkbox",
+                        "name": "closeWindowAfterCopying"
+                    },
+                    {
+                        "type": "textfield",
+                        "name": "cliPath",
+                        "required": false
+                    },
+                    {
+                        "type": "textfield",
+                        "required": false,
+                        "name": "zshPath"
+                    }
+                ]
+            },
+            {
+                "access": "public",
+                "title": "Visual Studio Code",
+                "prefs": [
+                    {
+                        "type": "dropdown",
+                        "name": "build",
+                        "required": false
+                    },
+                    {
+                        "required": false,
+                        "name": "layout",
+                        "type": "dropdown"
+                    },
+                    {
+                        "required": false,
+                        "name": "keepSectionOrder",
+                        "type": "checkbox"
+                    },
+                    {
+                        "name": "closeOtherWindows",
+                        "required": false,
+                        "type": "checkbox"
+                    },
+                    {
+                        "required": false,
+                        "name": "terminalApp",
+                        "type": "appPicker"
+                    },
+                    {
+                        "name": "showGitBranch",
+                        "required": false,
+                        "type": "checkbox"
+                    },
+                    {
+                        "required": false,
+                        "name": "gitBranchColor",
+                        "type": "textfield"
+                    }
+                ],
+                "owner": "thomas",
+                "name": "visual-studio-code",
+                "commands": [
+                    {
+                        "enabled": true,
+                        "name": "index"
+                    },
+                    {
+                        "enabled": true,
+                        "name": "open-with-vscode"
+                    },
+                    {
+                        "enabled": true,
+                        "name": "open-new-window"
+                    },
+                    {
+                        "name": "extensions",
+                        "enabled": false
+                    },
+                    {
+                        "name": "install-extension",
+                        "enabled": false
+                    },
+                    {
+                        "name": "commandpalette",
+                        "enabled": false
+                    }
+                ],
+                "tokenSets": []
+            },
+            {
+                "title": "Slack",
+                "name": "slack",
+                "owner": "mommertf",
+                "commands": [
+                    {
+                        "prefs": [
+                            {
+                                "name": "displayExtraMetadata",
+                                "type": "checkbox",
+                                "required": false
+                            }
+                        ],
+                        "enabled": true,
+                        "name": "search"
+                    },
+                    {
+                        "name": "search-messages",
+                        "enabled": true
+                    },
+                    {
+                        "enabled": true,
+                        "name": "send-message"
+                    },
+                    {
+                        "enabled": true,
+                        "name": "open-unread-messages"
+                    },
+                    {
+                        "enabled": true,
+                        "name": "unread-messages"
+                    },
+                    {
+                        "enabled": true,
+                        "name": "set-snooze"
+                    },
+                    {
+                        "enabled": true,
+                        "name": "set-presence"
+                    },
+                    {
+                        "name": "search-emojis",
+                        "enabled": false
+                    }
+                ],
+                "prefs": [
+                    {
+                        "name": "accessToken",
+                        "required": false,
+                        "type": "password"
+                    },
+                    {
+                        "name": "closeRightSidebar",
+                        "required": false,
+                        "type": "checkbox"
+                    }
+                ],
+                "tokenSets": [],
+                "access": "public"
+            },
+            {
+                "owner": "rolandleth",
+                "commands": [
+                    {
+                        "enabled": true,
+                        "name": "index"
+                    }
+                ],
+                "tokenSets": [],
+                "name": "kill-process",
+                "access": "public",
+                "title": "Kill Process",
+                "prefs": [
+                    {
+                        "type": "checkbox",
+                        "required": false,
+                        "name": "shouldSearchInPaths"
+                    },
+                    {
+                        "type": "checkbox",
+                        "name": "shouldSearchInPid",
+                        "required": false
+                    },
+                    {
+                        "name": "shouldPrioritizeAppsWhenFiltering",
+                        "type": "checkbox",
+                        "required": false
+                    },
+                    {
+                        "type": "checkbox",
+                        "required": false,
+                        "name": "sortByMem"
+                    },
+                    {
+                        "required": false,
+                        "type": "checkbox",
+                        "name": "aggregateApps"
+                    },
+                    {
+                        "type": "checkbox",
+                        "name": "shouldShowPID",
+                        "required": false
+                    },
+                    {
+                        "name": "shouldShowPath",
+                        "type": "checkbox",
+                        "required": false
+                    },
+                    {
+                        "required": false,
+                        "name": "closeWindowAfterKill",
+                        "type": "checkbox"
+                    },
+                    {
+                        "name": "clearSearchBarAfterKill",
+                        "type": "checkbox",
+                        "required": false
+                    },
+                    {
+                        "required": false,
+                        "type": "checkbox",
+                        "name": "goToRootAfterKill"
+                    },
+                    {
+                        "required": false,
+                        "name": "refreshDuration",
+                        "type": "textfield"
+                    }
+                ]
+            }
+        ],
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_calendar": {
+        "provider_schemaVersion": 1,
+        "disabledCommands": [
+            "builtin_command_ask_calendar"
+        ]
+    },
+    "builtin_package_snippets": {
+        "snippets": [
+            {
+                "category": "text",
+                "copyCount": 37,
+                "name": "Mail",
+                "accessedAt": "2025-12-03T09:46:29Z",
+                "alias": "@@",
+                "modifiedAt": "2025-12-03T09:44:27Z",
+                "text": "florian.buetler@ibm.com",
+                "createdAt": "2025-12-03T09:44:27Z"
+            }
+        ],
+        "disabledCommands": [
+            "builtin_command_exportSnippets",
+            "builtin_command_importSnippets"
+        ],
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_nodeExtension": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_raycastAccount": {
+        "provider_schemaVersion": 1
+    },
+    "raycast_user_activity": {
+        "focusActivities": [],
+        "activities": [
+            {
+                "id": 1,
+                "date": "2025-12-02T15:39:58.014Z",
+                "type": "appOpen"
+            },
+            {
+                "type": "appClose",
+                "id": 2,
+                "date": "2025-12-02T15:39:59.834Z"
+            },
+            {
+                "date": "2025-12-02T15:40:00.420Z",
+                "id": 3,
+                "type": "appOpen"
+            },
+            {
+                "date": "2025-12-02T15:40:12.191Z",
+                "id": 4,
+                "type": "openRaycastCommand",
+                "infoId": 1
+            },
+            {
+                "id": 5,
+                "date": "2025-12-02T15:40:26.967Z",
+                "type": "appClose"
+            },
+            {
+                "id": 6,
+                "type": "appOpen",
+                "date": "2025-12-02T15:40:29.509Z"
+            },
+            {
+                "id": 7,
+                "date": "2025-12-02T15:40:31.117Z",
+                "type": "appClose"
+            },
+            {
+                "date": "2025-12-02T15:40:31.646Z",
+                "id": 8,
+                "type": "appOpen"
+            },
+            {
+                "type": "openSystemApp",
+                "id": 9,
+                "infoId": 2,
+                "date": "2025-12-02T15:40:51.280Z"
+            },
+            {
+                "date": "2025-12-02T15:40:51.285Z",
+                "id": 10,
+                "type": "appClose"
+            },
+            {
+                "date": "2025-12-02T15:41:30.348Z",
+                "id": 11,
+                "type": "appOpen"
+            },
+            {
+                "type": "appClose",
+                "date": "2025-12-02T15:41:33.985Z",
+                "id": 12
+            },
+            {
+                "date": "2025-12-02T15:43:19.506Z",
+                "type": "appOpen",
+                "id": 13
+            },
+            {
+                "id": 14,
+                "date": "2025-12-02T15:44:20.839Z",
+                "type": "appClose"
+            },
+            {
+                "id": 15,
+                "type": "appOpen",
+                "date": "2025-12-02T15:44:24.122Z"
+            },
+            {
+                "date": "2025-12-02T15:45:14.384Z",
+                "id": 16,
+                "type": "appClose"
+            },
+            {
+                "id": 17,
+                "date": "2025-12-02T15:55:15.447Z",
+                "type": "appOpen"
+            },
+            {
+                "type": "openSystemApp",
+                "id": 18,
+                "infoId": 3,
+                "date": "2025-12-02T15:55:16.739Z"
+            },
+            {
+                "type": "appClose",
+                "id": 19,
+                "date": "2025-12-02T15:55:16.741Z"
+            },
+            {
+                "type": "appOpen",
+                "date": "2025-12-02T15:56:05.822Z",
+                "id": 20
+            },
+            {
+                "type": "appClose",
+                "date": "2025-12-02T15:56:06.345Z",
+                "id": 21
+            },
+            {
+                "id": 22,
+                "type": "appOpen",
+                "date": "2025-12-02T16:05:08.674Z"
+            },
+            {
+                "id": 23,
+                "type": "appClose",
+                "date": "2025-12-02T16:05:09.883Z"
+            },
+            {
+                "type": "appOpen",
+                "date": "2025-12-02T16:25:22.106Z",
+                "id": 24
+            },
+            {
+                "date": "2025-12-02T16:25:22.935Z",
+                "type": "appClose",
+                "id": 25
+            },
+            {
+                "type": "appOpen",
+                "id": 26,
+                "date": "2025-12-02T17:05:53.318Z"
+            },
+            {
+                "date": "2025-12-02T17:05:55.135Z",
+                "id": 27,
+                "type": "openSystemApp",
+                "infoId": 2
+            },
+            {
+                "type": "appClose",
+                "date": "2025-12-02T17:05:55.138Z",
+                "id": 28
+            },
+            {
+                "id": 29,
+                "date": "2025-12-02T17:07:12.964Z",
+                "type": "appOpen"
+            },
+            {
+                "type": "appClose",
+                "date": "2025-12-02T17:07:13.846Z",
+                "id": 30
+            },
+            {
+                "date": "2025-12-02T17:19:09.682Z",
+                "type": "appOpen",
+                "id": 31
+            },
+            {
+                "id": 32,
+                "infoId": 4,
+                "type": "openSystemApp",
+                "date": "2025-12-02T17:19:12.160Z"
+            },
+            {
+                "id": 33,
+                "type": "appClose",
+                "date": "2025-12-02T17:19:12.166Z"
+            },
+            {
+                "type": "appOpen",
+                "date": "2025-12-02T17:25:09.525Z",
+                "id": 34
+            },
+            {
+                "type": "openSystemApp",
+                "id": 35,
+                "infoId": 2,
+                "date": "2025-12-02T17:25:10.641Z"
+            },
+            {
+                "type": "appClose",
+                "date": "2025-12-02T17:25:10.645Z",
+                "id": 36
+            },
+            {
+                "date": "2025-12-02T17:25:54.943Z",
+                "id": 37,
+                "type": "appOpen"
+            },
+            {
+                "type": "appClose",
+                "id": 38,
+                "date": "2025-12-02T17:25:55.998Z"
+            },
+            {
+                "date": "2025-12-02T17:58:03.290Z",
+                "type": "appOpen",
+                "id": 39
+            },
+            {
+                "id": 40,
+                "infoId": 5,
+                "date": "2025-12-02T17:58:07.256Z",
+                "type": "openSystemApp"
+            },
+            {
+                "date": "2025-12-02T17:58:07.261Z",
+                "id": 41,
+                "type": "appClose"
+            },
+            {
+                "date": "2025-12-02T17:58:19.907Z",
+                "id": 42,
+                "type": "appOpen"
+            },
+            {
+                "date": "2025-12-02T17:58:21.368Z",
+                "infoId": 5,
+                "type": "openSystemApp",
+                "id": 43
+            },
+            {
+                "id": 44,
+                "type": "appClose",
+                "date": "2025-12-02T17:58:21.371Z"
+            },
+            {
+                "id": 45,
+                "type": "appOpen",
+                "date": "2025-12-02T17:59:58.424Z"
+            },
+            {
+                "type": "openSystemApp",
+                "id": 46,
+                "date": "2025-12-02T17:59:59.518Z",
+                "infoId": 6
+            },
+            {
+                "date": "2025-12-02T17:59:59.521Z",
+                "id": 47,
+                "type": "appClose"
+            },
+            {
+                "id": 48,
+                "type": "appOpen",
+                "date": "2025-12-02T18:14:19.110Z"
+            },
+            {
+                "date": "2025-12-02T18:14:20.635Z",
+                "infoId": 7,
+                "type": "openSystemApp",
+                "id": 49
+            },
+            {
+                "type": "appClose",
+                "date": "2025-12-02T18:14:20.637Z",
+                "id": 50
+            },
+            {
+                "id": 51,
+                "date": "2025-12-02T18:14:56.705Z",
+                "type": "appOpen"
+            },
+            {
+                "type": "openSystemApp",
+                "id": 52,
+                "infoId": 8,
+                "date": "2025-12-02T18:14:58.849Z"
+            },
+            {
+                "type": "appClose",
+                "date": "2025-12-02T18:14:58.851Z",
+                "id": 53
+            },
+            {
+                "id": 54,
+                "type": "appOpen",
+                "date": "2025-12-02T18:15:14.690Z"
+            },
+            {
+                "date": "2025-12-02T18:15:15.772Z",
+                "type": "openSystemApp",
+                "infoId": 7,
+                "id": 55
+            },
+            {
+                "id": 56,
+                "type": "appClose",
+                "date": "2025-12-02T18:15:15.775Z"
+            },
+            {
+                "id": 57,
+                "type": "appOpen",
+                "date": "2025-12-02T18:25:43.885Z"
+            },
+            {
+                "type": "appClose",
+                "id": 58,
+                "date": "2025-12-02T18:25:49.395Z"
+            },
+            {
+                "type": "appOpen",
+                "date": "2025-12-02T18:25:56.605Z",
+                "id": 59
+            },
+            {
+                "date": "2025-12-02T18:25:58.027Z",
+                "id": 60,
+                "infoId": 8,
+                "type": "openSystemApp"
+            },
+            {
+                "date": "2025-12-02T18:25:58.031Z",
+                "id": 61,
+                "type": "appClose"
+            },
+            {
+                "type": "appOpen",
+                "date": "2025-12-02T18:29:49.558Z",
+                "id": 62
+            },
+            {
+                "id": 63,
+                "date": "2025-12-02T18:29:50.967Z",
+                "type": "openRaycastCommand",
+                "infoId": 9
+            },
+            {
+                "date": "2025-12-02T18:29:51.594Z",
+                "type": "appClose",
+                "id": 64
+            },
+            {
+                "infoId": 10,
+                "id": 65,
+                "type": "storeInstallExtension",
+                "date": "2025-12-02T21:47:45.834Z"
+            },
+            {
+                "type": "appOpen",
+                "id": 66,
+                "date": "2025-12-03T08:25:29.072Z"
+            },
+            {
+                "type": "openSystemApp",
+                "id": 67,
+                "date": "2025-12-03T08:25:33.026Z",
+                "infoId": 2
+            },
+            {
+                "id": 68,
+                "type": "appClose",
+                "date": "2025-12-03T08:25:33.032Z"
+            },
+            {
+                "type": "appOpen",
+                "id": 69,
+                "date": "2025-12-03T08:26:27.421Z"
+            },
+            {
+                "date": "2025-12-03T08:26:28.862Z",
+                "infoId": 3,
+                "id": 70,
+                "type": "openSystemApp"
+            },
+            {
+                "date": "2025-12-03T08:26:28.866Z",
+                "id": 71,
+                "type": "appClose"
+            },
+            {
+                "id": 72,
+                "type": "appOpen",
+                "date": "2025-12-03T08:26:45.924Z"
+            },
+            {
+                "type": "openSystemApp",
+                "date": "2025-12-03T08:26:47.393Z",
+                "id": 73,
+                "infoId": 2
+            },
+            {
+                "date": "2025-12-03T08:26:47.396Z",
+                "type": "appClose",
+                "id": 74
+            },
+            {
+                "date": "2025-12-03T08:28:29.804Z",
+                "id": 75,
+                "type": "appOpen"
+            },
+            {
+                "date": "2025-12-03T08:28:34.503Z",
+                "infoId": 2,
+                "type": "openSystemApp",
+                "id": 76
+            },
+            {
+                "id": 77,
+                "type": "appClose",
+                "date": "2025-12-03T08:28:34.507Z"
+            },
+            {
+                "date": "2025-12-03T08:29:13.696Z",
+                "type": "appOpen",
+                "id": 78
+            },
+            {
+                "date": "2025-12-03T08:29:15.057Z",
+                "infoId": 3,
+                "id": 79,
+                "type": "openSystemApp"
+            },
+            {
+                "date": "2025-12-03T08:29:15.062Z",
+                "id": 80,
+                "type": "appClose"
+            },
+            {
+                "type": "appOpen",
+                "date": "2025-12-03T08:29:33.784Z",
+                "id": 81
+            },
+            {
+                "date": "2025-12-03T08:29:34.833Z",
+                "id": 82,
+                "type": "openSystemApp",
+                "infoId": 3
+            },
+            {
+                "date": "2025-12-03T08:29:34.835Z",
+                "id": 83,
+                "type": "appClose"
+            },
+            {
+                "type": "appOpen",
+                "date": "2025-12-03T08:34:33.740Z",
+                "id": 84
+            },
+            {
+                "id": 85,
+                "infoId": 11,
+                "type": "openSystemApp",
+                "date": "2025-12-03T08:34:34.778Z"
+            },
+            {
+                "date": "2025-12-03T08:34:34.782Z",
+                "id": 86,
+                "type": "appClose"
+            },
+            {
+                "date": "2025-12-03T08:37:14.711Z",
+                "type": "appOpen",
+                "id": 87
+            },
+            {
+                "id": 88,
+                "infoId": 12,
+                "type": "openRaycastCommand",
+                "date": "2025-12-03T08:37:16.261Z"
+            },
+            {
+                "date": "2025-12-03T08:37:17.534Z",
+                "type": "appClose",
+                "id": 89
+            },
+            {
+                "date": "2025-12-03T08:49:15.364Z",
+                "type": "appOpen",
+                "id": 90
+            },
+            {
+                "infoId": 13,
+                "id": 91,
+                "date": "2025-12-03T08:49:17.839Z",
+                "type": "openSystemApp"
+            },
+            {
+                "type": "appClose",
+                "date": "2025-12-03T08:49:17.841Z",
+                "id": 92
+            },
+            {
+                "type": "appOpen",
+                "date": "2025-12-03T08:59:01.427Z",
+                "id": 93
+            },
+            {
+                "type": "openSystemApp",
+                "date": "2025-12-03T08:59:02.324Z",
+                "infoId": 14,
+                "id": 94
+            },
+            {
+                "type": "appClose",
+                "date": "2025-12-03T08:59:02.327Z",
+                "id": 95
+            },
+            {
+                "type": "appOpen",
+                "id": 96,
+                "date": "2025-12-03T09:02:18.847Z"
+            },
+            {
+                "id": 97,
+                "infoId": 15,
+                "date": "2025-12-03T09:02:19.903Z",
+                "type": "openSystemApp"
+            },
+            {
+                "id": 98,
+                "date": "2025-12-03T09:02:19.906Z",
+                "type": "appClose"
+            },
+            {
+                "date": "2025-12-03T09:12:10.204Z",
+                "type": "appOpen",
+                "id": 99
+            },
+            {
+                "type": "openSystemApp",
+                "date": "2025-12-03T09:12:11.230Z",
+                "infoId": 16,
+                "id": 100
+            },
+            {
+                "id": 101,
+                "date": "2025-12-03T09:12:11.233Z",
+                "type": "appClose"
+            },
+            {
+                "type": "appOpen",
+                "id": 102,
+                "date": "2025-12-03T09:13:19.210Z"
+            },
+            {
+                "id": 103,
+                "type": "openSystemApp",
+                "date": "2025-12-03T09:13:20.591Z",
+                "infoId": 2
+            },
+            {
+                "type": "appClose",
+                "id": 104,
+                "date": "2025-12-03T09:13:20.592Z"
+            },
+            {
+                "type": "appOpen",
+                "date": "2025-12-03T09:14:25.104Z",
+                "id": 105
+            },
+            {
+                "id": 106,
+                "date": "2025-12-03T09:15:20.127Z",
+                "type": "appClose"
+            },
+            {
+                "id": 107,
+                "type": "appOpen",
+                "date": "2025-12-03T09:15:56.531Z"
+            },
+            {
+                "type": "appClose",
+                "id": 108,
+                "date": "2025-12-03T09:15:58.060Z"
+            },
+            {
+                "type": "appOpen",
+                "id": 109,
+                "date": "2025-12-03T09:15:59.106Z"
+            },
+            {
+                "id": 110,
+                "type": "appClose",
+                "date": "2025-12-03T09:18:20.023Z"
+            },
+            {
+                "date": "2025-12-03T09:20:09.355Z",
+                "id": 111,
+                "infoId": 17,
+                "type": "openRaycastCommand"
+            },
+            {
+                "type": "openRaycastCommand",
+                "date": "2025-12-03T09:20:18.340Z",
+                "infoId": 18,
+                "id": 112
+            },
+            {
+                "id": 113,
+                "type": "appOpen",
+                "date": "2025-12-03T09:20:18.397Z"
+            },
+            {
+                "id": 114,
+                "type": "appClose",
+                "date": "2025-12-03T09:20:19.094Z"
+            },
+            {
+                "type": "appOpen",
+                "id": 115,
+                "date": "2025-12-03T09:21:26.513Z"
+            },
+            {
+                "date": "2025-12-03T09:21:36.401Z",
+                "id": 116,
+                "type": "appClose"
+            },
+            {
+                "date": "2025-12-03T09:21:37.176Z",
+                "type": "appOpen",
+                "id": 117
+            },
+            {
+                "type": "openRaycastCommand",
+                "id": 118,
+                "infoId": 19,
+                "date": "2025-12-03T09:21:40.217Z"
+            },
+            {
+                "date": "2025-12-03T09:22:08.508Z",
+                "id": 119,
+                "type": "appClose"
+            },
+            {
+                "date": "2025-12-03T09:22:25.535Z",
+                "id": 120,
+                "type": "appOpen"
+            },
+            {
+                "id": 121,
+                "type": "appClose",
+                "date": "2025-12-03T09:22:29.841Z"
+            },
+            {
+                "type": "appOpen",
+                "date": "2025-12-03T09:44:17.606Z",
+                "id": 122
+            },
+            {
+                "type": "appClose",
+                "date": "2025-12-03T09:44:27.251Z",
+                "id": 123
+            },
+            {
+                "infoId": 20,
+                "type": "injectSnippet",
+                "id": 124,
+                "date": "2025-12-03T09:44:31.521Z"
+            },
+            {
+                "id": 125,
+                "date": "2025-12-03T09:44:38.098Z",
+                "infoId": 20,
+                "type": "injectSnippet"
+            },
+            {
+                "type": "injectSnippet",
+                "date": "2025-12-03T09:44:38.937Z",
+                "infoId": 20,
+                "id": 126
+            },
+            {
+                "type": "injectSnippet",
+                "infoId": 20,
+                "id": 127,
+                "date": "2025-12-03T09:44:46.471Z"
+            },
+            {
+                "id": 128,
+                "type": "injectSnippet",
+                "date": "2025-12-03T09:44:47.174Z",
+                "infoId": 20
+            },
+            {
+                "infoId": 20,
+                "date": "2025-12-03T09:44:48.207Z",
+                "type": "injectSnippet",
+                "id": 129
+            },
+            {
+                "date": "2025-12-03T09:44:48.826Z",
+                "type": "injectSnippet",
+                "infoId": 20,
+                "id": 130
+            },
+            {
+                "type": "injectSnippet",
+                "id": 131,
+                "infoId": 20,
+                "date": "2025-12-03T09:44:49.244Z"
+            },
+            {
+                "id": 132,
+                "date": "2025-12-03T09:44:49.662Z",
+                "type": "injectSnippet",
+                "infoId": 20
+            },
+            {
+                "type": "injectSnippet",
+                "infoId": 20,
+                "date": "2025-12-03T09:44:50.092Z",
+                "id": 133
+            },
+            {
+                "date": "2025-12-03T09:44:50.566Z",
+                "id": 134,
+                "type": "injectSnippet",
+                "infoId": 20
+            },
+            {
+                "type": "appOpen",
+                "id": 135,
+                "date": "2025-12-03T09:44:59.846Z"
+            },
+            {
+                "type": "openRaycastCommand",
+                "date": "2025-12-03T09:45:06.941Z",
+                "id": 136,
+                "infoId": 19
+            },
+            {
+                "infoId": 21,
+                "id": 137,
+                "type": "openRaycastCommand",
+                "date": "2025-12-03T09:45:15.545Z"
+            },
+            {
+                "type": "appClose",
+                "id": 138,
+                "date": "2025-12-03T09:45:29.878Z"
+            },
+            {
+                "date": "2025-12-03T09:45:34.952Z",
+                "id": 139,
+                "infoId": 20,
+                "type": "injectSnippet"
+            },
+            {
+                "id": 140,
+                "infoId": 20,
+                "type": "injectSnippet",
+                "date": "2025-12-03T09:45:42.849Z"
+            },
+            {
+                "date": "2025-12-03T09:45:51.554Z",
+                "infoId": 20,
+                "id": 141,
+                "type": "injectSnippet"
+            },
+            {
+                "id": 142,
+                "date": "2025-12-03T09:45:59.110Z",
+                "infoId": 20,
+                "type": "injectSnippet"
+            },
+            {
+                "infoId": 20,
+                "date": "2025-12-03T09:46:03.763Z",
+                "id": 143,
+                "type": "injectSnippet"
+            },
+            {
+                "type": "injectSnippet",
+                "id": 144,
+                "date": "2025-12-03T09:46:06.077Z",
+                "infoId": 20
+            },
+            {
+                "infoId": 20,
+                "type": "injectSnippet",
+                "id": 145,
+                "date": "2025-12-03T09:46:07.271Z"
+            },
+            {
+                "infoId": 20,
+                "id": 146,
+                "type": "injectSnippet",
+                "date": "2025-12-03T09:46:08.339Z"
+            },
+            {
+                "type": "injectSnippet",
+                "date": "2025-12-03T09:46:09.521Z",
+                "infoId": 20,
+                "id": 147
+            },
+            {
+                "infoId": 20,
+                "id": 148,
+                "date": "2025-12-03T09:46:10.506Z",
+                "type": "injectSnippet"
+            },
+            {
+                "date": "2025-12-03T09:46:11.427Z",
+                "id": 149,
+                "infoId": 20,
+                "type": "injectSnippet"
+            },
+            {
+                "id": 150,
+                "date": "2025-12-03T09:46:12.576Z",
+                "infoId": 20,
+                "type": "injectSnippet"
+            },
+            {
+                "infoId": 20,
+                "id": 151,
+                "date": "2025-12-03T09:46:14.396Z",
+                "type": "injectSnippet"
+            },
+            {
+                "type": "injectSnippet",
+                "infoId": 20,
+                "id": 152,
+                "date": "2025-12-03T09:46:15.453Z"
+            },
+            {
+                "type": "injectSnippet",
+                "id": 153,
+                "infoId": 20,
+                "date": "2025-12-03T09:46:16.461Z"
+            },
+            {
+                "id": 154,
+                "type": "injectSnippet",
+                "date": "2025-12-03T09:46:17.708Z",
+                "infoId": 20
+            },
+            {
+                "infoId": 20,
+                "type": "injectSnippet",
+                "date": "2025-12-03T09:46:20.418Z",
+                "id": 155
+            },
+            {
+                "date": "2025-12-03T09:46:21.919Z",
+                "id": 156,
+                "infoId": 20,
+                "type": "injectSnippet"
+            },
+            {
+                "id": 157,
+                "type": "injectSnippet",
+                "infoId": 20,
+                "date": "2025-12-03T09:46:24.455Z"
+            },
+            {
+                "infoId": 20,
+                "id": 158,
+                "type": "injectSnippet",
+                "date": "2025-12-03T09:46:25.283Z"
+            },
+            {
+                "type": "injectSnippet",
+                "id": 159,
+                "date": "2025-12-03T09:46:25.898Z",
+                "infoId": 20
+            },
+            {
+                "date": "2025-12-03T09:46:26.554Z",
+                "infoId": 20,
+                "id": 160,
+                "type": "injectSnippet"
+            },
+            {
+                "infoId": 20,
+                "type": "injectSnippet",
+                "date": "2025-12-03T09:46:27.223Z",
+                "id": 161
+            },
+            {
+                "infoId": 20,
+                "id": 162,
+                "type": "injectSnippet",
+                "date": "2025-12-03T09:46:27.904Z"
+            },
+            {
+                "infoId": 20,
+                "type": "injectSnippet",
+                "id": 163,
+                "date": "2025-12-03T09:46:28.585Z"
+            },
+            {
+                "id": 164,
+                "type": "injectSnippet",
+                "infoId": 20,
+                "date": "2025-12-03T09:46:29.655Z"
+            },
+            {
+                "id": 165,
+                "type": "appOpen",
+                "date": "2025-12-03T09:46:36.686Z"
+            },
+            {
+                "type": "appClose",
+                "date": "2025-12-03T09:46:41.097Z",
+                "id": 166
+            },
+            {
+                "type": "appOpen",
+                "date": "2025-12-03T09:46:43.364Z",
+                "id": 167
+            },
+            {
+                "id": 168,
+                "type": "appClose",
+                "date": "2025-12-03T09:47:05.560Z"
+            },
+            {
+                "id": 169,
+                "date": "2025-12-03T09:48:08.253Z",
+                "type": "appOpen"
+            },
+            {
+                "date": "2025-12-03T09:48:10.289Z",
+                "type": "openRaycastCommand",
+                "id": 170,
+                "infoId": 22
+            },
+            {
+                "date": "2025-12-03T09:49:03.442Z",
+                "type": "appOpen",
+                "id": 171
+            }
+        ],
+        "aiChatActivities": [],
+        "activityInfo": [
+            {
+                "key": "thomas\/visual-studio-code\/search-recent-projects",
+                "title": "Search Recent Projects",
+                "id": 1
+            },
+            {
+                "key": "\/System\/Applications\/System Settings.app",
+                "title": "System Settings",
+                "id": 2
+            },
+            {
+                "id": 3,
+                "key": "\/System\/Volumes\/Data\/Applications\/AeroSpace.app",
+                "title": "AeroSpace"
+            },
+            {
+                "id": 4,
+                "key": "\/System\/Library\/CoreServices\/Finder.app\/Contents\/Applications\/AirDrop.app",
+                "title": "AirDrop"
+            },
+            {
+                "id": 5,
+                "title": "Hidden Bar",
+                "key": "\/System\/Volumes\/Data\/Applications\/Hidden Bar.app"
+            },
+            {
+                "key": "\/System\/Volumes\/Data\/Applications\/Stats.app",
+                "title": "Stats",
+                "id": 6
+            },
+            {
+                "key": "\/System\/Volumes\/Data\/Applications\/Clipy.app",
+                "title": "Clipy",
+                "id": 7
+            },
+            {
+                "title": "Shottr",
+                "id": 8,
+                "key": "\/System\/Volumes\/Data\/Applications\/Shottr.app"
+            },
+            {
+                "key": "builtin_command_sleep",
+                "title": "Sleep",
+                "id": 9
+            },
+            {
+                "key": "c0c9423a-7014-481e-8bb9-44c4c6df53be",
+                "title": "Kill Process",
+                "id": 10
+            },
+            {
+                "key": "\/System\/Volumes\/Data\/Applications\/Spotify.app",
+                "title": "Spotify",
+                "id": 11
+            },
+            {
+                "id": 12,
+                "key": "builtin_command_restartSystem",
+                "title": "Restart"
+            },
+            {
+                "title": "Finder",
+                "key": "\/System\/Library\/CoreServices\/Finder.app",
+                "id": 13
+            },
+            {
+                "key": "\/System\/Volumes\/Data\/Applications\/Bitwarden.app",
+                "id": 14,
+                "title": "Bitwarden"
+            },
+            {
+                "title": "Firefox",
+                "key": "\/System\/Volumes\/Data\/Applications\/Firefox.app",
+                "id": 15
+            },
+            {
+                "id": 16,
+                "key": "\/System\/Volumes\/Data\/Applications\/Ukelele.app",
+                "title": "Ukelele"
+            },
+            {
+                "key": "builtin_command_raycastNotes_createNote",
+                "id": 17,
+                "title": "Create Note"
+            },
+            {
+                "key": "builtin_command_searchEmoji",
+                "id": 18,
+                "title": "Search Emoji & Symbols"
+            },
+            {
+                "id": 19,
+                "title": "Create Snippet",
+                "key": "builtin_command_createSnippet"
+            },
+            {
+                "id": 20,
+                "key": "snippet_1",
+                "title": "Mail"
+            },
+            {
+                "title": "Search Snippets",
+                "id": 21,
+                "key": "builtin_command_searchSnippets"
+            },
+            {
+                "title": "Export Settings & Data",
+                "id": 22,
+                "key": "builtin_command_configurationExport"
+            }
+        ],
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_thinking": {
+        "provider_schemaVersion": 1,
+        "disabledCommands": [
+            "builtin_command_ask-thinking"
+        ]
+    },
+    "builtin_package_mcpServer": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_rootSearch": {
+        "rootSearch": [
+            {
+                "searchTerms": "aero,aero,aero,aero",
+                "frecencyDate": 793899967.76999998,
+                "openedAt": 786443374.83200002,
+                "type": "systemApp",
+                "path": "\/Applications\/AeroSpace.app",
+                "key": "bobko.aerospace"
+            },
+            {
+                "key": "com.apple.finder.Open-AirDrop",
+                "openedAt": 786388752.15899992,
+                "path": "\/System\/Library\/CoreServices\/Finder.app\/Contents\/Applications\/AirDrop.app",
+                "type": "systemApp",
+                "frecencyDate": 792141446.88000011,
+                "searchTerms": "airdrop"
+            },
+            {
+                "openedAt": 786445142.32399988,
+                "type": "systemApp",
+                "key": "com.bitwarden.desktop",
+                "frecencyDate": 792197837.04500008,
+                "searchTerms": "bit",
+                "path": "\/Applications\/Bitwarden.app"
+            },
+            {
+                "path": "\/Applications\/Clipy.app",
+                "key": "com.clipy-app.Clipy",
+                "searchTerms": "clip,clip",
+                "frecencyDate": 793002596.72799993,
+                "openedAt": 786392115.77200007,
+                "type": "systemApp"
+            },
+            {
+                "hotkey": "Command-47",
+                "type": "command",
+                "key": "builtin_command_raycastNotes_createNote"
+            },
+            {
+                "searchTerms": "snippet,create",
+                "frecencyDate": 793057708.93899989,
+                "openedAt": 786447906.94000006,
+                "type": "command",
+                "key": "builtin_command_createSnippet"
+            },
+            {
+                "frecencyDate": 792200785.00999999,
+                "key": "builtin_command_configurationExport",
+                "openedAt": 786448090.28900003,
+                "searchTerms": "export",
+                "type": "command"
+            },
+            {
+                "openedAt": 786444557.83899999,
+                "path": "\/System\/Library\/CoreServices\/Finder.app",
+                "frecencyDate": 792197252.55999994,
+                "key": "com.apple.finder",
+                "type": "systemApp",
+                "searchTerms": "finder"
+            },
+            {
+                "key": "org.mozilla.firefox",
+                "searchTerms": "fire",
+                "frecencyDate": 792198034.62400007,
+                "path": "\/Applications\/Firefox.app",
+                "openedAt": 786445339.90300012,
+                "type": "systemApp"
+            },
+            {
+                "frecencyDate": 793001602.93700004,
+                "openedAt": 786391101.36800003,
+                "path": "\/Applications\/Hidden Bar.app",
+                "key": "com.dwarvesv.minimalbar",
+                "type": "systemApp",
+                "searchTerms": "hidden,hid"
+            },
+            {
+                "type": "command",
+                "openedAt": 786443836.26099992,
+                "searchTerms": "restart",
+                "key": "builtin_command_restartSystem",
+                "frecencyDate": 792196530.98200011
+            },
+            {
+                "hotkey": "Control-Command-49",
+                "key": "builtin_command_searchEmoji",
+                "type": "command"
+            },
+            {
+                "searchTerms": "vscode",
+                "type": "nodeCommand",
+                "key": "extension_visual-studio-code.index__95e41a2e-a943-4d49-b0df-152c3db2f7e0",
+                "frecencyDate": 792135506.91100001,
+                "openedAt": 786382812.19000006
+            },
+            {
+                "type": "command",
+                "key": "builtin_command_searchSnippets",
+                "searchTerms": "snippet",
+                "frecencyDate": 792200610.26600003,
+                "openedAt": 786447915.54500008
+            },
+            {
+                "key": "cc.ffitch.shottr",
+                "searchTerms": "shot",
+                "frecencyDate": 793002935.50300002,
+                "path": "\/Applications\/Shottr.app",
+                "openedAt": 786392758.02600002,
+                "type": "systemApp"
+            },
+            {
+                "type": "command",
+                "key": "builtin_command_sleep",
+                "searchTerms": "slee",
+                "frecencyDate": 792145685.68799996,
+                "openedAt": 786392990.96700001
+            },
+            {
+                "frecencyDate": 792196369.49900007,
+                "type": "systemApp",
+                "openedAt": 786443674.77800012,
+                "searchTerms": "spot",
+                "path": "\/Applications\/Spotify.app",
+                "key": "com.spotify.client"
+            },
+            {
+                "type": "systemApp",
+                "path": "\/Applications\/Stats.app",
+                "key": "eu.exelban.Stats",
+                "searchTerms": "stat",
+                "openedAt": 786391199.51699996,
+                "frecencyDate": 792143894.23799992
+            },
+            {
+                "type": "systemApp",
+                "key": "com.apple.systempreferences",
+                "searchTerms": "setting,sett,sett,sett,sett",
+                "path": "\/System\/Applications\/System Settings.app",
+                "frecencyDate": 794587264.6500001,
+                "openedAt": 786446000.59100008
+            },
+            {
+                "searchTerms": "uke",
+                "key": "org.sil.ukelele",
+                "openedAt": 786445931.23000002,
+                "type": "systemApp",
+                "frecencyDate": 792198625.95000005,
+                "path": "\/Applications\/Ukelele.app"
+            }
+        ],
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_zoom": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_organizations": {
+        "provider_schemaVersion": 1
+    },
+    "raycast_raycastFocus": {
+        "focusCategories": [],
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_floatingNotes": {
+        "provider_schemaVersion": 1
+    },
+    "remote_package_flux": {
+        "provider_schemaVersion": 1,
+        "disabledCommands": [
+            "remote_command_flux"
+        ]
+    },
+    "builtin_package_finder": {
+        "disabledCommands": [
+            "builtin_command_ask-finder"
+        ],
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_fileSearch": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_reminders": {
+        "provider_schemaVersion": 1
+    },
+    "raycast_version": "1.103.10",
+    "builtin_package_developer": {
+        "disabledCommands": [
+            "builtin_command_developer_createExtension",
+            "builtin_command_developer_importExtension",
+            "builtin_command_developer_manageExtensions",
+            "builtin_command_developer_extensionDiagnostics"
+        ],
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_clipboardHistory": {
+        "clipboardHistoryDisabledApplications": [
+            "com.apple.Passwords",
+            "com.apple.keychainaccess"
+        ],
+        "disabledCommands": [
+            "builtin_command_clipboardHistory",
+            "builtin_command_askClipboard",
+            "builtin_command_sequentialPaste"
+        ],
+        "clipboardHistoryDisabledApplicationsVersion": 2,
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_dictionary": {
+        "disabledCommands": [
+            "builtin_command_dictionary_defineWord"
+        ],
+        "provider_schemaVersion": 1
+    },
+    "remote_package_chart": {
+        "disabledCommands": [
+            "remote_command_chart"
+        ],
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_selected-text": {
+        "disabledCommands": [
+            "builtin_command_ask-selected-text"
+        ],
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_gSuite": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_quick-ai": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_typingPractice": {
+        "provider_schemaVersion": 1,
+        "disabledCommands": [
+            "builtin_command_typingPractice_start"
+        ]
+    },
+    "builtin_package_webSearches": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_url": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_screenshots": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_raycastPreferences": {
+        "preferencesAdvanced": {
+            "mainWindowCaptureShowInFinder": false,
+            "useHyperKeyIcon": false,
+            "navigationCommandStyleIdentifierKey": "macos",
+            "raycastWindowEscapeKeyBehavior": 0,
+            "popToRootTimeout": 90,
+            "mainWindowCaptureCopyToClipboard": true,
+            "raycastWindowPresentationMode": 0,
+            "keepWindowVisibleOnResignKey": false,
+            "raycastAPIOptions": 0,
+            "mainWindowCaptureOpenQuickAccessOverlay": false,
+            "pageNavigationCommandKeysIdentifierKey": "squareBrackets"
+        },
+        "provider_schemaVersion": 1,
+        "preferencesGeneral": {
+            "raycastGlobalHotkey": "Option-49",
+            "raycastAlternativeEscape": false
+        },
+        "preferencesAppearance": {
+            "showFavoritesInCompactMode": true,
+            "raycastUI_preferredTextSize": "medium",
+            "statusBarIsVisible": false,
+            "raycastPreferredWindowMode": "default"
+        }
+    },
+    "remote_package_web": {
+        "disabledCommands": [
+            "remote_command_web"
+        ],
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_github": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_browser": {
+        "provider_schemaVersion": 1,
+        "disabledCommands": [
+            "builtin_command_ask-browser",
+            "builtin_command_install-browser-extension-command"
+        ]
+    },
+    "builtin_package_default": {
+        "enabledFallbackSearchIdentifiers": [
+            "builtin_command_fileSearch_fallbackSearch",
+            "builtin_command_extensionStore_fallbackSearch",
+            "builtin_command_searchSnippets_fallbackSearch",
+            "raycastQuicklink_C210E753-18B2-4936-8CA4-BB6342CBF9E3",
+            "builtin_command_searchEmoji_fallbackSearch",
+            "builtin_command_translate_fallbackSearch",
+            "raycastQuicklink_09714DC3-8220-4AAC-8479-6B2A7F60AB20"
+        ],
+        "didMigrateWebSearches": true,
+        "provider_schemaVersion": 1,
+        "installedNativeExtensionIdentifiers": [
+            "builtin_package_media"
+        ],
+        "didMigrateQuicklinkFallbackSearch": true
+    },
+    "remote_package_dalle": {
+        "disabledCommands": [
+            "remote_command_dalle"
+        ],
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_weather": {
+        "provider_schemaVersion": 1,
+        "disabledCommands": [
+            "builtin_command_ask-weather"
+        ]
+    },
+    "builtin_package_linear": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_navigation": {
+        "disabledCommands": [
+            "builtin_command_windowSwitcher",
+            "builtin_command_searchMenuItems",
+            "builtin_command_saveWindowLayout",
+            "builtin_command_restoreWindowLayout",
+            "builtin_command_browserTabSwitcher"
+        ],
+        "pinnedMenuItems": [],
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_location": {
+        "provider_schemaVersion": 1,
+        "disabledCommands": [
+            "builtin_command_ask-location"
+        ]
+    },
+    "raycast_app_defaults": {
+        "firstKnownVersion": "1.103.10",
+        "anonymousId": "64A85591-4D81-483C-BA97-61A1515A877F",
+        "provider_schemaVersion": 1,
+        "installationDate": "2025-12-02T15:37:02Z"
+    },
+    "remote_package_gpt_image": {
+        "provider_schemaVersion": 1,
+        "disabledCommands": [
+            "remote_command_gpt_image"
+        ]
+    },
+    "builtin_package_browserBookmarks": {
+        "provider_schemaVersion": 1
+    },
+    "builtin_package_systemCommands": {
+        "provider_schemaVersion": 1
+    }
+}
