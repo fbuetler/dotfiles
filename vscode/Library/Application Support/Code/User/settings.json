@@ -165,13 +165,6 @@
     "searchAndCompare": true,
     "launchpad": false
   },
-  "gitlens.autolinks": [
-    {
-      "url": "https://inventage-all.atlassian.net/browse/PORTAL-<num>",
-      "prefix": "PORTAL-",
-      "alphanumeric": false
-    }
-  ],
   "gitlens.statusBar.command": "gitlens.showCommitsInView",
   "gitlens.changes.locations": ["gutter", "line", "overview"],
   "gitlens.menus": {
@@ -252,12 +245,6 @@
   "gitlens.graph.dimMergeCommits": true,
   "gitlens.graph.minimap.additionalTypes": ["localBranches"],
   "gitlens.hovers.currentLine.over": "line",
-  "gitlens.remotes": [
-    {
-      "domain": "git.inventage.com",
-      "type": "BitbucketServer"
-    }
-  ],
   "gitlens.statusBar.pullRequests.enabled": false,
   "go.goroot": "/opt/homebrew/opt/go/libexec",
   "go.formatTool": "goimports",
@@ -280,20 +267,6 @@
   "java.maven.downloadSources": true,
   "java.project.importOnFirstTimeStartup": "automatic",
   "java.saveActions.organizeImports": true,
-  "json.schemas": [
-    {
-      "url": "~/git/inventage/ips/portal-gateway/config-schemas/src/main/resources/schema/portalGatewayDynamicSchema.json",
-      "fileMatch": [
-        "~/git/inventage/ips/portal-gateway/helm/src/main/resources/**/dynamic-config/**/config.json"
-      ]
-    },
-    {
-      "url": "~/git/inventage/ips/portal-gateway/config-schemas/src/main/resources/schema/portalGatewayStaticSchema.json",
-      "fileMatch": [
-        "~/git/inventage/ips/portal-gateway/helm/src/main/resources/**/portal-gateway.json"
-      ]
-    }
-  ],
   "latex-workshop.latex.autoBuild.run": "never",
   "latex-workshop.view.pdf.viewer": "browser",
   "markdown.updateLinksOnFileMove.enabled": "always",
@@ -343,9 +316,6 @@
   "xmlTools.splitXmlnsOnFormat": false,
   "yaml.format.bracketSpacing": false,
   "yaml.schemas": {
-    "~/git/inventage/ips/portal-helm-chart-library/helm/src/main/resources/values.schema.json": [
-      "~/git/inventage/ips/*/helm/src/main/resources/**/values*.yaml"
-    ],
     "file:///Users/florianbutler/.vscode/extensions/ibmconsulting.ica-25.10.0/config-yaml-schema.json": [
       ".ica_v2/**/*.yaml"
     ]
