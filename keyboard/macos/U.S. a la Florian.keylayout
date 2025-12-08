@@ -1,6 +1,6 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
-<!--Last edited by Ukelele version 396 on 2025-01-22 at 13:17 (GMT+1)-->
+<!--Last edited by Ukelele version 452 on 2025-12-05 at 22:12 (GMT+1)-->
 <keyboard group="126" id="-17743" name="U.S. a la Florian" maxout="1">
     <layouts>
         <layout first="0" last="17" mapSet="16c" modifiers="f4"/>
@@ -49,7 +49,7 @@
             <key code="3" output="f"/>
             <key code="4" output="h"/>
             <key code="5" output="g"/>
-            <key code="6" output="y"/>
+            <key code="6" output="z"/>
             <key code="7" output="x"/>
             <key code="8" output="c"/>
             <key code="9" output="v"/>
@@ -59,7 +59,7 @@
             <key code="13" output="w"/>
             <key code="14" action="14"/>
             <key code="15" output="r"/>
-            <key code="16" action="19"/>
+            <key code="16" action="20"/>
             <key code="17" output="t"/>
             <key code="18" output="1"/>
             <key code="19" output="2"/>
@@ -1071,6 +1071,10 @@
         </action>
         <action id="2">
             <when state="none" next="3"/>
+        </action>
+        <action id="20">
+            <when state="none" output="y"/>
+            <when state="4" output="ÿ"/>
         </action>
         <action id="3">
             <when state="none" next="4"/>
