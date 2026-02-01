@@ -1,8 +1,0 @@
-[user]
-    name = Florian Bütler
-    email = fbuetler@inventage.com
-    signingkey = 06A30E5AA8EFB3F8
-[commit]
-	gpgsign = true
-[tag]
-	gpgSign = true
